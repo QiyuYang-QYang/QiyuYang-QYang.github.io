@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Charlie Yang | Computational Biology</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #ffffff;
+            color: #222222;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1050px, 90%);
+            margin: auto;
+        }
+
+        /* ---------- Navigation ---------- */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .nav-inner {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 26px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        /* ---------- Hero ---------- */
+
+        .hero {
+            padding: 100px 0 90px;
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 72px);
+            line-height: 1.05;
+            margin: 0 0 20px;
+            letter-spacing: -3px;
+        }
+
+        .hero .subtitle {
+            font-size: 23px;
+            color: #555;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            max-width: 680px;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .profile {
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            background: #eeeeee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            margin-left: auto;
+        }
+
+        /* ---------- Sections ---------- */
+
+        section {
+            padding: 75px 0;
+            border-top: 1px solid #eeeeee;
+        }
+
+        section h2 {
+            font-size: 30px;
+            margin: 0 0 35px;
+            letter-spacing: -1px;
+        }
+
+        /* ---------- About ---------- */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 70px;
+        }
+
+        .about-grid p {
+            color: #555;
+        }
+
+        .info {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .info strong {
+            color: #222;
+        }
+
+        /* ---------- Research ---------- */
+
+        .research-item {
+            margin-bottom: 45px;
+        }
+
+        .research-item h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .research-item p {
+            color: #666;
+            max-width: 800px;
+        }
+
+        /* ---------- Projects ---------- */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .project {
+            border: 1px solid #dddddd;
+            border-radius: 12px;
+            padding: 25px;
+            transition: 0.2s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-4px);
+            border-color: #999;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+        }
+
+        .project h3 {
+            margin: 0 0 8px;
+            font-size: 20px;
+        }
+
+        .project p {
+            margin: 0 0 18px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .project a {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* ---------- Education ---------- */
+
+        .timeline {
+            border-left: 2px solid #dddddd;
+            padding-left: 25px;
+        }
+
+        .timeline-item {
+            margin-bottom: 35px;
+        }
+
+        .timeline-item .date {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .timeline-item h3 {
+            margin: 3px 0;
+            font-size: 19px;
+        }
+
+        .timeline-item p {
+            margin: 0;
+            color: #666;
+        }
+
+        /* ---------- Skills ---------- */
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 7px 13px;
+            border: 1px solid #dddddd;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        /* ---------- Contact ---------- */
+
+        .contact {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .contact h2 {
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            color: #666;
+        }
+
+        .links {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- Footer ---------- */
+
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid #eeeeee;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+        }
+
+        /* ---------- Mobile ---------- */
+
+        @media (max-width: 750px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 70px 0;
+            }
+
+            .profile {
+                margin: 0;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 55px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+    <div class="container nav-inner">
+
+        <a href="#" class="logo">Charlie Yang</a>
+
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<header class="container hero">
+
+    <div>
+
+        <h1>Charlie Yang</h1>
+
+        <div class="subtitle">
+            Computational Biology · AI for Science
+        </div>
+
+        <p>
+            M.S. student in Computational Biology at Carnegie Mellon University.
+            I am interested in computational biology, machine learning,
+            and intelligent systems for scientific discovery.
+        </p>
+
+    </div>
+
+    <!-- 暂时是占位符，之后可以换成你的照片 -->
+    <div class="profile">
+        Profile Photo
+    </div>
+
+</header>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <h2>About</h2>
+
+        <div class="about-grid">
+
+            <div>
+
+                <p>
+                    My background combines plant science, molecular biology,
+                    bioinformatics, and computational methods.
+                </p>
+
+                <p>
+                    I am particularly interested in the intersection of
+                    biological data and artificial intelligence, including
+                    representation learning, scientific agents,
+                    and machine learning for biological discovery.
+                </p>
+
+                <p>
+                    My current work focuses on building computational systems
+                    that integrate biological data, machine learning models,
+                    retrieval, and reasoning.
+                </p>
+
+            </div>
+
+            <div class="info">
+
+                <p>
+                    <strong>Location</strong><br>
+                    Pittsburgh, Pennsylvania
+                </p>
+
+                <p>
+                    <strong>Field</strong><br>
+                    Computational Biology
+                </p>
+
+                <p>
+                    <strong>Interests</strong><br>
+                    AI for Science<br>
+                    Bioinformatics<br>
+                    Machine Learning
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RESEARCH ================= -->
+
+<section id="research">
+
+    <div class="container">
+
+        <h2>Research</h2>
+
+        <div class="research-item">
+
+            <h3>AI for Biomedical Research</h3>
+
+            <p>
+                Developing intelligent systems that combine machine learning,
+                retrieval-augmented generation, knowledge representations,
+                and large language models for biomedical prediction.
+            </p>
+
+        </div>
+
+
+        <div class="research-item">
+
+            <h3>Computational Genomics</h3>
+
+            <p>
+                Working with transcriptomic and epigenomic data,
+                including RNA-seq, ATAC-seq, gene expression analysis,
+                and biological network analysis.
+            </p>
+
+        </div>
+
+
+        <div class="research-item">
+
+            <h3>Scientific Machine Learning</h3>
+
+            <p>
+                Interested in representation learning, multimodal biological
+                data, foundation models, and machine learning systems
+                designed for scientific applications.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROJECTS ================= -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <h2>Selected Projects</h2>
+
+        <div class="projects">
+
+
+            <div class="project">
+
+                <h3>MedAgent Pro</h3>
+
+                <p>
+                    An agentic AI system for intracerebral hemorrhage
+                    prognosis, integrating machine learning,
+                    case retrieval, knowledge representation,
+                    and LLM-based reasoning.
+                </p>
+
+                <a href="#">
+                    GitHub →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <h3>WGCNA-PLUMBER</h3>
+
+                <p>
+                    A computational framework for parallelized
+                    weighted gene co-expression network analysis
+                    with visualization and downstream analysis.
+                </p>
+
+                <a href="#">
+                    GitHub →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <h3>BulkRNABert</h3>
+
+                <p>
+                    Exploration of foundation-model approaches
+                    for bulk RNA-seq representation learning
+                    and cancer subtype classification.
+                </p>
+
+                <a href="#">
+                    Project →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <h3>ATAC-seq Analysis</h3>
+
+                <p>
+                    An analysis workflow involving read preprocessing,
+                    alignment, quality control, and chromatin
+                    accessibility peak calling.
+                </p>
+
+                <a href="#">
+                    Project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EDUCATION ================= -->
+
+<section id="education">
+
+    <div class="container">
+
+        <h2>Education</h2>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <div class="date">
+                    2025 — Present
+                </div>
+
+                <h3>
+                    Carnegie Mellon University
+                </h3>
+
+                <p>
+                    M.S. Computational Biology
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="date">
+                    2021 — 2025
+                </div>
+
+                <h3>
+                    Missouri State University
+                </h3>
+
+                <p>
+                    B.S.A. Plant Science and Technology
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+
+<section>
+
+    <div class="container">
+
+        <h2>Technical Skills</h2>
+
+        <div class="tags">
+
+            <span class="tag">Python</span>
+            <span class="tag">R</span>
+            <span class="tag">Golang</span>
+            <span class="tag">Bash</span>
+
+            <span class="tag">PyTorch</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">RNA-seq</span>
+            <span class="tag">ATAC-seq</span>
+
+            <span class="tag">Bioinformatics</span>
+            <span class="tag">DESeq2</span>
+            <span class="tag">WGCNA</span>
+            <span class="tag">Nextflow</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" class="contact">
+
+    <div class="container">
+
+        <h2>Contact</h2>
+
+        <p>
+            Feel free to reach out for research and collaboration.
+        </p>
+
+        <div class="links">
+
+            <a href="https://github.com/QiyuYang-QYang">
+                GitHub
+            </a>
+
+            <a href="#">
+                CV
+            </a>
+
+            <a href="#">
+                Email
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 Charlie Yang
+
+</footer>
+
+</body>
+</html>
