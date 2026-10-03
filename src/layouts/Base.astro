@@ -1,0 +1,80 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Atlas from '../components/Atlas.astro';
+import { getAtlas } from '../lib/atlas';
+
+interface Props {
+  title?: string;
+  description?: string;
+  mode: 'home' | 'node' | 'page' | 'shelf';
+  id?: string;
+}
+
+const { title, description, mode, id = '' } = Astro.props;
+const atlas = await getAtlas();
+const siteTitle = 'Qiyu Yang';
+const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
+const desc = description ?? 'Questions, work, and writing by Qiyu Yang.';
+const path = Astro.url.pathname;
+const canonical = new URL(path, Astro.site);
+---
+<!doctype html>
+<html lang="en" data-mode={mode} data-id={id} data-theme="paper">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#ECEAE3" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Noto+Serif+SC:wght@300;400;500&display=swap"
+    />
+    <script is:inline>
+      (function () {
+        var t;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'paper';
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href={mode === 'shelf' ? '#shelf-content' : '#panel-content'}>Skip to content</a>
+    <Header path={path} />
+    <Atlas atlas={atlas} />
+    <section class="shelf" id="shelf" aria-label="Shelf" inert={mode === 'shelf' ? undefined : true}>
+      <div class="shelf-backdrop"></div>
+      <div class="shelf-scroll" id="shelf-scroll">
+        <div class="shelf-content" id="shelf-content" data-route-content={mode === 'shelf' ? '' : undefined}>
+          {mode === 'shelf' && <slot />}
+        </div>
+      </div>
+    </section>
+    <aside class="panel" id="panel" aria-label="Reading panel" inert={mode === 'node' || mode === 'page' ? undefined : true}>
+      <div class="panel-sheet">
+        <div class="panel-bar">
+          <a href="/" class="panel-back">Back to the map</a>
+          <button type="button" class="panel-grip" id="panel-grip">Map</button>
+        </div>
+        <div class="panel-scroll" id="panel-scroll">
+          <div class="panel-content" id="panel-content" data-route-content={mode === 'shelf' ? undefined : ''}>
+            {mode !== 'shelf' && <slot />}
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script>
+      import '../scripts/app';
+    </script>
+  </body>
+</html>

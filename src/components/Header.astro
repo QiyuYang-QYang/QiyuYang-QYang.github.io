@@ -1,0 +1,23 @@
+---
+const { path } = Astro.props as { path: string };
+const links = [
+  { href: '/work/', label: 'Work' },
+  { href: '/writing/', label: 'Writing' },
+  { href: '/photography/', label: 'Photography', short: 'Photos' },
+  { href: '/cv/', label: 'CV' },
+];
+---
+<header class="site-header">
+  <a class="site-name" href="/">Qiyu Yang</a>
+  <nav class="site-nav" aria-label="Shelves">
+    {links.map((l) => (
+      <a href={l.href} data-nav aria-current={path === l.href ? 'page' : undefined}>
+        {l.short ? <><span class="long">{l.label}</span><span class="short">{l.short}</span></> : l.label}
+      </a>
+    ))}
+    <button type="button" id="theme-toggle" aria-label="Switch color theme">
+      <span class="t-label">Night</span>
+      <svg class="t-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.2"></circle><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"></path></svg>
+    </button>
+  </nav>
+</header>

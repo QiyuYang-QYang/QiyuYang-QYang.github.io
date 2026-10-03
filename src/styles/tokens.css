@@ -1,0 +1,37 @@
+:root {
+  --font: "Newsreader", "Noto Serif SC", "Songti SC", Georgia, serif;
+  --ease: cubic-bezier(.65, 0, .35, 1);
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --header-h: 4.5rem;
+  --panel-w: clamp(30rem, 48vw, 46rem);
+  --band: 42svh;
+  --pad: clamp(1.25rem, 4vw, 3.5rem);
+  --measure: 36rem;
+}
+
+:root,
+[data-theme="paper"] {
+  --bg: #ECEAE3;
+  --sheet: #F3F1EB;
+  --ink: #22231F;
+  --muted: #74756C;
+  --line: #B7B6AB;
+  --line-soft: #D6D4CA;
+  --accent: #2D5B60;
+  color-scheme: light;
+}
+
+[data-theme="night"] {
+  --bg: #0E1417;
+  --sheet: #131B1F;
+  --ink: #E3E1D8;
+  --muted: #8A9193;
+  --line: #34413F;
+  --line-soft: #222D2E;
+  --accent: #92BCB3;
+  color-scheme: dark;
+}
+
+@media (max-width: 759px) {
+  :root { --header-h: 3.6rem; }
+}

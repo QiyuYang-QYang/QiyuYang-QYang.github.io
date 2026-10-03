@@ -1,0 +1,113 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  transition: background-color .6s var(--ease), color .6s var(--ease);
+}
+
+body {
+  font-family: var(--font);
+  font-optical-sizing: auto;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+:focus-visible { outline: 1.5px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+
+.skip {
+  position: fixed; left: var(--pad); top: .75rem; z-index: 100;
+  background: var(--sheet); padding: .4rem .8rem; transform: translateY(-200%);
+}
+.skip:focus { transform: none; }
+
+/* Header */
+.site-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 30;
+  height: var(--header-h);
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  padding: 0 var(--pad);
+  pointer-events: none;
+}
+.site-header > * { pointer-events: auto; }
+.site-name {
+  text-decoration: none; font-size: 1.125rem; font-weight: 500; letter-spacing: .005em;
+}
+.site-nav { display: flex; gap: clamp(1rem, 2.2vw, 1.75rem); align-items: baseline; }
+.site-nav a, .site-nav button {
+  text-decoration: none; color: var(--muted); font-size: 1rem;
+  border-bottom: 1px solid transparent; transition: color .3s, border-color .3s;
+}
+.site-nav .short, .site-nav .t-icon { display: none; }
+.site-nav .t-icon { width: 15px; height: 15px; vertical-align: -2px; }
+.site-nav a:hover, .site-nav button:hover, .site-nav a[aria-current="page"] {
+  color: var(--ink); border-color: var(--line);
+}
+
+/* Hero */
+.hero {
+  position: absolute; left: var(--pad); right: var(--pad);
+  top: calc(var(--header-h) + clamp(.5rem, 2vh, 1.5rem));
+  z-index: 2; pointer-events: none;
+  transition: opacity .5s var(--ease), transform .7s var(--ease);
+}
+.hero p {
+  margin: 0; max-width: 24ch;
+  font-size: clamp(1.6rem, 3.1vw, 2.75rem);
+  font-weight: 300; line-height: 1.18; letter-spacing: -.012em;
+}
+.hero .sub a { pointer-events: auto; color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.hero .sub {
+  margin-top: .9rem; max-width: none;
+  font-size: 1rem; line-height: 1.5; font-style: italic; color: var(--muted); letter-spacing: 0;
+}
+html:not([data-mode="home"]) .hero { opacity: 0; transform: translateY(-.75rem); }
+
+/* Legend */
+.legend {
+  position: absolute; left: var(--pad); right: var(--pad); bottom: max(1.1rem, env(safe-area-inset-bottom));
+  z-index: 3; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.25rem;
+  font-size: .875rem; color: var(--muted); pointer-events: none;
+  transition: opacity .5s var(--ease);
+}
+.legend span { white-space: nowrap; }
+.legend svg { width: 14px; height: 14px; margin-right: .4rem; vertical-align: -2px; overflow: visible; }
+.legend .hint { margin-left: auto; font-style: italic; }
+html:not([data-mode="home"]) .legend { opacity: 0; }
+
+/* Preview sheet (touch, home) */
+.sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 25;
+  background: var(--sheet); border-top: 1px solid var(--line-soft);
+  padding: 1.15rem var(--pad) calc(1.25rem + env(safe-area-inset-bottom));
+  transform: translateY(105%); transition: transform .5s var(--ease), background-color .6s var(--ease);
+}
+.sheet.show { transform: none; }
+.sheet .t { margin: 0; color: var(--muted); font-style: italic; font-size: .9375rem; }
+.sheet a { display: block; text-decoration: none; margin: .15rem 0 .45rem; }
+.sheet .title { font-size: 1.375rem; line-height: 1.25; }
+.sheet .s { margin: 0 0 .9rem; line-height: 1.5; }
+.sheet .open {
+  color: var(--accent); border-bottom: 1px solid currentColor; text-decoration: none; font-size: 1.0625rem;
+}
+
+@media (max-width: 759px) {
+  .site-header { background: var(--bg); transition: background-color .6s var(--ease); gap: .75rem; }
+  .site-nav { gap: .85rem; }
+  .site-nav .long, .site-nav .t-label { display: none; }
+  .site-nav .short, .site-nav .t-icon { display: inline; }
+  .site-nav a, .site-nav button { font-size: .9375rem; }
+  .legend .hint { margin-left: 0; flex-basis: 100%; }
+  .site-name { font-size: 1.0625rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
+}

@@ -1,0 +1,40 @@
+---
+import { getAtlas, SHELVES, TYPE_LABEL, type ShelfId } from '../lib/atlas';
+
+const { shelf } = Astro.props as { shelf: ShelfId };
+const atlas = await getAtlas();
+const def = SHELVES.find((s) => s.id === shelf)!;
+const rank = (t: string) => {
+  const i = def.types.indexOf(t as never);
+  return i < 0 ? def.types.length : i;
+};
+const nodes = atlas.nodes.filter((n) => n.shelves.includes(shelf)).sort((a, b) => rank(a.type) - rank(b.type));
+const pad = (i: number) => String(i + 1).padStart(2, '0');
+---
+<section class="shelf-page" data-shelf={shelf}>
+  <header class="shelf-head">
+    <p class="shelf-count">{nodes.length ? `${nodes.length} on this shelf` : 'Empty shelf'}</p>
+    <h1 class="shelf-title">{def.title}</h1>
+    <p class="shelf-blurb">{def.blurb}</p>
+  </header>
+  {nodes.length ? (
+    <ol class={`cards cards-${def.layout}`}>
+      {nodes.map((n, i) => (
+        <li class="card" data-node={n.id} data-type={n.type}>
+          <a href={n.href}>
+            {n.cover && <img class="card-cover" src={n.cover} alt="" loading="lazy" decoding="async" />}
+            <span class="card-meta">
+              <span class="card-num">{pad(i)}</span>
+              <span>{TYPE_LABEL[n.type]}</span>
+              {n.year && <span>{n.year}</span>}
+            </span>
+            <span class="card-title" data-ghost>{n.title}</span>
+            {def.layout === 'cards' && <span class="card-summary">{n.summary}</span>}
+          </a>
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <p class="shelf-empty">Nothing here yet. It will fill as the map grows.</p>
+  )}
+</section>

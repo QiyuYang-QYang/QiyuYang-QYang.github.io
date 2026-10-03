@@ -1,0 +1,9 @@
+---
+const { title, summary, placeholder = false } = Astro.props as { title: string; summary?: string; placeholder?: boolean };
+---
+<article class="article" data-type="page">
+  <h1 class="article-title">{title}</h1>
+  {summary && <p class="lead">{summary}</p>}
+  <div class="prose"><slot /></div>
+  {placeholder && <p class="placeholder">Placeholder text, to be rewritten.</p>}
+</article>

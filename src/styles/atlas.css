@@ -1,0 +1,67 @@
+.atlas { position: fixed; inset: 0; z-index: 1; }
+.atlas-scroll {
+  position: absolute; inset: 0; overflow-x: hidden; overflow-y: auto;
+  overscroll-behavior: contain; scrollbar-width: none;
+}
+.atlas-scroll::-webkit-scrollbar { display: none; }
+.atlas-scroll.locked { overflow-y: hidden; }
+.atlas-inner { position: relative; }
+#atlas-svg { display: block; width: 100%; touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+
+.edge { fill: none; stroke: var(--line); stroke-width: 1; transition: stroke .45s var(--ease), opacity .45s var(--ease); }
+.node { cursor: pointer; transition: opacity .5s var(--ease); outline: none; text-decoration: none; }
+.node .hit { fill: transparent; }
+.node:focus-visible .hit { stroke: var(--accent); stroke-width: 1; }
+.node text {
+  font-size: 14.5px; fill: var(--ink);
+  paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round;
+  transition: fill .6s var(--ease), stroke .6s var(--ease), opacity .45s var(--ease);
+}
+.node.question text { fill: var(--accent); font-style: italic; font-size: 15.5px; }
+.node.past text { fill: var(--muted); }
+.node .shape { transition: transform .5s var(--ease); }
+.node:hover .shape, .node.is-focus .shape { transform: scale(1.25); }
+
+.s-ring { fill: var(--bg); stroke: var(--accent); stroke-width: 1.4; transition: fill .6s var(--ease); }
+.s-core { fill: var(--accent); }
+.s-solid { fill: var(--ink); transition: fill .6s var(--ease); }
+.s-past { fill: var(--bg); stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 2 2.2; transition: fill .6s var(--ease); }
+
+.elabel {
+  font-size: 13.5px; font-style: italic; fill: var(--accent); opacity: 0; pointer-events: none;
+  paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round;
+  transition: opacity .4s var(--ease), stroke .6s var(--ease);
+}
+
+/* Home: hover reveals a neighborhood */
+svg[data-mode="home"].hovering .node:not(.h-near) { opacity: .18; }
+svg[data-mode="home"].hovering .edge:not(.h-near) { opacity: .15; }
+svg[data-mode="home"] .edge.h-near { stroke: var(--accent); }
+svg[data-mode="home"] .elabel.h-near { opacity: 1; }
+
+/* Reading a node: its neighborhood stays, the rest recedes */
+svg[data-mode="node"] .node:not(.f-near) { opacity: .1; }
+svg[data-mode="node"] .edge:not(.f-near) { opacity: .06; }
+svg[data-mode="node"] .edge.f-near { stroke: var(--accent); }
+svg[data-mode="node"] .elabel.f-near { opacity: 1; }
+svg[data-mode="node"].hovering .node.h-near { opacity: .7; }
+svg[data-mode="node"].hovering .edge.h-near { opacity: .5; }
+
+svg[data-mode="node"] .node.is-focus text,
+svg[data-mode="node"] .node:not(.f-near) text { opacity: 0; }
+
+/* Reading a page: the whole map as a quiet constellation */
+svg[data-mode="page"] .node { opacity: .55; }
+svg[data-mode="page"] .node text { opacity: 0; }
+svg[data-mode="page"] .edge { opacity: .55; }
+svg[data-mode="page"].hovering .node.h-near { opacity: 1; }
+svg[data-mode="page"].hovering .node.h-near text { opacity: 1; }
+
+@media (max-width: 759px) {
+  .node text { font-size: 13px; }
+  .node.question text { font-size: 13.5px; }
+  .elabel { font-size: 12px; }
+  svg[data-mode="node"] .elabel.f-near { opacity: 0; }
+}
+
+.s-photo { fill: var(--bg); stroke: var(--ink); stroke-width: 1.3; transition: fill .6s var(--ease); }

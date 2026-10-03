@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import { getAtlas, GROUPS } from '../lib/atlas';
+const atlas = await getAtlas();
+const groups = GROUPS.map((g) => ({ ...g, nodes: atlas.nodes.filter((n) => g.types.includes(n.type)) })).filter((g) => g.nodes.length);
+---
+<Base mode="page" id="contents" title="Index" description="Everything on the map, in order.">
+  <article class="article" data-type="page">
+    <h1 class="article-title">Index</h1>
+    <p class="lead">Everything on the map, read in order.</p>
+    {groups.map((g) => (
+      <section class="index-group">
+        <h2>{g.name}</h2>
+        {g.nodes.map((n) => (
+          <a href={n.href}>
+            <span class="t" data-ghost>{n.title}</span>
+            <span class="s">{n.summary}</span>
+          </a>
+        ))}
+      </section>
+    ))}
+  </article>
+</Base>

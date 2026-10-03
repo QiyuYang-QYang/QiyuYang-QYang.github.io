@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { getAtlas } from '../lib/atlas';
+const atlas = await getAtlas();
+---
+<Base mode="home">
+  <noscript>
+    <ul>
+      {atlas.nodes.map((n) => <li><a href={n.href}>{n.title}</a></li>)}
+    </ul>
+  </noscript>
+</Base>
