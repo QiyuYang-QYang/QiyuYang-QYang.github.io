@@ -1,12 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
-import { getAtlas } from '../lib/atlas';
-const atlas = await getAtlas();
+import Base from '../layouts/Base.astro'; import {site} from '../site.config'; import {getItems} from '../lib/content';
+const items=await getItems(); const count=(id:string)=>items.filter(i=>i.category.id===id).length;
+const rows=[...site.categories.map(c=>({href:`/${c.id}/`,title:c.title,count:String(count(c.id)).padStart(2,'0')})),...site.pages.map(p=>({href:`/${p.id}/`,title:p.title,count:''}))];
 ---
-<Base mode="home">
-  <noscript>
-    <ul>
-      {atlas.nodes.map((n) => <li><a href={n.href}>{n.title}</a></li>)}
-    </ul>
-  </noscript>
-</Base>
+<Base><section class="label glass unfold"><p class="tag-row"><span>N° 001</span><span>{site.footnote}</span></p><h1 class="label-name">{site.name}</h1><p class="label-role">{site.role}</p><hr/><p class="label-tagline">{site.tagline}</p><hr/><ol class="label-index">{rows.map((r,n)=><li><a href={r.href}><span class="li-num">{String(n+1).padStart(2,'0')}</span><span class="li-title">{r.title}</span><span class="li-dots"></span><span class="li-count">{r.count}</span></a></li>)}</ol><hr/><p class="tag-row">{site.links.map(l=><a href={l.href} target="_blank" rel="noopener">{l.label}</a>)}</p></section></Base>
