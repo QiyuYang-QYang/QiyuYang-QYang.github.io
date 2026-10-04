@@ -1,0 +1,25 @@
+/* Anything with an inline --i unfolds like a scale, in order */
+[style*="--i:"] {
+  animation: unfold .85s var(--ease) both;
+  animation-delay: calc(var(--i) * 65ms + 60ms);
+  transform-origin: 50% 0;
+}
+.unfold { animation: settle .6s var(--ease) both; }
+
+@keyframes unfold {
+  from { opacity: 0; transform: perspective(900px) rotateX(-32deg) translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes settle {
+  from { opacity: 0; transform: scale(.985); }
+  to { opacity: 1; transform: none; }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) { animation-duration: .35s; }
+::view-transition-group(backdrop) { animation-duration: .6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

@@ -1,15 +1,15 @@
-.prose { font-size: 1.125rem; line-height: 1.68; text-wrap: pretty; }
+.prose { font-family: var(--text); font-size: 1.125rem; line-height: 1.7; }
 .prose > :first-child { margin-top: 0; }
-.prose p, .prose ul, .prose ol, .prose blockquote, .prose figure { margin: 0 0 1.25rem; }
-.prose h2 { margin: 2.5rem 0 .75rem; font-weight: 400; font-size: 1.5rem; line-height: 1.25; letter-spacing: -.005em; }
-.prose h3 { margin: 2rem 0 .5rem; font-weight: 500; font-size: 1.1875rem; }
+.prose p, .prose ul, .prose ol, .prose blockquote, .prose figure { margin: 0 0 1.2rem; }
+.prose h2, .prose h3 { font-family: var(--type); font-weight: 700; line-height: 1.25; }
+.prose h2 { margin: 2.4rem 0 .8rem; font-size: 1.2rem; text-transform: uppercase; letter-spacing: .06em; }
+.prose h3 { margin: 1.8rem 0 .5rem; font-size: 1.05rem; }
 .prose ul, .prose ol { padding-left: 1.25rem; }
 .prose li { margin: .3rem 0; }
-.prose li::marker { color: var(--muted); }
-.prose a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.prose a { text-decoration-thickness: 1px; text-underline-offset: .2em; }
 .prose strong { font-weight: 500; }
-.prose blockquote { padding-left: 1.1rem; border-left: 1px solid var(--accent); font-style: italic; color: var(--muted); }
-.prose hr { border: 0; height: 1px; background: var(--line-soft); margin: 2.5rem 0; }
-.prose code { font-size: .9em; background: var(--line-soft); padding: .1em .3em; border-radius: 3px; }
-.prose img { max-width: 100%; height: auto; }
-.prose [class^="viz-"], .prose viz-compromise { display: block; margin: 2rem 0 2.25rem; }
+.prose blockquote { padding-left: 1rem; border-left: 1px solid var(--ink); font-style: italic; }
+.prose hr { margin: 2.2rem 0; }
+.prose img { margin: 1.6rem 0; }
+.prose code { font-family: var(--type); font-size: .9em; background: var(--line-soft); padding: .05em .3em; }
+.prose viz-compromise { display: block; margin: 2rem 0; }

@@ -1,0 +1,15 @@
+---
+import type { Item } from '../lib/content';
+const { item, i } = Astro.props as { item: Item; i: number };
+const d = item.entry.data;
+---
+<li style={`--i:${i}`}>
+  <a class="row" href={item.href}>
+    <span class="row-num">{item.number}</span>
+    <span class="row-main">
+      <span class="row-title">{d.title}</span>
+      {d.summary && <span class="row-summary">{d.summary}</span>}
+    </span>
+    <span class="row-meta">{[d.kind, d.year].filter(Boolean).join(' · ')}</span>
+  </a>
+</li>

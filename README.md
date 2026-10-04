@@ -1,93 +1,82 @@
-# Qiyu Yang: an atlas of questions
+# Qiyu Yang — 个人主页
 
-A personal site built as a map. Every node is a question, a piece of work, a piece of writing, or something earlier. Every edge is the question that connects two of them. Pages never leave the map: reading opens a panel beside it, and the map reconfigures around whatever is being read.
+Astro 静态网站，推送到 `main` 后由 GitHub Actions 自动构建并发布到 GitHub Pages。
 
-Built with [Astro](https://astro.build), deployed to GitHub Pages.
-
-## Run it
+## 本地预览
 
 ```bash
 npm install
-npm run dev          # http://localhost:4321
-npm run build        # static site in dist/
-npm run preview:single   # after build: one self-contained file in preview/index.html
+npm run dev      # 打开 http://localhost:4321
 ```
 
-## Add a node
+## 改哪里
 
-Create a Markdown file in `src/content/nodes/`. The file name becomes the id and the URL (`/n/<id>/`).
+| 想改的内容 | 文件 |
+|---|---|
+| 名字、身份、首页那句话、背景图、底部小字、导航顺序、外链 | `src/site.config.ts` |
+| 作品 / 文章 / 摄影的每一条 | `src/content/entries/<分类>/*.md` |
+| About、CV | `src/content/pages/about.md`、`cv.md` |
+| 颜色、磨砂程度、背景明暗、字体 | `src/styles/tokens.css` |
+
+## 加一条内容
+
+在对应分类文件夹里新建一个 `.md` 文件，文件名就是网址，例如 `src/content/entries/work/my-project.md` 会出现在 `/work/my-project/`。
 
 ```markdown
 ---
-title: Can smell have a shared language?
-type: question            # question | project | essay | note | photo | past
-shelves: [work]           # optional; which shelves it appears on (work, writing, photography)
-cover: /photos/x.jpg      # optional image in public/, shown on cards and the node page
-year: "2026"              # optional, shown on cards
-order: 2                  # sort order inside its group on the Index page
-summary: One or two sentences shown as the lead and in previews.
-pos: [0.68, 0.22]         # position on wide screens, 0 to 1 in each axis
-posNarrow: [0.18, 0.62]   # position on phones; optional, defaults to pos transposed
-links:
-  - to: q-integrate
-    question: Two noses disagree. Whose smell is it?
-placeholder: false        # true shows a "to be rewritten" note
-hidden: false             # true removes it from the map and the build
+title: My project
+kind: Project              # 可选，卡片上的小标签
+year: "2026"               # 可选
+order: 1                   # 可选，越小越靠前
+summary: 一两句简介，出现在卡片和页面开头。
+cover: /images/work/my-project.jpg      # 可选，封面图
+background: /images/backgrounds/x.jpg   # 可选，这一页单独换背景
+links:                     # 可选，外部链接
+  - label: GitHub
+    href: https://github.com/...
+draft: false               # true 表示暂不发布
+placeholder: false         # true 会显示"待重写"提示
 ---
 
-Body text in Markdown.
+正文用 Markdown 写。插图：
+
+![说明文字](/images/work/figure-1.jpg)
 ```
 
-A link only needs to be written on one side; it appears on both nodes. The build fails with a clear message if a link points at a node that does not exist.
+删除一条内容：直接删掉那个文件即可，不影响其他任何文件。
 
-Layout convention: on wide screens time runs left to right (earlier work on the left, questions in the middle, current work on the right). On phones it runs top to bottom. Keep the top-left corner of the wide layout clear for the headline.
+## 图片
 
-## Shelves
+所有图片放在 `public/images/` 下，路径里去掉 `public`，例如 `public/images/work/a.jpg` 写成 `/images/work/a.jpg`。
 
-The header links Work, Writing, Photography, and CV open shelves. A shelf lifts the matching nodes off the map into a flat poster layer, and the map blurs underneath. By default projects and earlier work go to Work, essays and notes to Writing, and photos to Photography; `shelves` in a node's frontmatter overrides that, so one node can sit on several shelves. Shelf names and descriptions live in `SHELVES` in `src/lib/atlas.ts`.
+- 宽 1600 到 2400 像素，单张 500KB 以内（背景图可以到 1MB）。
+- 文件名用小写英文和连字符，不要空格和中文。
+- iPhone 的 HEIC 先转成 JPG。
 
-For a photograph, put the image in `public/photos/`, then copy `src/content/nodes/example-photo.md` and set `hidden: false`.
+## 换背景
 
-## Add an interactive visualization
+把图片放进 `public/images/`，在 `src/site.config.ts` 里改 `background`。任何图片都会被自动压到中性的明暗，如果觉得太灰或太亮，调 `src/styles/tokens.css` 里的 `--bg-filter` 和 `--veil`；磨砂强度是 `--blur`，卡片透明度是 `--glass`。
 
-Visualizations are custom elements, so they can be dropped into any Markdown file as a tag:
+## 加一个新分类
+
+1. 在 `src/site.config.ts` 的 `categories` 里加一项，`layout` 可选 `cards`（卡片）、`list`（列表）、`photos`（图片墙）。
+2. 新建同名文件夹 `src/content/entries/<id>/`，放进内容文件。
+
+## 加一个新页面
+
+1. 新建 `src/content/pages/<id>.md`。
+2. 在 `src/site.config.ts` 的 `pages` 里加 `{ id: '<id>', title: '...' }`。
+
+## 交互可视化
+
+在任何 Markdown 正文里写标签即可，例如：
 
 ```html
 <viz-compromise data-scale="1,2,3,4,5" data-sources="Model:2,Retrieval:4,Rules:3" data-alpha="0.5"></viz-compromise>
 ```
 
-To make a new one:
+新的可视化：在 `src/viz/` 里写一个导出 `mount(el)` 的文件，再在 `src/viz/index.ts` 里登记标签名。
 
-1. Create `src/viz/<name>.ts` exporting `mount(el: HTMLElement)`, which builds the visualization inside `el` and may return a cleanup function. Read inputs from `el.dataset`, and use the CSS variables in `src/styles/tokens.css` for color so it follows the theme.
-2. Register the tag in `src/viz/index.ts`.
+## 动效
 
-Each visualization is loaded only when its tag appears on screen.
-
-## Edit the pages
-
-- About and CV: `src/content/pages/about.md`, `src/content/pages/cv.md` (the CV opens as a shelf)
-- Headline on the map: `src/components/Atlas.astro`
-- Colors, type, spacing: `src/styles/tokens.css`
-
-## Deploy
-
-1. Push this project to the `main` branch of `QiyuYang-QYang/QiyuYang-QYang.github.io`.
-2. In the repository, open Settings, then Pages, and set the source to GitHub Actions.
-3. Every push to `main` builds and publishes the site through `.github/workflows/deploy.yml`.
-
-## Structure
-
-```
-src/
-  content/nodes/      one Markdown file per node
-  content/pages/      about, cv
-  lib/atlas.ts        builds the graph at build time and validates links
-  layouts/Base.astro  page shell: header, map, reading panel
-  scripts/atlas.ts    map rendering, layout, motion, interaction
-  scripts/panel.ts    reading panel and title transitions
-  scripts/shelf.ts    shelf layer and the lift-off transition
-  scripts/router.ts   in-place navigation between pages
-  scripts/app.ts      wires the pieces together
-  viz/                interactive visualizations
-  styles/             tokens and component styles
-```
+页面里带 `style="--i:数字"` 的元素会按数字顺序像鳞片一样展开。系统开启"减少动效"时自动关闭。

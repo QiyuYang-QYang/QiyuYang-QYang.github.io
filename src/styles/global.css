@@ -1,6 +1,5 @@
 @import "./tokens.css";
 @import "./base.css";
-@import "./atlas.css";
-@import "./panel.css";
+@import "./motion.css";
+@import "./pages.css";
 @import "./prose.css";
-@import "./shelf.css";

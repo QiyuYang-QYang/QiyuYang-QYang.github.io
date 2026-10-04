@@ -1,0 +1,49 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getItems, type Item } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const items = await getItems();
+  return items.map((item) => {
+    const siblings = items.filter((i) => i.category.id === item.category.id);
+    const at = siblings.indexOf(item);
+    return {
+      params: { section: item.category.id, slug: item.slug },
+      props: { item, prev: siblings[at - 1], next: siblings[at + 1] },
+    };
+  });
+}
+
+const { item, prev, next } = Astro.props as { item: Item; prev?: Item; next?: Item };
+const d = item.entry.data;
+const { Content } = await render(item.entry);
+const isPhoto = item.category.layout === 'photos';
+const hasBody = Boolean(item.entry.body?.trim());
+---
+<Base title={d.title} description={d.summary} background={d.background}>
+  <article class:list={['sheet glass unfold', { 'sheet-wide': isPhoto }]}>
+    <a class="back" href={`/${item.category.id}/`} style="--i:0">← {item.category.title}</a>
+    <p class="tag-row" style="--i:1">
+      <span>N° {item.number}</span>
+      {d.kind && <span>{d.kind}</span>}
+      {d.year && <span>{d.year}</span>}
+    </p>
+    <h1 class="sheet-title" style="--i:2">{d.title}</h1>
+    {d.summary && <p class="sheet-summary" style="--i:3">{d.summary}</p>}
+    {d.links.length > 0 && (
+      <p class="sheet-links" style="--i:4">
+        {d.links.map((l) => <a href={l.href} target="_blank" rel="noopener">{l.label} ↗</a>)}
+      </p>
+    )}
+    {d.cover && <img class="sheet-cover" src={d.cover} alt={d.title} style="--i:5" />}
+    {hasBody && <div class="prose" style="--i:6"><Content /></div>}
+    {d.placeholder && <p class="placeholder" style="--i:7">Placeholder text, to be rewritten.</p>}
+    {(prev || next) && (
+      <nav class="pager" aria-label="More in this section" style="--i:8">
+        {prev ? <a href={prev.href}><span>Previous</span>{prev.entry.data.title}</a> : <span></span>}
+        {next ? <a href={next.href} class="pager-next"><span>Next</span>{next.entry.data.title}</a> : <span></span>}
+      </nav>
+    )}
+  </article>
+</Base>

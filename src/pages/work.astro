@@ -1,9 +1,0 @@
----
-import Base from '../layouts/Base.astro';
-import Shelf from '../components/Shelf.astro';
-import { SHELVES } from '../lib/atlas';
-const def = SHELVES.find((s) => s.id === 'work')!;
----
-<Base mode="shelf" id="work" title={def.title} description={def.blurb}>
-  <Shelf shelf="work" />
-</Base>

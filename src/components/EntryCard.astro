@@ -1,0 +1,17 @@
+---
+import type { Item } from '../lib/content';
+const { item, i } = Astro.props as { item: Item; i: number };
+const d = item.entry.data;
+---
+<li style={`--i:${i}`}>
+  <a class="card glass" href={item.href}>
+    {d.cover && <img class="card-cover" src={d.cover} alt="" loading="lazy" decoding="async" />}
+    <span class="tag-row">
+      <span>N° {item.number}</span>
+      {d.year && <span>{d.year}</span>}
+    </span>
+    <span class="card-title">{d.title}</span>
+    {d.kind && <span class="card-kind">{d.kind}</span>}
+    {d.summary && <span class="card-summary">{d.summary}</span>}
+  </a>
+</li>

@@ -1,0 +1,55 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import EntryCard from '../../components/EntryCard.astro';
+import EntryRow from '../../components/EntryRow.astro';
+import PhotoTile from '../../components/PhotoTile.astro';
+import { site, type Category } from '../../site.config';
+import { itemsIn } from '../../lib/content';
+
+export function getStaticPaths() {
+  return [
+    ...site.categories.map((category) => ({ params: { section: category.id }, props: { category } })),
+    ...site.pages.map((page) => ({ params: { section: page.id }, props: { pageId: page.id } })),
+  ];
+}
+
+const { category, pageId } = Astro.props as { category?: Category; pageId?: string };
+const items = category ? await itemsIn(category.id) : [];
+const page = pageId ? await getEntry('pages', pageId) : undefined;
+if (pageId && !page) throw new Error(`[content] site.config.ts lists page "${pageId}" but src/content/pages/${pageId}.md does not exist.`);
+const Content = page ? (await render(page)).Content : null;
+const index = category ? site.categories.indexOf(category) + 1 : 0;
+---
+{category && (
+  <Base title={category.title} description={category.blurb}>
+    <section class="section unfold">
+      <header class="section-head glass" style="--i:0">
+        <p class="tag-row"><span>N° {String(index).padStart(2, '0')}</span><span>{items.length} {items.length === 1 ? 'entry' : 'entries'}</span></p>
+        <h1 class="section-title">{category.title}</h1>
+        <p class="section-blurb">{category.blurb}</p>
+      </header>
+      {items.length === 0 && <p class="empty glass" style="--i:1">Nothing here yet.</p>}
+      {items.length > 0 && category.layout === 'cards' && (
+        <ul class="cards">{items.map((item, i) => <EntryCard item={item} i={i + 1} />)}</ul>
+      )}
+      {items.length > 0 && category.layout === 'list' && (
+        <ol class="rows glass">{items.map((item, i) => <EntryRow item={item} i={i + 1} />)}</ol>
+      )}
+      {items.length > 0 && category.layout === 'photos' && (
+        <ul class="photos">{items.map((item, i) => <PhotoTile item={item} i={i + 1} />)}</ul>
+      )}
+    </section>
+  </Base>
+)}
+{page && Content && (
+  <Base title={page.data.title} description={page.data.summary} background={page.data.background}>
+    <article class="sheet glass unfold">
+      <p class="tag-row" style="--i:0"><span>{site.name}</span></p>
+      <h1 class="sheet-title" style="--i:1">{page.data.title}</h1>
+      {page.data.summary && <p class="sheet-summary" style="--i:2">{page.data.summary}</p>}
+      <div class="prose" style="--i:3"><Content /></div>
+      {page.data.placeholder && <p class="placeholder" style="--i:4">Placeholder text, to be rewritten.</p>}
+    </article>
+  </Base>
+)}

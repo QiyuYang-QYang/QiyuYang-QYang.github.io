@@ -4,5 +4,4 @@ export default defineConfig({
   site: 'https://qiyuyang-qyang.github.io',
   trailingSlash: 'always',
   build: { format: 'directory' },
-  prefetch: false,
 });

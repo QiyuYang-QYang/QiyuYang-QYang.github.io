@@ -1,0 +1,26 @@
+export interface Category {
+  id: string;
+  title: string;
+  blurb: string;
+  layout: 'cards' | 'list' | 'photos';
+}
+
+export const site = {
+  name: 'Qiyu Yang',
+  role: 'Computational Biology, Carnegie Mellon University',
+  tagline: 'Building systems that make sense of conflicting signals, in machines, in senses, and in living things.',
+  background: '/images/background.jpg',
+  footnote: 'Portfolio, 2026',
+  categories: [
+    { id: 'work', title: 'Work', blurb: 'Projects and research.', layout: 'cards' },
+    { id: 'writing', title: 'Writing', blurb: 'Essays and notes.', layout: 'list' },
+    { id: 'photography', title: 'Photography', blurb: 'Photographs.', layout: 'photos' },
+  ] satisfies Category[],
+  pages: [
+    { id: 'about', title: 'About' },
+    { id: 'cv', title: 'CV' },
+  ],
+  links: [
+    { label: 'GitHub', href: 'https://github.com/QiyuYang-QYang' },
+  ],
+};
