@@ -1,0 +1,174 @@
+media:
+  input: media
+  output: /media
+
+content:
+  - name: writing
+    label: Writing
+    type: collection
+    path: content/writing
+    format: yaml-frontmatter
+    filename: "{title}.md"
+    view:
+      fields: [title, date, draft]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: kind
+        label: Kind
+        type: string
+        description: For example Essay or Note.
+      - name: date
+        label: Date
+        type: date
+      - name: summary
+        label: Summary
+        type: text
+        description: One or two sentences shown in the list on the homepage.
+      - name: cover
+        label: Cover image
+        type: image
+        description: Optional. Shown at the top of the essay.
+      - name: draft
+        label: Draft
+        type: boolean
+        description: Drafts are saved but not shown on the site.
+      - name: body
+        label: Text
+        type: rich-text
+        options:
+          format: markdown
+
+  - name: works
+    label: Work
+    type: collection
+    path: content/works
+    format: yaml-frontmatter
+    filename: "{title}.md"
+    view:
+      fields: [title, year, order]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: year
+        label: Year
+        type: string
+      - name: tags
+        label: Tags
+        type: string
+        description: Short line under the title, for example "LLM agent · clinical prediction".
+      - name: where
+        label: Where
+        type: string
+        description: Lab, company or event.
+      - name: order
+        label: Order
+        type: number
+        description: Smaller numbers appear first.
+      - name: body
+        label: Description
+        type: rich-text
+        options:
+          format: markdown
+
+  - name: cv
+    label: CV
+    type: file
+    path: content/cv.json
+    format: json
+    fields:
+      - name: pdf
+        label: CV PDF
+        type: file
+        description: Optional. Adds a PDF download button next to the CV heading.
+      - name: sections
+        label: Sections
+        type: object
+        list: true
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+          - name: items
+            label: Entries
+            type: object
+            list: true
+            fields:
+              - name: title
+                label: Title
+                type: string
+              - name: detail
+                label: Detail
+                type: string
+              - name: period
+                label: Period
+                type: string
+
+  - name: site
+    label: Site and photos
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: name
+        label: Full name
+        type: string
+      - name: short_name
+        label: Name on the homepage photo
+        type: string
+      - name: email
+        label: Email
+        type: string
+      - name: github
+        label: GitHub link
+        type: string
+      - name: photos
+        label: Photos
+        type: object
+        list: true
+        description: Photos appear in the Photograph section and, if switched on, rotate on the homepage.
+        fields:
+          - name: image
+            label: Photo
+            type: image
+            required: true
+          - name: place
+            label: Place
+            type: string
+          - name: date
+            label: Date
+            type: string
+          - name: on_homepage
+            label: Show on homepage
+            type: boolean
+          - name: front
+            label: Foreground cutout
+            type: image
+            description: Optional transparent image of the foreground. With it, the name sits behind the mountains; without it, the name floats over the photo.
+          - name: ink
+            label: Name colour
+            type: select
+            options:
+              values:
+                - name: light
+                  label: White
+                - name: dark
+                  label: Dark
+          - name: ridge
+            label: Name position
+            type: number
+            description: "0 is the top of the photo, 1 the bottom. With a cutout, set it to the height of the ridge line."
+            options:
+              min: 0
+              max: 1
+          - name: sink
+            label: How far the name sinks
+            type: number
+            description: "Only used with a cutout. 0 rests on the ridge; 0.3 hides about a third behind it."
+            options:
+              min: 0
+              max: 1

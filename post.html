@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Writing · Qiyu Yang</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.post-top { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-block: max(22px, env(safe-area-inset-top, 0px)) 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
+.post-top a { text-decoration: none; }
+.post-top a:hover, .post-top a:focus-visible { text-decoration: underline; text-underline-offset: 4px; outline: none; }
+article { max-width: 680px; margin: 0 auto; padding-block: clamp(64px, 12vw, 120px) 0; }
+article h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(48px, 8vw, 88px); line-height: 0.98; letter-spacing: -0.02em; margin: 0.25em 0 0.35em; text-wrap: balance; }
+article .lede { font-family: var(--font-display); font-size: 24px; line-height: 1.4; color: var(--muted); margin: 0 0 2em; font-style: italic; }
+article .cover { width: 100%; border-radius: 4px; margin: 0 0 2.2em; }
+.pager { max-width: 680px; margin: 72px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px solid var(--line); padding-top: 22px; }
+.pager a { text-decoration: none; display: grid; gap: 4px; }
+.pager a:last-child { text-align: right; }
+.pager .tt { font-family: var(--font-display); font-size: 24px; line-height: 1.15; }
+.pager a:hover .tt, .pager a:focus-visible .tt { text-decoration: underline; text-underline-offset: 4px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="post-top"><a href="index.html#writing">← <span id="who">Qiyu Yang</span></a><span class="label">Writing</span></div>
+  <article id="post"><p class="label">Loading…</p></article>
+  <nav class="pager" id="pager" aria-label="More writing"></nav>
+  <footer><span id="copyright"></span><a href="index.html#writing">All writing</a></footer>
+</main>
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const url = p => (p || "").replace(/^\//, "");
+Promise.all([
+  fetch("content/generated/writing.json", { cache: "no-cache" }).then(r => r.json()).catch(() => []),
+  fetch("content/site.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({}))
+]).then(([list, site]) => {
+  const name = site.name || "Qiyu Yang";
+  document.getElementById("who").textContent = name;
+  document.getElementById("copyright").textContent = `© ${new Date().getFullYear()} ${name}`;
+  const render = () => {
+    const slug = decodeURIComponent(location.hash.slice(1));
+    const i = list.findIndex(w => w.slug === slug);
+    const el = document.getElementById("post"), pager = document.getElementById("pager");
+    if (i < 0) { el.innerHTML = `<h1>Not found</h1><p>This essay may have moved. <a href="index.html#writing">See all writing</a>.</p>`; pager.innerHTML = ""; return; }
+    const w = list[i];
+    document.title = `${w.title} · ${name}`;
+    el.innerHTML = `<p class="label">${[w.date, w.kind, `${w.minutes} min read`].filter(Boolean).map(esc).join(" · ")}</p><h1>${esc(w.title)}</h1>${w.summary ? `<p class="lede">${esc(w.summary)}</p>` : ""}${w.cover ? `<img class="cover" src="${esc(url(w.cover))}" alt="">` : ""}<div class="prose">${w.html}</div>`;
+    const newer = list[i - 1], older = list[i + 1];
+    pager.innerHTML = (newer ? `<a href="#${encodeURIComponent(newer.slug)}"><span class="label">Newer</span><span class="tt">${esc(newer.title)}</span></a>` : "<span></span>") + (older ? `<a href="#${encodeURIComponent(older.slug)}"><span class="label">Older</span><span class="tt">${esc(older.title)}</span></a>` : "");
+    scrollTo(0, 0);
+  };
+  addEventListener("hashchange", render);
+  render();
+});
+</script>
+</body>
+</html>

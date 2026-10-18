@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Qiyu Yang</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="hero" id="hero">
+  <div class="layer back" id="back"></div>
+  <svg id="nameSvg" aria-hidden="true"><g id="nameG"><text id="nameT" text-anchor="middle"></text></g></svg>
+  <div class="layer front" id="front"></div>
+  <nav class="nav" aria-label="Sections">
+    <ul><li><a href="#work">Work</a></li><li><a href="#writing">Writing</a></li><li><a href="#photograph">Photograph</a></li><li><a href="#cv">CV</a></li></ul>
+    <span class="mark" id="mark"></span>
+    <span class="right"><a id="ghTop" href="#">GitHub</a></span>
+  </nav>
+  <div class="thumbs" id="thumbs" aria-label="Background photographs"></div>
+  <div class="timer" aria-hidden="true"><i id="timer"></i></div>
+  <div class="foot"><span id="caption" aria-live="polite"></span><span class="chev" aria-hidden="true"></span></div>
+  <h1 class="sr" id="h1"></h1>
+</header>
+
+<main>
+  <section class="block" id="work">
+    <div class="head"><h2>Work</h2><span class="n" id="workN"></span></div>
+    <div class="rows" id="workRows"></div>
+  </section>
+
+  <section class="block" id="writing">
+    <div class="head"><h2>Writing</h2><span class="n" id="writeN"></span></div>
+    <div class="rows" id="writeRows"></div>
+  </section>
+
+  <section class="block" id="photograph">
+    <div class="head"><h2>Photograph</h2><span class="n" id="photoN"></span></div>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <section class="block" id="cv">
+    <div class="head"><h2>CV</h2><a class="btn" id="cvPdf" href="#cv" hidden>PDF ↗</a></div>
+    <div class="cv" id="cvGrid"></div>
+  </section>
+
+  <footer>
+    <span id="copyright"></span>
+    <span class="contact"><span id="mail"></span><button type="button" id="copy">Copy</button><a id="ghFoot" href="#">GitHub</a></span>
+  </footer>
+</main>
+<script src="assets/home.js"></script>
+</body>
+</html>

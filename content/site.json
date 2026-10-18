@@ -1,0 +1,38 @@
+{
+  "name": "Qiyu Yang",
+  "short_name": "Qiyu",
+  "email": "qiyuy@andrew.cmu.edu",
+  "github": "https://github.com/QiyuYang-QYang",
+  "photos": [
+    {
+      "image": "/media/photos/granite.webp",
+      "front": "/media/photos/granite-front.webp",
+      "place": "Tioga Road, Yosemite",
+      "date": "Oct 2026",
+      "ridge": 0.59,
+      "sink": 0.32,
+      "ink": "light",
+      "on_homepage": true
+    },
+    {
+      "image": "/media/photos/carmel.webp",
+      "front": "/media/photos/carmel-front.webp",
+      "place": "Carmel coast, California",
+      "date": "Oct 2026",
+      "ridge": 0.765,
+      "sink": 0.24,
+      "ink": "dark",
+      "on_homepage": true
+    },
+    {
+      "image": "/media/photos/convict.webp",
+      "front": "",
+      "place": "Convict Lake, Eastern Sierra",
+      "date": "Oct 2026",
+      "ridge": 0.6,
+      "sink": 0,
+      "ink": "light",
+      "on_homepage": true
+    }
+  ]
+}

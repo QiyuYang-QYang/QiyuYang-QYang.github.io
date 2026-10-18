@@ -1,5 +1,3 @@
 node_modules/
-dist/
-.astro/
-preview/
-.DS_Store
+content/generated/
+_site/
