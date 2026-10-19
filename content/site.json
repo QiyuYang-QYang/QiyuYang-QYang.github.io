@@ -12,7 +12,7 @@
       "front": "/media/photos/granite-front.webp",
       "ink": "light",
       "ridge": 59,
-      "sink": 32
+      "sink": 29
     },
     {
       "image": "/media/photos/carmel.webp",
@@ -38,7 +38,6 @@
       "place": "Mariposa, CA",
       "date": "Oct 2026",
       "on_homepage": true,
-      "front": "",
       "ink": "light",
       "ridge": 60,
       "sink": 0
