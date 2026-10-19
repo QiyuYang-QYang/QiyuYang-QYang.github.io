@@ -90,8 +90,10 @@ $("#copy").addEventListener("click", async () => {
   setTimeout(() => (b.textContent = "Copy"), 1600);
 });
 
+const pct = (v, d) => { const n = Number(v); return Number.isFinite(n) && v !== "" && v != null ? (n > 1 ? n / 100 : n) : d; };
+
 function startHero(list) {
-  PHOTOS = list.map(p => ({ ...p, over: !p.front, ink: p.ink === "dark" ? "#1e2b3a" : "#ffffff", ridge: Number(p.ridge) || 0.6, sink: Number(p.sink) || 0 }));
+  PHOTOS = list.map(p => ({ ...p, over: !p.front, ink: p.ink === "dark" ? "#1e2b3a" : "#ffffff", ridge: pct(p.ridge, 0.6), sink: pct(p.sink, 0) }));
   if (!PHOTOS.length) return;
   PHOTOS.forEach((p, i) => {
     p.b = Object.assign(new Image(), { src: url(p.image), alt: "" });

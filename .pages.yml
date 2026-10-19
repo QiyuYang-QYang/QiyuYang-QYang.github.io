@@ -200,16 +200,16 @@ content:
                 - name: dark
                   label: Dark
           - name: ridge
-            label: Name position
+            label: Name position (%)
             type: number
-            description: "0 is the top of the photo, 1 the bottom. With a cutout, set it to the height of the ridge line."
+            description: "0 is the top of the photo, 100 the bottom. With a cutout, set it to the height of the ridge line, for example 59."
             options:
               min: 0
-              max: 1
+              max: 100
           - name: sink
-            label: How far the name sinks
+            label: How far the name sinks (%)
             type: number
-            description: "Only used with a cutout. 0 rests on the ridge; 0.3 hides about a third behind it."
+            description: "Only used with a cutout. 0 rests on the ridge; 30 hides about a third behind it."
             options:
               min: 0
-              max: 1
+              max: 100
