@@ -14,6 +14,12 @@ Open [app.pagescms.org](https://app.pagescms.org), sign in with GitHub and choos
 
 Every save is a commit. GitHub Actions rebuilds the site, and the change is live about a minute later.
 
+## Large photos
+
+The online editor rejects single files over about 4 MB (error 413). For bigger photos, upload them on GitHub instead: open the `media` folder, choose Add file → Upload files, and commit. They then appear in the editor's media picker.
+
+Every publish resizes images to at most 2400 px and recompresses anything over 500 KB, so the live site stays fast. The originals in the repository are left untouched.
+
 ## Files
 
 ```
