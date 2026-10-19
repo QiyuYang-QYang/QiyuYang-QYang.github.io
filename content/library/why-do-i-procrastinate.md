@@ -4,7 +4,7 @@ url: https://www.youtube.com/watch?v=B0n_lVuhnH4
 kind: Video
 by: https://www.youtube.com/@Queen3369
 added: 2026-10-19
-draft: true
+draft: false
 ---
 为什么拖延？我们总是在自己观察到自己拖延之后，感到负罪感而问自己如何摆脱这样的状态，不禁问出了这个问题。“意志力不足”、“时间管理能力差”、“没有人生目标”、“做事没有优先级的习惯”、“ADHD”、“时间观念薄弱”等等会不会是你给曾经/正在拖延而恼悔的自己的一个标签和审判？
 
