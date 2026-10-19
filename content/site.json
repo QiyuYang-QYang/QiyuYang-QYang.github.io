@@ -6,33 +6,42 @@
   "photos": [
     {
       "image": "/media/photos/granite.webp",
-      "front": "/media/photos/granite-front.webp",
-      "place": "Tioga Road, Yosemite",
+      "place": "Tioga Road, CA",
       "date": "Oct 2026",
-      "ridge": 0.59,
-      "sink": 0.32,
+      "on_homepage": true,
+      "front": "/media/photos/granite-front.webp",
       "ink": "light",
-      "on_homepage": true
+      "ridge": 1,
+      "sink": 0
     },
     {
       "image": "/media/photos/carmel.webp",
-      "front": "/media/photos/carmel-front.webp",
-      "place": "Carmel coast, California",
+      "place": "Carmel coast, CA",
       "date": "Oct 2026",
-      "ridge": 0.765,
-      "sink": 0.24,
+      "on_homepage": true,
+      "front": "/media/photos/carmel-front.webp",
       "ink": "dark",
-      "on_homepage": true
+      "ridge": 1,
+      "sink": 0
     },
     {
       "image": "/media/photos/convict.webp",
-      "front": "",
-      "place": "Convict Lake, Eastern Sierra",
+      "place": "Convict Lake, CA",
       "date": "Oct 2026",
-      "ridge": 0.6,
-      "sink": 0,
+      "on_homepage": true,
       "ink": "light",
-      "on_homepage": true
+      "ridge": 1,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/DSC04653.jpg",
+      "place": "Mariposa, CA",
+      "date": "Oct 2026",
+      "on_homepage": true,
+      "front": "/media/photos/DSC04653.jpg",
+      "ink": "light",
+      "ridge": 1,
+      "sink": 0
     }
   ]
 }
