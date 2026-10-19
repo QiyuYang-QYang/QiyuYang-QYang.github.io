@@ -1,19 +1,36 @@
 {
-  "pdf": "",
   "sections": [
     {
       "heading": "Education",
       "items": [
-        { "title": "Carnegie Mellon University", "detail": "M.S. Computational Biology", "period": "2025 – present" },
-        { "title": "Southwest University", "detail": "B.S.A. Plant Science and Technology, dual degree with Missouri State University", "period": "2021 – 2025" }
+        {
+          "title": "Carnegie Mellon University",
+          "detail": "M.S. Computational Biology",
+          "period": "2025.8 – present"
+        },
+        {
+          "title": "Southwest University",
+          "detail": "B.S.A. Plant Science and Technology(joint program with Missouri State University)minor in Information Security",
+          "period": "2021.9 – 2025.6"
+        }
       ]
     },
     {
-      "heading": "Research",
+      "heading": "Internship",
       "items": [
-        { "title": "Shenzhen Research Institute of Big Data", "detail": "Research engineering. LLM agent for intracerebral hemorrhage outcome prediction; co-first author, under review.", "period": "" },
-        { "title": "Lee Lab, University of Pittsburgh", "detail": "Zebrafish epigenomics.", "period": "" },
-        { "title": "LeDuc Lab, Carnegie Mellon University", "detail": "Ghost crab locomotion; manuscript under review.", "period": "" }
+        {
+          "title": "Shenzhen Research Institute of Big Data",
+          "detail": "Research engineering. LLM agent for intracerebral hemorrhage outcome prediction; co-first author, under review.",
+          "period": "2026.5 - 2026.8"
+        },
+        {
+          "title": "Lee Lab, University of Pittsburgh",
+          "detail": "Zebrafish epigenomics."
+        },
+        {
+          "title": "LeDuc Lab, Carnegie Mellon University",
+          "detail": "Ghost crab locomotion; manuscript under review."
+        }
       ]
     }
   ]
