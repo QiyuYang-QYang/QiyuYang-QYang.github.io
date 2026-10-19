@@ -10,12 +10,13 @@ const hero = $("#hero"), back = $("#back"), front = $("#front"), svg = $("#nameS
 let PHOTOS = [];
 const S = { cur: 0, base: 0, cap: 0, rise: 1, riseT: 1, op: 1, opT: 1, mx: 0, my: 0, tmx: 0, tmy: 0, started: performance.now(), busy: false };
 
-Promise.all([getJSON("content/site.json"), getJSON("content/cv.json"), getJSON("content/generated/works.json"), getJSON("content/generated/writing.json")])
-  .then(([site, cv, works, writing]) => {
+Promise.all([getJSON("content/site.json"), getJSON("content/cv.json"), getJSON("content/generated/works.json"), getJSON("content/generated/writing.json"), getJSON("content/generated/library.json")])
+  .then(([site, cv, works, writing, library]) => {
     site = site || { photos: [] };
     renderSite(site);
     renderWorks(works || []);
     renderWriting(writing || []);
+    renderLibrary(library || []);
     renderGallery(site.photos || []);
     renderCV(cv || { sections: [] });
     startHero((site.photos || []).filter(p => p.on_homepage !== false && p.image));
@@ -46,6 +47,31 @@ function renderWriting(list) {
     <div class="row"><a href="post.html#${encodeURIComponent(w.slug)}"><span class="yr">${esc(w.date || w.kind || "")}</span><span class="tt">${esc(w.title)}</span><span class="tg">${esc(w.summary || "")}</span><span class="pl" aria-hidden="true">→</span></a></div>`).join("")
     : `<p class="empty">First essays coming soon.</p>`;
 }
+
+function renderLibrary(list) {
+  $("#library").hidden = $("#navLibrary").hidden = !list.length;
+  if (!list.length) return;
+  $("#libN").textContent = `(${pad(list.length)})`;
+  $("#libRows").innerHTML = list.map(w => {
+    const media = w.youtube
+      ? `<button type="button" class="yt" data-id="${esc(w.youtube)}" aria-label="Play ${esc(w.title)}"><img src="https://i.ytimg.com/vi/${esc(w.youtube)}/hqdefault.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></button>`
+      : "";
+    return `<details><summary><span class="yr">${esc(w.kind || "Link")}</span><span class="tt">${esc(w.title)}</span><span class="tg">${esc(w.by || w.host)}</span><span class="pl" aria-hidden="true">+</span></summary>
+    <div class="body">${media}<div class="prose">${w.html || ""}</div><span class="label lib-meta"><a href="${esc(w.url)}" target="_blank" rel="noopener">Open ${esc(w.host)} ↗</a>${w.added ? `<span>Added ${esc(w.added)}</span>` : ""}</span></div></details>`;
+  }).join("");
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest(".yt");
+  if (!b) return;
+  const f = document.createElement("iframe");
+  f.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(b.dataset.id)}?autoplay=1&rel=0`;
+  f.title = b.getAttribute("aria-label");
+  f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+  f.allowFullscreen = true;
+  f.className = "yt-frame";
+  b.replaceWith(f);
+});
 
 function renderGallery(list) {
   $("#photoN").textContent = `(${pad(list.length)})`;

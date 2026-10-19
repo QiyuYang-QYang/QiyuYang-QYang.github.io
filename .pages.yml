@@ -75,6 +75,47 @@ content:
         options:
           format: markdown
 
+  - name: library
+    label: Library
+    type: collection
+    path: content/library
+    format: yaml-frontmatter
+    filename: "{title}.md"
+    view:
+      fields: [title, kind, added]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: url
+        label: Link
+        type: string
+        required: true
+        description: Any web address. YouTube links show a thumbnail and play on the page.
+      - name: kind
+        label: Type
+        type: select
+        options:
+          values: [Video, Article, Paper, Book, Podcast, Talk, Tool, Website]
+      - name: by
+        label: By
+        type: string
+        description: Optional author, channel or publication. If empty, the site's name is shown.
+      - name: added
+        label: Date added
+        type: date
+      - name: draft
+        label: Draft
+        type: boolean
+        description: Drafts are saved but not shown on the site.
+      - name: body
+        label: Your notes
+        type: rich-text
+        description: Why it's worth the time, and what you took from it.
+        options:
+          format: markdown
+
   - name: cv
     label: CV
     type: file

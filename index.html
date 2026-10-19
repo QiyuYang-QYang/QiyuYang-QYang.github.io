@@ -16,7 +16,7 @@
   <svg id="nameSvg" aria-hidden="true"><g id="nameG"><text id="nameT" text-anchor="middle"></text></g></svg>
   <div class="layer front" id="front"></div>
   <nav class="nav" aria-label="Sections">
-    <ul><li><a href="#work">Work</a></li><li><a href="#writing">Writing</a></li><li><a href="#photograph">Photograph</a></li><li><a href="#cv">CV</a></li></ul>
+    <ul><li><a href="#work">Work</a></li><li><a href="#writing">Writing</a></li><li id="navLibrary" hidden><a href="#library">Library</a></li><li><a href="#photograph">Photograph</a></li><li><a href="#cv">CV</a></li></ul>
     <span class="mark" id="mark"></span>
     <span class="right"><a id="ghTop" href="#">GitHub</a></span>
   </nav>
@@ -35,6 +35,11 @@
   <section class="block" id="writing">
     <div class="head"><h2>Writing</h2><span class="n" id="writeN"></span></div>
     <div class="rows" id="writeRows"></div>
+  </section>
+
+  <section class="block" id="library" hidden>
+    <div class="head"><h2>Library</h2><span class="n" id="libN"></span></div>
+    <div class="rows lib" id="libRows"></div>
   </section>
 
   <section class="block" id="photograph">

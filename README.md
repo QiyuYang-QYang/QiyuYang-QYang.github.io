@@ -8,6 +8,7 @@ Open [app.pagescms.org](https://app.pagescms.org), sign in with GitHub and choos
 
 - **Writing**: essays. Untick "Draft" to publish.
 - **Work**: projects. "Order" sets the position.
+- **Library**: links worth sharing (YouTube, articles, papers, books) with your own notes. The section appears once it has a published entry.
 - **CV**: sections and entries, plus an optional PDF.
 - **Site and photos**: name, links, and photos for the homepage and the Photograph section.
 
@@ -20,6 +21,7 @@ content/site.json       name, links, photos
 content/cv.json         CV sections
 content/works/*.md      one file per project
 content/writing/*.md    one file per essay
+content/library/*.md    one file per link
 content/generated/      built by scripts/build.mjs, do not edit
 media/                  uploaded images and files
 ```
