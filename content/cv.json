@@ -16,20 +16,33 @@
       ]
     },
     {
-      "heading": "Internship",
+      "heading": "Research",
       "items": [
         {
-          "title": "Shenzhen Research Institute of Big Data",
-          "detail": "LLM agent for spontaneous intracerebral hemorrhage outcome prediction and evaluation",
           "period": "2026.5 - 2026.8"
         },
         {
-          "title": "Lee Lab, University of Pittsburgh",
-          "detail": "Zebrafish epigenomics."
+          "title": "Graduate Study - University of Pittsburgh",
+          "detail": "Correlation between enhancer DNA methylation and histone modification profile in zebrafish early embryo",
+          "period": "Epigenetic data analysis"
         },
         {
           "title": "LeDuc Lab, Carnegie Mellon University",
           "detail": "Ghost crab locomotion; manuscript under review."
+        }
+      ]
+    },
+    {
+      "heading": "Internship",
+      "items": [
+        {
+          "title": "Research Engineer - Shenzhen Research Institute of Big Data",
+          "detail": "LLM agent for spontaneous intracerebral hemorrhage outcome prediction and evaluation",
+          "period": "2026.5 - 2026.8"
+        },
+        {
+          "title": "Molecular Breeding & Phenotyping Specialist - China Agriculture University",
+          "period": "2024.2 - 2024.4"
         }
       ]
     }
