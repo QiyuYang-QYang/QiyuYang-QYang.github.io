@@ -8,16 +8,40 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
 <link rel="stylesheet" href="assets/site.css">
 <style>
 .post-top { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-block: max(22px, env(safe-area-inset-top, 0px)) 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
 .post-top a { text-decoration: none; }
 .post-top a:hover, .post-top a:focus-visible { text-decoration: underline; text-underline-offset: 4px; outline: none; }
-article { max-width: 680px; margin: 0 auto; padding-block: clamp(64px, 12vw, 120px) 0; }
-article h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(48px, 8vw, 88px); line-height: 0.98; letter-spacing: -0.02em; margin: 0.25em 0 0.35em; text-wrap: balance; }
+.post { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); }
+article { width: 100%; max-width: 760px; margin: 0 auto; padding-block: clamp(64px, 12vw, 120px) 0; }
+article h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(44px, 7vw, 84px); line-height: 0.98; letter-spacing: -0.02em; margin: 0.25em 0 0.35em; text-wrap: balance; }
+article h1.long { font-size: clamp(36px, 5vw, 60px); line-height: 1.04; }
 article .lede { font-family: var(--font-display); font-size: 24px; line-height: 1.4; color: var(--muted); margin: 0 0 2em; font-style: italic; }
 article .cover { width: 100%; border-radius: 4px; margin: 0 0 2.2em; }
-.pager { max-width: 680px; margin: 72px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px solid var(--line); padding-top: 22px; }
+.toc { display: none; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.toc a { display: block; text-decoration: none; color: var(--muted); font-size: 13px; line-height: 1.35; padding: 4px 0 4px 12px; border-left: 1px solid var(--line); transition: color .2s, border-color .2s; }
+.toc a.part { color: var(--ink); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 14px; }
+.toc a:hover, .toc a:focus-visible, .toc a.on { color: var(--ink); border-left-color: var(--ink); outline: none; }
+@media (min-width: 1180px) {
+  .post.has-toc { grid-template-columns: 220px minmax(0, 760px); gap: 64px; justify-content: center; }
+  .post.has-toc .toc { display: block; position: sticky; top: 32px; align-self: start; max-height: calc(100vh - 64px); overflow: auto; padding-top: clamp(64px, 12vw, 120px); }
+  .post.has-toc article { margin: 0; }
+}
+.prose .fig { margin: 2em 0; }
+.prose .fig img { margin: 0 auto; border-radius: 4px; background: #fff; }
+.prose .fig figcaption { margin-top: 0.7em; font-size: 13.5px; line-height: 1.5; color: var(--muted); text-align: center; }
+@media (min-width: 1000px) { .post:not(.has-toc) .prose .fig.wide { margin-inline: -120px; } }
+.prose .math { margin: 1.4em 0; overflow-x: auto; overflow-y: hidden; padding: 0.4em 0; }
+.prose .katex { font-size: 1.08em; }
+.prose h4 { font-family: var(--font-body); font-weight: 500; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; margin: 2em 0 0.4em; }
+.prose h2, .prose h3 { scroll-margin-top: 24px; }
+article.zh .lede, article.zh .prose blockquote { font-style: normal; font-family: var(--font-body); font-size: 20px; line-height: 1.7; }
+article.zh h1 { letter-spacing: 0; font-weight: 400; }
+.prose:lang(zh), .prose.zh { font-size: 17.5px; line-height: 1.85; text-align: justify; }
+.pager { max-width: 760px; margin: 72px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px solid var(--line); padding-top: 22px; }
 .pager a { text-decoration: none; display: grid; gap: 4px; }
 .pager a:last-child { text-align: right; }
 .pager .tt { font-family: var(--font-display); font-size: 24px; line-height: 1.15; }
@@ -27,7 +51,7 @@ article .cover { width: 100%; border-radius: 4px; margin: 0 0 2.2em; }
 <body>
 <main>
   <div class="post-top"><a href="index.html#writing">← <span id="who">Qiyu Yang</span></a><span class="label">Writing</span></div>
-  <article id="post"><p class="label">Loading…</p></article>
+  <div class="post" id="wrap"><nav class="toc" id="toc" aria-label="Contents"></nav><article id="post"><p class="label">Loading…</p></article></div>
   <nav class="pager" id="pager" aria-label="More writing"></nav>
   <footer><span id="copyright"></span><a href="index.html#writing">All writing</a></footer>
 </main>
@@ -48,11 +72,24 @@ Promise.all([
     if (i < 0) { el.innerHTML = `<h1>Not found</h1><p>This essay may have moved. <a href="index.html#writing">See all writing</a>.</p>`; pager.innerHTML = ""; return; }
     const w = list[i];
     document.title = `${w.title} · ${name}`;
-    el.innerHTML = `<p class="label">${[w.date, w.kind, `${w.minutes} min read`].filter(Boolean).map(esc).join(" · ")}</p><h1>${esc(w.title)}</h1>${w.summary ? `<p class="lede">${esc(w.summary)}</p>` : ""}${w.cover ? `<img class="cover" src="${esc(url(w.cover))}" alt="">` : ""}<div class="prose">${w.html}</div>`;
+    el.innerHTML = `<p class="label">${[w.date, w.kind, `${w.minutes} min read`].filter(Boolean).map(esc).join(" · ")}</p><h1${w.title.length + (w.title.match(/[\u3400-\u9fff]/g) || []).length > 40 ? ' class="long"' : ""}>${esc(w.title)}</h1>${w.summary ? `<p class="lede">${esc(w.summary)}</p>` : ""}${w.cover ? `<img class="cover" src="${esc(url(w.cover))}" alt="">` : ""}<div class="prose${/[\u3400-\u9fff]/.test(w.title) ? " zh" : ""}">${w.html}</div>`;
+    el.classList.toggle("zh", /[\u3400-\u9fff]/.test(w.title));
+    buildToc(el);
     const newer = list[i - 1], older = list[i + 1];
     pager.innerHTML = (newer ? `<a href="#${encodeURIComponent(newer.slug)}"><span class="label">Newer</span><span class="tt">${esc(newer.title)}</span></a>` : "<span></span>") + (older ? `<a href="#${encodeURIComponent(older.slug)}"><span class="label">Older</span><span class="tt">${esc(older.title)}</span></a>` : "");
     scrollTo(0, 0);
   };
+  function buildToc(el) {
+    const toc = document.getElementById("toc"), wrap = document.getElementById("wrap");
+    const hs = [...el.querySelectorAll(".prose h2[id], .prose h3[id]")];
+    if (hs.length < 4) { toc.innerHTML = ""; wrap.classList.remove("has-toc"); return; }
+    toc.innerHTML = `<p class="label">Contents</p><ol>${hs.map(h => `<li><a class="${h.tagName === "H2" ? "part" : ""}" href="#" data-id="${esc(h.id)}">${esc(h.textContent)}</a></li>`).join("")}</ol>`;
+    wrap.classList.add("has-toc");
+    const links = [...toc.querySelectorAll("a")];
+    links.forEach(a => a.addEventListener("click", e => { e.preventDefault(); document.getElementById(a.dataset.id)?.scrollIntoView({ behavior: "smooth" }); }));
+    const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) links.forEach(a => a.classList.toggle("on", a.dataset.id === x.target.id)); }), { rootMargin: "0px 0px -70% 0px" });
+    hs.forEach(h => io.observe(h));
+  }
   addEventListener("hashchange", render);
   render();
 });

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Songti SC', 'Noto Serif SC', 'Noto Serif CJK SC', 'Source Han Serif SC', serif">
+<rect width="960" height="470" fill="#ffffff"/>
+<text x="40" y="48" font-size="22" fill="#1b1b1d">用林奈的故事读三层范式</text>
+<rect x="40" y="82" width="820" height="96" rx="6" fill="#f4f2ee" stroke="#c9c6bf"/>
+<text x="64" y="122" font-size="20" fill="#1b1b1d" font-weight="600">分类结果</text>
+<text x="64" y="152" font-size="17" fill="#1b1b1d">每个物种落在哪一根树枝上</text>
+<text x="836" y="122" font-size="14" fill="#9c5f43" text-anchor="end" font-style="italic">可以被改写：从形态到分子，从相似到同祖</text>
+<rect x="40" y="202" width="820" height="96" rx="6" fill="#ece9e3" stroke="#c9c6bf"/>
+<text x="64" y="242" font-size="20" fill="#1b1b1d" font-weight="600">分类框架</text>
+<text x="64" y="272" font-size="17" fill="#1b1b1d">层层嵌套的树：界 → … → 种</text>
+<text x="836" y="242" font-size="14" fill="#9c5f43" text-anchor="end" font-style="italic">历经两百多年的改写，形状仍在</text>
+<rect x="40" y="322" width="820" height="96" rx="6" fill="#f4f2ee" stroke="#c9c6bf"/>
+<text x="64" y="362" font-size="20" fill="#1b1b1d" font-weight="600">基本设定</text>
+<text x="64" y="392" font-size="17" fill="#1b1b1d">有的物种更相似；组可以再分；嵌套彼此一致</text>
+<text x="836" y="362" font-size="14" fill="#9c5f43" text-anchor="end" font-style="italic">第三条由共同祖先撑着</text>
+<line x1="905" y1="412" x2="905" y2="96" stroke="#6c6a65" stroke-width="1.5"/>
+<path d="M898,108 L905,92 L912,108" fill="none" stroke="#6c6a65" stroke-width="1.5"/>
+<text x="927" y="252" font-size="14" fill="#6c6a65" writing-mode="tb" style="writing-mode:vertical-rl" text-anchor="middle">每一层建在下一层之上</text>
+</svg>
