@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="'Songti SC', 'Noto Serif SC', 'Noto Serif CJK SC', 'Source Han Serif SC', serif">
+<rect width="960" height="400" fill="#ffffff"/>
+<path d="M90.0,250 V320 " stroke="none"/>
+<path d="M90.0,250 L65.0,250 L65.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M90.0,250 V320 " stroke="none"/>
+<path d="M90.0,250 L115.0,250 L115.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M190.0,250 V320 " stroke="none"/>
+<path d="M190.0,250 L165.0,250 L165.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M190.0,250 V320 " stroke="none"/>
+<path d="M190.0,250 L215.0,250 L215.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M290.0,250 V320 " stroke="none"/>
+<path d="M290.0,250 L265.0,250 L265.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M290.0,250 V320 " stroke="none"/>
+<path d="M290.0,250 L315.0,250 L315.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M390.0,250 V320 " stroke="none"/>
+<path d="M390.0,250 L365.0,250 L365.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M390.0,250 V320 " stroke="none"/>
+<path d="M390.0,250 L415.0,250 L415.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M140.0,180 V250 " stroke="none"/>
+<path d="M140.0,180 L90.0,180 L90.0,250" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M140.0,180 V250 " stroke="none"/>
+<path d="M140.0,180 L190.0,180 L190.0,250" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M340.0,180 V250 " stroke="none"/>
+<path d="M340.0,180 L290.0,180 L290.0,250" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M340.0,180 V250 " stroke="none"/>
+<path d="M340.0,180 L390.0,180 L390.0,250" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M240.0,90 V180 " stroke="none"/>
+<path d="M240.0,90 L140.0,90 L140.0,180" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M240.0,90 V180 " stroke="none"/>
+<path d="M240.0,90 L340.0,90 L340.0,180" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<circle cx="65.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="115.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="165.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="215.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="265.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="315.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="365.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="415.0" cy="320" r="6" fill="#1b1b1d"/>
+<text x="240" y="50" font-size="19" fill="#1b1b1d" text-anchor="middle">第三条设定成立的地方</text>
+<text x="240" y="362" font-size="15" fill="#6c6a65" text-anchor="middle" font-style="italic">类中有类，组下有组</text>
+<path d="M570.0,250 V320 " stroke="none"/>
+<path d="M570.0,250 L545.0,250 L545.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M570.0,250 V320 " stroke="none"/>
+<path d="M570.0,250 L595.0,250 L595.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M670.0,250 V320 " stroke="none"/>
+<path d="M670.0,250 L645.0,250 L645.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M670.0,250 V320 " stroke="none"/>
+<path d="M670.0,250 L695.0,250 L695.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M770.0,250 V320 " stroke="none"/>
+<path d="M770.0,250 L745.0,250 L745.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M770.0,250 V320 " stroke="none"/>
+<path d="M770.0,250 L795.0,250 L795.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M870.0,250 V320 " stroke="none"/>
+<path d="M870.0,250 L845.0,250 L845.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M870.0,250 V320 " stroke="none"/>
+<path d="M870.0,250 L895.0,250 L895.0,320" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M620.0,180 V250 " stroke="none"/>
+<path d="M620.0,180 L570.0,180 L570.0,250" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M620.0,180 V250 " stroke="none"/>
+<path d="M620.0,180 L670.0,180 L670.0,250" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M820.0,180 V250 " stroke="none"/>
+<path d="M820.0,180 L770.0,180 L770.0,250" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M820.0,180 V250 " stroke="none"/>
+<path d="M820.0,180 L870.0,180 L870.0,250" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M720.0,90 V180 " stroke="none"/>
+<path d="M720.0,90 L620.0,90 L620.0,180" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<path d="M720.0,90 V180 " stroke="none"/>
+<path d="M720.0,90 L820.0,90 L820.0,180" fill="none" stroke="#1b1b1d" stroke-width="1.6"/>
+<circle cx="545.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="595.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="645.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="695.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="745.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="795.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="845.0" cy="320" r="6" fill="#1b1b1d"/>
+<circle cx="895.0" cy="320" r="6" fill="#1b1b1d"/>
+<text x="720" y="50" font-size="19" fill="#1b1b1d" text-anchor="middle">它失效的地方：水平基因转移</text>
+<text x="720" y="362" font-size="15" fill="#6c6a65" text-anchor="middle" font-style="italic">基因在不相干的谱系之间跳转</text>
+<path d="M545.0,314 Q670.0,190 795.0,314" fill="none" stroke="#9c5f43" stroke-width="1.8" stroke-dasharray="5 4"/>
+<path d="M645.0,314 Q770.0,190 895.0,314" fill="none" stroke="#9c5f43" stroke-width="1.8" stroke-dasharray="5 4"/>
+<path d="M595.0,314 Q720.0,190 845.0,314" fill="none" stroke="#9c5f43" stroke-width="1.8" stroke-dasharray="5 4"/>
+<path d="M695.0,314 Q720.0,222 745.0,314" fill="none" stroke="#9c5f43" stroke-width="1.8" stroke-dasharray="5 4"/>
+<line x1="480" y1="70" x2="480" y2="340" stroke="#c9c6bf"/>
+</svg>

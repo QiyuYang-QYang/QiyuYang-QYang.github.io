@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif">
+<rect width="960" height="360" fill="#ffffff"/>
+<text x="40" y="46" font-size="21" fill="#1b1b1d">Three objects, every possible property</text>
+<text x="196.0" y="90" font-size="15" fill="#6c6a65" text-anchor="middle">∅</text>
+<text x="288.0" y="90" font-size="15" fill="#6c6a65" text-anchor="middle">{A}</text>
+<text x="380.0" y="90" font-size="15" fill="#6c6a65" text-anchor="middle">{B}</text>
+<text x="472.0" y="90" font-size="15" fill="#6c6a65" text-anchor="middle">{C}</text>
+<text x="564.0" y="90" font-size="15" fill="#6c6a65" text-anchor="middle">{A,B}</text>
+<text x="656.0" y="90" font-size="15" fill="#6c6a65" text-anchor="middle">{A,C}</text>
+<text x="748.0" y="90" font-size="15" fill="#6c6a65" text-anchor="middle">{B,C}</text>
+<text x="840.0" y="90" font-size="15" fill="#6c6a65" text-anchor="middle">{A,B,C}</text>
+<text x="110" y="141" font-size="22" fill="#1b1b1d" text-anchor="end">A</text>
+<rect x="178" y="120" width="36" height="28" rx="3" fill="none" stroke="#c9c6bf"/>
+<rect x="270" y="120" width="36" height="28" rx="3" fill="#1b1b1d" stroke="#c9c6bf"/>
+<rect x="362" y="120" width="36" height="28" rx="3" fill="none" stroke="#c9c6bf"/>
+<rect x="454" y="120" width="36" height="28" rx="3" fill="none" stroke="#c9c6bf"/>
+<rect x="546" y="120" width="36" height="28" rx="3" fill="#9c5f43" stroke="#c9c6bf"/>
+<rect x="638" y="120" width="36" height="28" rx="3" fill="#1b1b1d" stroke="#c9c6bf"/>
+<rect x="730" y="120" width="36" height="28" rx="3" fill="none" stroke="#c9c6bf"/>
+<rect x="822" y="120" width="36" height="28" rx="3" fill="#9c5f43" stroke="#c9c6bf"/>
+<text x="110" y="193" font-size="22" fill="#1b1b1d" text-anchor="end">B</text>
+<rect x="178" y="172" width="36" height="28" rx="3" fill="none" stroke="#c9c6bf"/>
+<rect x="270" y="172" width="36" height="28" rx="3" fill="none" stroke="#c9c6bf"/>
+<rect x="362" y="172" width="36" height="28" rx="3" fill="#1b1b1d" stroke="#c9c6bf"/>
+<rect x="454" y="172" width="36" height="28" rx="3" fill="none" stroke="#c9c6bf"/>
+<rect x="546" y="172" width="36" height="28" rx="3" fill="#9c5f43" stroke="#c9c6bf"/>
+<rect x="638" y="172" width="36" height="28" rx="3" fill="none" stroke="#c9c6bf"/>
+<rect x="730" y="172" width="36" height="28" rx="3" fill="#1b1b1d" stroke="#c9c6bf"/>
+<rect x="822" y="172" width="36" height="28" rx="3" fill="#9c5f43" stroke="#c9c6bf"/>
+<text x="110" y="245" font-size="22" fill="#1b1b1d" text-anchor="end">C</text>
+<rect x="178" y="224" width="36" height="28" rx="3" fill="none" stroke="#c9c6bf"/>
+<rect x="270" y="224" width="36" height="28" rx="3" fill="none" stroke="#c9c6bf"/>
+<rect x="362" y="224" width="36" height="28" rx="3" fill="none" stroke="#c9c6bf"/>
+<rect x="454" y="224" width="36" height="28" rx="3" fill="#1b1b1d" stroke="#c9c6bf"/>
+<rect x="546" y="224" width="36" height="28" rx="3" fill="none" stroke="#c9c6bf"/>
+<rect x="638" y="224" width="36" height="28" rx="3" fill="#1b1b1d" stroke="#c9c6bf"/>
+<rect x="730" y="224" width="36" height="28" rx="3" fill="#1b1b1d" stroke="#c9c6bf"/>
+<rect x="822" y="224" width="36" height="28" rx="3" fill="#1b1b1d" stroke="#c9c6bf"/>
+<line x1="150" y1="102" x2="886" y2="102" stroke="#c9c6bf"/>
+<text x="518" y="304" font-size="16" fill="#1b1b1d" text-anchor="middle">Any two objects share exactly 2 of the 8 properties (2ⁿ⁻² with n = 3).</text>
+</svg>

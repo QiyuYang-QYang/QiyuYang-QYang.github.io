@@ -51,11 +51,15 @@ So rather than saying the framework derived the third assumption, it is better t
 
 But if the basic assumptions fail, the shape of the tree changes, and the classification results built on it may vanish. This is not a hypothetical. In bacteria and archaea, genes can pass directly between individuals that are not related at all. This is called [horizontal gene transfer](https://en.wikipedia.org/wiki/Horizontal_gene_transfer). Here the third assumption no longer holds, and so at the microbial end, the "tree of life" looks more like a net.
 
+![Figure 2. Left: a nested tree, where groups sit inside groups. Right: the same lineages with horizontal gene transfer (dashed), where the tree starts to look like a web.](/media/essays/subjective-art/fig2-tree-and-web-en.svg#wide)
+
 The story above can be broken down into a three-layer paradigm, and this paradigm will stay with us through the whole essay. The three basic assumptions are the basic assumptions; the hierarchical tree that grows out of them is the classification framework; which branch each species finally sits on is the classification result. When the standard for measuring similarity changed from form to molecules, and then from "similar" to "same ancestor," only the results changed. The tree remained, because the three assumptions still held. With bacteria, the third assumption fails, and the tree itself cannot be kept.
 
 And so we have a starting point:
 
 **Classification results depend on the classification framework, and the classification framework grows out of basic assumptions.**
+
+![Figure 1. The three layers in Linnaeus's story. The results were rewritten twice; the framework survived, because the assumptions beneath it still held.](/media/essays/subjective-art/fig1-three-layers-en.svg#wide)
 
 ### 2. A Shared Structure Behind Many Problems: How to Classify
 
@@ -89,7 +93,7 @@ Once it is defined this way, something interesting appears. Look through the thr
 
 You may have noticed that tidying a room and writing high-performance programs share the same basic assumption. A person sorting a wardrobe and an engineer tuning a cache are doing the same thing. Without looking through the lens of classification, it is hard to think of putting these two together.
 
-**Teaching artificial intelligence to generate text**
+#### Teaching artificial intelligence to generate text
 
 - Classification result: which entry in the vocabulary the next token is
 - Classification framework: a vocabulary that cuts text into basic units, and a space, learned by the model, in which every unit has a position
@@ -141,6 +145,8 @@ The first is sparseness. Divide each axis into ten cells: one dimension gives te
 
 The second is even more counterintuitive. When the number of dimensions is high enough, the distance from a point to its nearest neighbor and its distance to the farthest point become almost the same. Everything is equally far away. Intuitively, we would classify using a threshold of similarity, but when all distances are squeezed together, there is no longer any basis for where the threshold should go.
 
+![Figure 3. 1,000 random points in a unit cube: how much farther the farthest point is than the nearest, relative to the nearest. The gap collapses as dimensions grow (median of 30 random queries).](/media/essays/subjective-art/fig3-dimensions-en.svg)
+
 The failure of controlled experiments has another source: interaction. Two drugs, each harmless on its own, can be lethal together; if you only change one variable at a time, you will never see this. The cleanest example is [exclusive or](https://en.wikipedia.org/wiki/Exclusive_or): a lamp is on when one of two switches is on and the other off, and off when both are on or both are off. Look at either switch alone and it has nothing to do with the lamp; the information exists only in the combination. In 1969, [Minsky and Papert](https://en.wikipedia.org/wiki/Perceptrons_%28book%29) showed that a [single-layer perceptron](https://en.wikipedia.org/wiki/Perceptron) cannot learn exclusive or, a result often seen as one of the reasons neural network research went quiet for years. The later solution was to add a hidden layer, letting the network first combine the two switches into a new quantity and then make its judgment.
 
 This is deep learning's answer to the controlled experiment: do not have people pick which variables matter, but let the model learn a transformation itself, compressing the original high-dimensional space into a lower-dimensional one in which interactions become visible structure.
@@ -167,7 +173,7 @@ This sounds very reasonable. Unfortunately, it too has been proven wrong.
 
 In 1969, Satosi Watanabe gave a result with a slightly mischievous flavor, called the [ugly duckling theorem](https://en.wikipedia.org/wiki/Ugly_duckling_theorem).
 
-Imagine n objects on a table. A "property," in the end, is just a way of splitting these objects into two piles: those that have it and those that do not. "Is white" is one way of splitting; "is white or can swim" is another. If we are truly impartial and count every possible way of splitting as a property, there are 2ⁿ properties in all. Now pick any two objects and count how many properties they share. The answer is always 2ⁿ⁻², no matter which two you pick.
+Imagine n objects on a table. A "property," in the end, is just a way of splitting these objects into two piles: those that have it and those that do not. "Is white" is one way of splitting; "is white or can swim" is another. If we are truly impartial and count every possible way of splitting as a property, there are `$2^n$` properties in all. Now pick any two objects and count how many properties they share. The answer is always `$2^{n-2}$`, no matter which two you pick.
 
 The ugly duckling and a swan are exactly as similar, and exactly as dissimilar, as two swans.
 
@@ -181,6 +187,8 @@ Could we leave them out? In the 1990s, Wolpert's ["no free lunch" theorem](https
 
 A bias is a category. Within its category, a category can do anything; outside its category, it can do nothing. It marks out a world in which things make sense, and within that world learning is possible; step outside, and it guarantees nothing.
 
+
+![Figure 4. The ugly duckling theorem with n = 3. Each column is one way of picking objects, that is, one property. A and B share exactly two (highlighted), and so does every other pair.](/media/essays/subjective-art/fig4-ugly-duckling-en.svg)
 At this point, classification and "objectivity" part ways.
 
 ### 5. Good Classification Keeps the Subjective: The Nature of Knowing the World
@@ -235,6 +243,8 @@ What happens if the input is not something the classification allows?
 
 The answer is not "the machine stops working." That is the expert system's answer. Deep learning's answer is worse. Show a cat-and-dog classifier a car, and it will not stop, nor will it say "I don't recognize this." It will tell you, without hesitation, that this is 92 percent dog. The reason is that its results were fixed from the start: what the classes are was set by the task before training, and the loss function scores only against those classes. The [softmax](https://en.wikipedia.org/wiki/Softmax_function) in the last layer must divide all the probability among the existing classes, adding up to exactly one; the option "none of the above" simply does not exist in its world. In 2015, an experiment fooled the best image classifiers of the time with pictures that, to the human eye, were nothing but colored noise, and the classifiers answered with more than 99 percent confidence.
 
+![Figure 5. A classifier's closed world. The softmax must divide all the probability among the classes it was trained on; "none of the above" is not one of them. Numbers are illustrative.](/media/essays/subjective-art/fig5-closed-world-en.svg)
+
 Stopping is an honest failure. Classifying wrongly and confidently is a dangerous one.
 
 This is the second half of the sentence at the end of Interlude B: outside its category, a category can do nothing. Only a category that can do nothing does not know that it can do nothing. Machine learning calls this the out-of-distribution problem. The training data marks out a world, and the model has only ever been corrected inside that world; switch to scans from a different hospital, accents from a different region, light from a different season, and it quietly walks out of its category, and its tone does not change at all.
@@ -285,9 +295,13 @@ In this essay's terms, the scaling laws say: keep the basic assumptions unchange
 
 But there is an easily overlooked constant in this curve. The formula Chinchilla fitted looks like this:
 
- <p align="center">L(N, D) = E + A / Nᵅ + B / Dᵝ</p> 
+```math
+L(N, D) = E + \frac{A}{N^{\alpha}} + \frac{B}{D^{\beta}}
+```
 
 L is the model's loss, N is the number of parameters, and D is the amount of training data. The last two terms get smaller and smaller as the model and data grow, approaching zero; but the first term, E, does not move. No matter how big the model or how much data, the loss cannot go below E. The authors of the paper explain it this way: E is the loss of an ideal generative process on this data, corresponding to the [entropy of natural text](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29) itself, that is, the uncertainty inherent in language. E is a fitted number, so this reading is only approximate, but it points the right way. After "the weather today is," one might write "nice" or one might write "fine," and even a perfect model cannot know in advance which. It is what statistics calls the part of the noise that no model can remove.
+
+![Figure 6. The Chinchilla fit with its published constants, at about twenty tokens per parameter. However large the model, the curve flattens toward E.](/media/essays/subjective-art/fig6-scaling-en.svg)
 
 What the scaling laws promise is getting better and better in the world that has been seen; they have never promised anything beyond it. So what kind of world has an LLM seen? The world of language.
 
@@ -385,7 +399,7 @@ Mathematics has given a sharper answer to this question.
 
 In 1891, [Cantor](https://en.wikipedia.org/wiki/Cantor%27s_theorem) proved the following: take any set, and gather together all of its subsets, that is, every possible way of picking out part of it; the number of these will always be greater than the number of things in the original set. Even if the original set is infinite, its ways of picking form a larger infinity.
 
-It needs to be clear what "a way of dividing" means here. Picking out part of a collection is one division: pick out the white ones, pick out the ones that can swim, pick out the ones that are white or can swim. The ugly duckling theorem in Interlude B used exactly this meaning: n objects have 2ⁿ ways of being picked. Cantor's result is that 2ⁿ is always greater than n, and this stays true even at infinity.
+It needs to be clear what "a way of dividing" means here. Picking out part of a collection is one division: pick out the white ones, pick out the ones that can swim, pick out the ones that are white or can swim. The ugly duckling theorem in Interlude B used exactly this meaning: n objects have `$2^n$` ways of being picked. Cantor's result is that `$2^n$` is always greater than n, and this stays true even at infinity.
 
 Mathematics is talking about sets; carrying this over to classification is an analogy of mine, not a direct consequence of the theorem. But the direction of the analogy is clear. Suppose there really were a largest class, with everything in it. Then the ways of dividing what is inside it would outnumber the class itself, and it could not hold them. Above it, there is always something bigger.
 
@@ -572,4 +586,3 @@ No cognition has an upper limit that holds everything. A good intelligence does 
 - Mendeleev, D. (1869). The relation between the properties and atomic weights of the elements. Journal of the Russian Chemical Society, 1, 60–77.
 - Moseley, H. G. J. (1913). The high-frequency spectra of the elements. Philosophical Magazine, 26, 1024–1034.
 - Silver, D., et al. (2017). Mastering the game of Go without human knowledge. Nature, 550, 354–359.
-
