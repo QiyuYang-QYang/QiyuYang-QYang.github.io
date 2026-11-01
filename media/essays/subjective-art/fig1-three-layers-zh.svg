@@ -4,11 +4,11 @@
 <rect x="40" y="82" width="820" height="96" rx="6" fill="#f4f2ee" stroke="#c9c6bf"/>
 <text x="64" y="122" font-size="20" fill="#1b1b1d" font-weight="600">分类结果</text>
 <text x="64" y="152" font-size="17" fill="#1b1b1d">每个物种落在哪一根树枝上</text>
-<text x="836" y="122" font-size="14" fill="#9c5f43" text-anchor="end" font-style="italic">可以被改写：从形态到分子，从相似到同祖</text>
+<text x="836" y="122" font-size="14" fill="#9c5f43" text-anchor="end" font-style="italic">改写了两次：从形态到分子，从相似到同祖</text>
 <rect x="40" y="202" width="820" height="96" rx="6" fill="#ece9e3" stroke="#c9c6bf"/>
 <text x="64" y="242" font-size="20" fill="#1b1b1d" font-weight="600">分类框架</text>
 <text x="64" y="272" font-size="17" fill="#1b1b1d">层层嵌套的树：界 → … → 种</text>
-<text x="836" y="242" font-size="14" fill="#9c5f43" text-anchor="end" font-style="italic">历经两百多年的改写，形状仍在</text>
+<text x="836" y="242" font-size="14" fill="#9c5f43" text-anchor="end" font-style="italic">判据换过一次，树的形状仍在</text>
 <rect x="40" y="322" width="820" height="96" rx="6" fill="#f4f2ee" stroke="#c9c6bf"/>
 <text x="64" y="362" font-size="20" fill="#1b1b1d" font-weight="600">基本设定</text>
 <text x="64" y="392" font-size="17" fill="#1b1b1d">有的物种更相似；组可以再分；嵌套彼此一致</text>

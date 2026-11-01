@@ -4,11 +4,11 @@
 <rect x="40" y="82" width="820" height="96" rx="6" fill="#f4f2ee" stroke="#c9c6bf"/>
 <text x="64" y="122" font-size="20" fill="#1b1b1d" font-weight="600">Classification result</text>
 <text x="64" y="152" font-size="17" fill="#1b1b1d">Which branch each species sits on</text>
-<text x="836" y="122" font-size="14" fill="#9c5f43" text-anchor="end" font-style="italic">can be rewritten (form → molecules, similarity → ancestry)</text>
+<text x="836" y="122" font-size="14" fill="#9c5f43" text-anchor="end" font-style="italic">rewritten twice (form → molecules, similarity → ancestry)</text>
 <rect x="40" y="202" width="820" height="96" rx="6" fill="#ece9e3" stroke="#c9c6bf"/>
 <text x="64" y="242" font-size="20" fill="#1b1b1d" font-weight="600">Classification framework</text>
 <text x="64" y="272" font-size="17" fill="#1b1b1d">A nested tree: kingdom → … → species</text>
-<text x="836" y="242" font-size="14" fill="#9c5f43" text-anchor="end" font-style="italic">survived 250 years of rewrites</text>
+<text x="836" y="242" font-size="14" fill="#9c5f43" text-anchor="end" font-style="italic">criterion replaced once; the shape survived</text>
 <rect x="40" y="322" width="820" height="96" rx="6" fill="#f4f2ee" stroke="#c9c6bf"/>
 <text x="64" y="362" font-size="20" fill="#1b1b1d" font-weight="600">Basic assumptions</text>
 <text x="64" y="392" font-size="17" fill="#1b1b1d">Some species are more alike; groups can be split again; nesting stays consistent</text>

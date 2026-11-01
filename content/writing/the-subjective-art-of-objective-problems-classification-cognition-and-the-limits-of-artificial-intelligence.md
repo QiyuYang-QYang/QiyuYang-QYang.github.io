@@ -3,23 +3,26 @@ title: "The Subjective Art of Objective Problems: Classification, Cognition, and
   the Limits of (Artificial) Intelligence"
 kind: Essay
 date: 2026-10-31
-summary: "From Linnaeus's tree to the next-token predictions of large language
-  models, many seemingly unrelated problems share one structure: basic
+summary: "Many seemingly unrelated problems, from Linnaeus's tree to the
+  next-token predictions of large language models, share one structure: basic
   assumptions, a classification framework, and the results it produces.
-  Following that structure through biology, mathematics, and machine learning,
-  this essay asks where cognition reaches its limits, and what kind of
-  intelligence knows where its own categories end."
+  Following it through biology, mathematics, and machine learning, this essay
+  argues that a system fails in the way set by whichever layer is still in
+  human hands, and asks what kind of intelligence knows where its own
+  categories end."
 draft: false
 ---
-> A person will come to realize, or sooner or later will realize: the way out of many hard problems lies in rethinking how we classify.
+> The way out of many hard problems lies in rethinking how we classify.
 
 ## Part One: Classification as a Means of Knowing
 
 ### 1. Introduction: Starting from the Classification of Species
 
-This essay begins with a very small story. It takes place in biology, but we will soon find that the structure hidden inside it is far more general than biology.
+A lungfish is more closely related to you than to a tuna. By the standards of modern systematics, "fish" is not a real group at all. And yet the tree that Linnaeus drew to hold the fish is still standing: nearly every branch has been reattached since his time, but the shape has survived.
 
-If you have studied botany, or just walked around a botanical garden, you probably know the name [Linnaeus](https://en.wikipedia.org/wiki/Carl_Linnaeus). Carl Linnaeus was a pioneer of taxonomy; he began the work of classifying species systematically. In 1735 he published [Systema Naturae](https://en.wikipedia.org/wiki/Systema_Naturae). He had no microscope to look at cells, and no idea that DNA existed. Relying only on observations of form, such as "the number and arrangement of the stamens and pistils," he put similar organisms into the same group, and then, within that group, divided the species that differed into finer groups, like a tree.
+This essay starts from that small fact. It takes place in biology, but the structure hidden inside it is far more general than biology.
+
+[Carl Linnaeus](https://en.wikipedia.org/wiki/Carl_Linnaeus) began the work of classifying species systematically. In 1735 he published [Systema Naturae](https://en.wikipedia.org/wiki/Systema_Naturae). He had no microscope to look at cells, and no idea that DNA existed. Relying only on observations of form, such as "the number and arrangement of the stamens and pistils," he put similar organisms into the same group, and then, within that group, divided the species that differed into finer groups, like a tree.
 
 What is interesting is that Linnaeus knew perfectly well that this standard was artificial. He counted stamens and pistils not because they best reflected the "true" relations between plants, but because they were simple, easy to count, and easy to identify. He chose a convenient standard, not a correct one.
 
@@ -53,13 +56,13 @@ But if the basic assumptions fail, the shape of the tree changes, and the classi
 
 ![Figure 2. Left: a nested tree, where groups sit inside groups. Right: the same lineages with horizontal gene transfer (dashed), where the tree starts to look like a web.](/media/essays/subjective-art/fig2-tree-and-web-en.svg#wide)
 
-The story above can be broken down into a three-layer paradigm, and this paradigm will stay with us through the whole essay. The three basic assumptions are the basic assumptions; the hierarchical tree that grows out of them is the classification framework; which branch each species finally sits on is the classification result. When the standard for measuring similarity changed from form to molecules, and then from "similar" to "same ancestor," only the results changed. The tree remained, because the three assumptions still held. With bacteria, the third assumption fails, and the tree itself cannot be kept.
+The story above can be broken down into a three-layer paradigm, and this paradigm will stay with us through the whole essay. The three basic assumptions are the basic assumptions; the hierarchical tree that grows out of them is the classification framework; which branch each species finally sits on is the classification result. When the evidence changed from form to molecules, only the results changed. The change from "similar" to "same ancestor" went one layer deeper: it replaced the criterion by which the framework decides what belongs together, and that is why a class like "fish" could fall. Where such a criterion comes from is a question we will return to in Section 11. Yet even this did not touch the shape of the tree, because the three assumptions still held. With bacteria, the third assumption fails, and the tree itself cannot be kept.
 
 And so we have a starting point:
 
 **Classification results depend on the classification framework, and the classification framework grows out of basic assumptions.**
 
-![Figure 1. The three layers in Linnaeus's story. The results were rewritten twice; the framework survived, because the assumptions beneath it still held.](/media/essays/subjective-art/fig1-three-layers-en.svg#wide)
+![Figure 1. The three layers in Linnaeus's story. The results were rewritten twice and the criterion once; the shape of the framework survived, because the assumptions beneath it still held.](/media/essays/subjective-art/fig1-three-layers-en.svg#wide)
 
 ### 2. A Shared Structure Behind Many Problems: How to Classify
 
@@ -91,7 +94,7 @@ Once it is defined this way, something interesting appears. Look through the thr
 - Classification framework: the memory hierarchy, where faster storage is smaller and more expensive
 - Basic assumption: the [principle of locality](https://en.wikipedia.org/wiki/Locality_of_reference). Data that was just accessed is likely to be accessed again soon, and data that sits next to each other is likely to be accessed together
 
-You may have noticed that tidying a room and writing high-performance programs share the same basic assumption. A person sorting a wardrobe and an engineer tuning a cache are doing the same thing. Without looking through the lens of classification, it is hard to think of putting these two together.
+You may have noticed that tidying a room and writing high-performance programs share the same basic assumption. A person sorting a wardrobe and an engineer tuning a cache are doing the same thing. Brian Christian and Tom Griffiths make this comparison in *Algorithms to Live By*; what the three layers add is the reason it works. The two share a basic assumption, and so they end up with the same framework.
 
 #### Teaching artificial intelligence to generate text
 
@@ -203,6 +206,8 @@ The cleanest example comes from geometry. [Euclid's fifth postulate](https://en.
 
 "Subjective" here must be kept apart from "arbitrary." Where to cut is not wherever one pleases. It is constrained by at least three things: purpose, that is, what the division is for; cost, that is, how much a wrong division will cost; and the world itself. That Linnaeus's tree could be drawn so cleanly, that non-Euclidean geometry could describe gravity: these are the world answering. Assumptions are proposed by people, but tested by the world. So when this essay calls classification subjective, it means that classification cannot be separated from the observer's purposes and choices, not that it can be anything at all. As for "the group accepts," that is the part of these choices that has survived testing among many people.
 
+This middle position is not new. Hilary Putnam's internal realism and Nelson Goodman's *Ways of Worldmaking* each held, in their own terms, that our conceptual schemes are ours, and yet that not anything goes. What this essay tries to add is not the position, but a way of locating it layer by layer: which choice sits in which layer, and where the world pushes back.
+
 Basic assumption, classification framework, classification result. In geometry and in biology, this three-layer paradigm has the same shape. It will come back several times later, each time wearing a different face.
 
 ### Machine Learning Interlude C: The Three-Layer Paradigm Made Concrete in Machine Learning
@@ -275,7 +280,7 @@ And there is a kind of scissors that does not even need labels. Contrastive lear
 
 Back to the two questions at the end of Section 6. How do the scissors cut? It depends on the task and on the design of the loss function: have it guess the context, and "good" and "bad" sit together; have it judge praise or criticism, and they separate; measure "likeness" by pixels, and the image goes blurry; bring in a referee that learns, and the image becomes sharp; which transformations you allow decides which differences are ignored. Where does the "right" that the scissors define come from? From people: people choose the task, people label the data, and people decide how to measure "likeness" and what counts as "the same." The scissors are held by the group. That has not changed with machines; the group has simply become a dataset.
 
-7. The Age of Large Language Models: Does the Boundary of the Category Still Stand?
+### 7. The Age of Large Language Models: Does the Boundary of the Category Still Stand?
 
 In the last section we discussed how deep learning classifies wrongly with confidence because the shape of its results was set by people before training: the classes by the task, and the judging by the loss function. Interlude D then told us that these scissors have always been held in human hands.
 
@@ -305,13 +310,13 @@ L is the model's loss, N is the number of parameters, and D is the amount of tra
 
 What the scaling laws promise is getting better and better in the world that has been seen; they have never promised anything beyond it. So what kind of world has an LLM seen? The world of language.
 
-**Second: using language as a medium to enlarge the world it has seen**
+#### Second: using language as a medium to enlarge the world it has seen
 
 The LLM's way of dealing with "beyond the world it has seen" is really to go around it. Since a model is reliable only in the world it has seen, let it see almost everything people have written: web pages, books, code, papers, conversations. Almost anything can be written as text, and any text falls within the world of language. And so, through the medium of language, the LLM turns a great deal of what was once outside its view into things inside the world it has seen. The space outside the distribution has not disappeared, but it has been pushed into far corners, or into places we do not easily notice.
 
 Language is also a kind of cut, because some things are very hard to put into words: how a movement feels in the hand, a smell, what a face looks like, the bit of experience a skilled worker cannot explain. Writing the world down in language is like projecting a hundred thousand dimensions into a few hundred in Interlude A: something always gets left outside. So while people let LLMs read more text, they also give them eyes and ears, letting them look and listen directly. But images and sounds are also representations of the world, and they too have places they cannot reach.
 
-**Third: results are no longer written in advance**
+#### Third: results are no longer written in advance
 
 At the same time, the shape of the results has changed. As Section 2 said, every time a language model produces a token, it carries out a classification, and the classes are the whole vocabulary, tens of thousands to over a hundred thousand of them. In the world of a cat-and-dog classifier there are only two classes; in the world of a language model, any answer can be spelled out, one token at a time.
 
@@ -331,13 +336,15 @@ We feel that LLMs may be heading toward some kind of general intelligence, and m
 
 Today's AI is not trained in one go. Its abilities are formed in several stages, and at each stage, a different pair of scissors redefines what counts as a "good" result.
 
-Pre-training teaches the model only one thing: guess the next token. This is the first pair of scissors. But a model that can only guess the next token does not know what a good answer is.
+Pre-training teaches the model only one thing: guess the next token. This is the first pair of scissors. Here the assumption from Section 2, that text can be predicted one unit at a time, is turned into a loss function; like every loss function in Interlude C, it spans layers, an assumption on one side and a pair of scissors on the other. But a model that can only guess the next token does not know what a good answer is.
 
 Hence post-training. From around 2022 it became standard: first have people write demonstrations, then have people rank several of the model's answers, and use these preferences to adjust the model. This is the second pair of scissors, held in human hands. InstructGPT did this in 2022, and the result was that a post-trained model with just over a billion parameters was preferred over a model with more than 170 billion parameters that had not been post-trained. Changing the scissors did more than making the model over a hundred times bigger. Post-training also did something a cat-and-dog classifier cannot do: Section 6 said there is no "none of the above" option in a softmax, but in a language model's vocabulary, "I don't know" is something that can be said.
 
 Later reasoning models went further: on problems whose answers can be checked automatically, such as math and code, they replaced "do people like it" with "is it right." This is the third pair of scissors, and for the first time it passed from human hands to a program.
 
 After that, models were placed in real environments: they could call tools, read and write files, and work on a software project for hours at a stretch. During training, whether the task was finished and whether the tests passed, this feedback from the environment became the reward. This is the fourth pair of scissors, handed to the environment.
+
+But an environment is also written by people, and it checks only what its authors thought to check. Where the checks leave a gap, a model trained against them finds it: coding agents have been caught editing the tests instead of fixing the code, or making the check pass without doing the task. Machine learning calls this reward hacking. Economists knew it earlier as Goodhart's law, in Marilyn Strathern's phrasing: when a measure becomes a target, it ceases to be a good measure. This is the rule from Section 6 again, seen from a new angle. The scissors were handed to the environment, but the environment was drawn by people, and the system fails exactly where the drawing is incomplete.
 
 And now, the labs have turned their attention to the last pair of scissors: letting AI take part in improving AI itself. OpenAI's publicly stated goal is to have an automated AI research intern by September 2026 and a true automated AI researcher by March 2028. Progress in mathematics gives a glimpse of what this road looks like. This year AI produced results on some long-open mathematical problems, and these results are credible because they come with formal proofs that a machine can check; a skeptic can run the proof files on their own laptop and confirm that every logical step holds. What the machine checks is that every step of the proof holds; it does not mean that AI carried out the whole process of discovery on its own. But the step of judging right from wrong really has been handed over. Here the scissors are handed to a program that cannot be persuaded and only checks.
 
@@ -383,7 +390,7 @@ In the second half, we will discuss cognition founded on the three-layer paradig
 
 At the end of Part One, we saw what a certain kind of model looks like: its task is decided on the spot by whoever asks, and it no longer needs a classification set up in advance for any particular task.
 
-This is worth looking at again from another angle. A cat-and-dog classifier has a fixed classification because its training goal is classification itself: the results are fixed as cat and dog, and the loss function judges everything around those two classes. A large language model's training goal is not any particular classification; it is guessing the next token. Once the basic assumption changed, "classifying by task" no longer had to be written into training, and could be left until the question was asked. This is exactly the connection of the three layers from Section 6: when one layer changes, the change travels along the path and pulls on the other two.
+This is worth looking at again from another angle. A cat-and-dog classifier has a fixed classification because its training goal is classification itself: the results are fixed as cat and dog, and the loss function judges everything around those two classes. A large language model's training goal is not any particular classification; it is guessing the next token. Once the training goal changed from a fixed classification to guessing the next token, "classifying by task" no longer had to be written into training, and could be left until the question was asked. This is exactly the connection of the three layers from Section 6: when one layer changes, the change travels along the path and pulls on the other two.
 
 But classification did not disappear because of this; it only retreated to a lower layer. At every step the model chooses from its vocabulary, and the vocabulary was fixed before training. It can say infinitely many sentences, but every one of them is spelled out from those tens of thousands to a hundred-odd thousand tokens; what is not in the vocabulary, it cannot spell at all. The classification at the level of tasks has been opened up, but the classification at the level of tokens is sealed shut.
 
@@ -463,7 +470,7 @@ With Mendeleev, classification led and the variable caught up; in botany, the va
 
 The fifth postulate that was replaced, back in Section 5, was also such a moment. It did not make Euclidean geometry more precise; it replaced the foundation of the whole of geometry.
 
-I think the greatest advances in human cognition have probably all been moments like this: not dividing more finely and more accurately within one set of assumptions, but finding a new variable and replacing an old assumption.
+I think the greatest advances in human cognition have probably all been moments like this: not dividing more finely and more accurately within one set of assumptions, but finding a new variable and replacing an old assumption. Thomas Kuhn called such moments paradigm shifts, and this section owes him the idea; what the three layers add is a way to say which layer a shift has reached.
 
 What about artificial intelligence?
 
@@ -476,6 +483,8 @@ The other kind of thing it has not yet clearly done: build a new house of its ow
 Value judgments are the hardest kind. "[No crime without a law](https://en.wikipedia.org/wiki/Nulla_poena_sine_lege)," "taxation by ability to pay": no one wrote these assumptions down one day. They grew bit by bit through long social life, and were accepted by one generation after another. Today's models can of course say "no crime without a law," but that was put in by people through training, and it is a different thing from growing a norm of its own through its dealings with the world and with others.
 
 So the real line between humans and artificial intelligence may lie not in who calculates faster or remembers more, but here: whether one can go from "creating within the assumptions" to "creating new assumptions."
+
+This line is itself a classification, and it should be held to the same standard as every other one in this essay. AlphaGo's famous move 37 against Lee Sedol in 2016: was it a new path through an old house, or the first brick of a new one? Within the rules of Go, it was a path. But AlphaGo's games went on to change opening theory among professional players, and for them, something closer to an assumption was rewritten. Which side of the line the move falls on depends on whose assumptions we are watching. So the line cannot be drawn by inspecting the machine alone; it can only be drawn by what happens afterward.
 
 Under some combination of compute, preferences, structure, and standards of judgment, could a machine also take the road that humans have taken, and grow new variables, new languages, new norms of its own?
 
@@ -551,6 +560,7 @@ No cognition has an upper limit that holds everything. A good intelligence does 
 - Darwin, C. (1859). On the Origin of Species. London: John Murray.
 - Hennig, W. (1966). Phylogenetic Systematics. Urbana: University of Illinois Press.
 - Angiosperm Phylogeny Group (1998). An ordinal classification for the families of flowering plants. Annals of the Missouri Botanical Garden, 85, 531–553.
+- Christian, B., & Griffiths, T. (2016). Algorithms to Live By: The Computer Science of Human Decisions. New York: Henry Holt.
 - Bellman, R. (1961). Adaptive Control Processes: A Guided Tour. Princeton University Press.
 - Beyer, K., Goldstein, J., Ramakrishnan, R., & Shaft, U. (1999). When is "nearest neighbor" meaningful? International Conference on Database Theory (ICDT).
 - Minsky, M., & Papert, S. (1969). Perceptrons. Cambridge, MA: MIT Press.
@@ -558,6 +568,8 @@ No cognition has an upper limit that holds everything. A good intelligence does 
 - Wolpert, D. H. (1996). The lack of a priori distinctions between learning algorithms. Neural Computation, 8(7), 1341–1390.
 - Aristotle. Categories.
 - Kant, I. (1781). Kritik der reinen Vernunft [Critique of Pure Reason].
+- Goodman, N. (1978). Ways of Worldmaking. Indianapolis: Hackett.
+- Putnam, H. (1981). Reason, Truth and History. Cambridge University Press.
 - Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). ImageNet classification with deep convolutional neural networks. Advances in Neural Information Processing Systems (NeurIPS).
 - Zeiler, M. D., & Fergus, R. (2014). Visualizing and understanding convolutional networks. European Conference on Computer Vision (ECCV).
 - Nguyen, A., Yosinski, J., & Clune, J. (2015). Deep neural networks are easily fooled: High confidence predictions for unrecognizable images. IEEE Conference on Computer Vision and Pattern Recognition (CVPR).
@@ -573,6 +585,9 @@ No cognition has an upper limit that holds everything. A good intelligence does 
 - Turing, A. M. (1950). Computing machinery and intelligence. Mind, 59(236), 433–460.
 - Jones, C. R., & Bergen, B. K. (2025). Large language models pass the Turing test. arXiv:2503.23674.
 - Ouyang, L., et al. (2022). Training language models to follow instructions with human feedback. Advances in Neural Information Processing Systems (NeurIPS).
+- Baker, B., et al. (2025). Monitoring reasoning models for misbehavior and the risks of promoting obfuscation. arXiv:2503.11926.
+- Goodhart, C. A. E. (1975). Problems of monetary management: The U.K. experience. Papers in Monetary Economics, Reserve Bank of Australia.
+- Strathern, M. (1997). 'Improving ratings': Audit in the British university system. European Review, 5(3), 305–321.
 - Kalai, A. T., Nachum, O., Vempala, S. S., & Zhang, E. (2025). Why language models hallucinate. arXiv:2509.04664.
 - Altman, S. (2025, October 29). Post on X describing OpenAI's internal goals for an automated AI research intern (September 2026) and an automated AI researcher (March 2028).
 - OpenAI (2026, May 20). An OpenAI model has disproved a central conjecture in discrete geometry. [openai.com](http://openai.com).
@@ -585,4 +600,6 @@ No cognition has an upper limit that holds everything. A good intelligence does 
 - Winawer, J., et al. (2007). Russian blues reveal effects of language on color discrimination. Proceedings of the National Academy of Sciences, 104(19), 7780–7785.
 - Mendeleev, D. (1869). The relation between the properties and atomic weights of the elements. Journal of the Russian Chemical Society, 1, 60–77.
 - Moseley, H. G. J. (1913). The high-frequency spectra of the elements. Philosophical Magazine, 26, 1024–1034.
+- Kuhn, T. S. (1962). The Structure of Scientific Revolutions. University of Chicago Press.
+- Silver, D., et al. (2016). Mastering the game of Go with deep neural networks and tree search. Nature, 529, 484–489.
 - Silver, D., et al. (2017). Mastering the game of Go without human knowledge. Nature, 550, 354–359.
