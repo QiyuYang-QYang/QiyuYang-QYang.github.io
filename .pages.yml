@@ -125,29 +125,8 @@ content:
       - name: pdf
         label: CV PDF
         type: file
-        description: Optional. Adds a PDF download button next to the CV heading.
-      - name: sections
-        label: Sections
-        type: object
-        list: true
-        fields:
-          - name: heading
-            label: Heading
-            type: string
-          - name: items
-            label: Entries
-            type: object
-            list: true
-            fields:
-              - name: title
-                label: Title
-                type: string
-              - name: detail
-                label: Detail
-                type: string
-              - name: period
-                label: Period
-                type: string
+        required: true
+        description: The PDF is shown page by page in the CV section, with a download button. To update it, upload the new PDF here and save.
 
   - name: site
     label: Site and photos

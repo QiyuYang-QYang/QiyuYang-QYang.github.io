@@ -79,8 +79,62 @@ function renderGallery(list) {
 }
 
 function renderCV(cv) {
-  if (cv.pdf) { $("#cvPdf").href = url(cv.pdf); $("#cvPdf").hidden = false; }
-  $("#cvGrid").innerHTML = (cv.sections || []).map(s => `<div><h3 class="label">${esc(s.heading)}</h3><dl>${(s.items || []).map(i => `<div><dt>${esc(i.title)}${i.period ? `<span>${esc(i.period)}</span>` : ""}</dt>${i.detail ? `<dd>${esc(i.detail)}</dd>` : ""}</div>`).join("")}</dl></div>`).join("");
+  const box = $("#cvGrid"), btn = $("#cvPdf");
+  if (!cv.pdf) { box.innerHTML = ""; return; }
+  const href = url(cv.pdf);
+  btn.href = href; btn.setAttribute("download", ""); btn.textContent = "Download ↓"; btn.hidden = false;
+  box.className = "cv-pages";
+  box.innerHTML = `<p class="label">Loading CV…</p>`;
+  const io = new IntersectionObserver(es => {
+    if (es.some(e => e.isIntersecting)) { io.disconnect(); drawPdf(href, box); }
+  }, { rootMargin: "1200px 0px" });
+  io.observe(box);
+}
+
+async function drawPdf(href, box) {
+  try {
+    const pdfjs = await import(new URL("assets/pdfjs/pdf.min.mjs", location.href).href);
+    pdfjs.GlobalWorkerOptions.workerSrc = new URL("assets/pdfjs/pdf.worker.min.mjs", location.href).href;
+    const doc = await pdfjs.getDocument(new URL(href, location.href).href).promise;
+    const pages = await Promise.all(Array.from({ length: doc.numPages }, (_, i) => doc.getPage(i + 1)));
+    const links = await Promise.all(pages.map(p => p.getAnnotations().catch(() => [])));
+    let lastW = 0;
+    const draw = async () => {
+      const w = box.clientWidth;
+      if (!w || w === lastW) return;
+      lastW = w;
+      const dpr = Math.min(window.devicePixelRatio || 1, 3);
+      const frag = document.createDocumentFragment();
+      for (const [i, page] of pages.entries()) {
+        const base = page.getViewport({ scale: 1 });
+        const vp = page.getViewport({ scale: w / base.width });
+        const sheet = document.createElement("div");
+        sheet.className = "cv-page";
+        sheet.style.aspectRatio = `${vp.width} / ${vp.height}`;
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(vp.width * dpr); canvas.height = Math.round(vp.height * dpr);
+        canvas.setAttribute("aria-label", `CV page ${i + 1} of ${pages.length}`);
+        sheet.appendChild(canvas);
+        for (const a of links[i]) {
+          if (a.subtype !== "Link" || !a.url) continue;
+          const [x1, y1, x2, y2] = vp.convertToViewportRectangle(a.rect);
+          const el = document.createElement("a");
+          el.href = a.url; el.target = "_blank"; el.rel = "noopener";
+          el.style.cssText = `left:${Math.min(x1, x2) / vp.width * 100}%;top:${Math.min(y1, y2) / vp.height * 100}%;width:${Math.abs(x2 - x1) / vp.width * 100}%;height:${Math.abs(y2 - y1) / vp.height * 100}%`;
+          el.setAttribute("aria-label", a.url);
+          sheet.appendChild(el);
+        }
+        frag.appendChild(sheet);
+        await page.render({ canvasContext: canvas.getContext("2d"), viewport: vp, transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null }).promise;
+      }
+      box.replaceChildren(frag);
+    };
+    await draw();
+    let t;
+    new ResizeObserver(() => { clearTimeout(t); t = setTimeout(draw, 200); }).observe(box);
+  } catch (e) {
+    box.innerHTML = `<p>The CV could not be displayed here. <a href="${esc(href)}">Open the PDF</a>.</p>`;
+  }
 }
 
 $("#copy").addEventListener("click", async () => {
