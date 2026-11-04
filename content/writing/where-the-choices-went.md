@@ -2,13 +2,13 @@
 title: "Where the Choices Went: Machine Learning as the Art of Connection"
 kind: Essay
 date: 2026-11-04
-summary: "No system learns without choices made before it sees any data. This
+summary: No system learns without choices made before it sees any data. This
   essay reads the history of machine learning, from expert systems to coding
   agents, as the story of where those choices live and whether the judgment of
   results can reach them. Every breakthrough connected one more choice to that
-  judgment; every characteristic failure sits in the choice that was still
-  left outside."
-draft: false
+  judgment; every characteristic failure sits in the choice that was still left
+  outside.
+draft: true
 ---
 > Every model is a set of choices. The question is which of them the data is allowed to correct.
 
@@ -156,14 +156,16 @@ At each step the judgment moved further from a person's hand. And at each step, 
 
 Put the stages side by side.
 
+
 | Stage | What joined the loop | What it gained | Where it failed |
-|---|---|---|---|
+| ----------------------------------------- | ----------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------ |
 | Expert systems, hand-made features | nothing | reliability inside the rules | stops outside the rules |
 | End-to-end deep learning | features | features rediscovered and extended | the fixed list of classes: confidently wrong outside it |
 | Learned judges (GANs) | the standard of "looks real" | sharp images | invented detail |
 | Contrastive learning | labels removed | learning without annotation | bias moved into the choice of augmentations |
 | Next-token prediction, open classes | the classes themselves | any task that can be written as text | entropy floor; what was never written |
 | Human preference, verifiers, environments | the standard of a good answer | usefulness, correctness in checkable domains | hallucination, reward hacking: the scoring rule and the checks still drawn by people |
+
 
 The pattern is the claim of this essay, and now it can be stated as a rule:
 
@@ -202,3 +204,4 @@ This essay, too, made a choice before the evidence: to read the history as a sto
 - Baker, B., et al. (2025). Monitoring reasoning models for misbehavior and the risks of promoting obfuscation. arXiv:2503.11926.
 - Goodhart, C. A. E. (1975). Problems of monetary management: The U.K. experience. Papers in Monetary Economics, Reserve Bank of Australia.
 - Strathern, M. (1997). 'Improving ratings': Audit in the British university system. European Review, 5(3), 305–321.
+
