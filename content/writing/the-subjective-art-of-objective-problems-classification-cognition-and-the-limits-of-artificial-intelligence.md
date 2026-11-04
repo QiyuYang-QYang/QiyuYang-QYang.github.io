@@ -7,10 +7,9 @@ summary: "Many seemingly unrelated problems, from Linnaeus's tree to the
   next-token predictions of large language models, share one structure: basic
   assumptions, a classification framework, and the results it produces.
   Following it through biology, mathematics, and machine learning, this essay
-  argues that a system fails in the way set by whichever layer is still in
-  human hands, and asks what kind of intelligence knows where its own
-  categories end."
-draft: false
+  argues that a system fails in the way set by whichever layer is still in human
+  hands, and asks what kind of intelligence knows where its own categories end."
+draft: true
 ---
 > The way out of many hard problems lies in rethinking how we classify.
 
@@ -54,7 +53,7 @@ So rather than saying the framework derived the third assumption, it is better t
 
 But if the basic assumptions fail, the shape of the tree changes, and the classification results built on it may vanish. This is not a hypothetical. In bacteria and archaea, genes can pass directly between individuals that are not related at all. This is called [horizontal gene transfer](https://en.wikipedia.org/wiki/Horizontal_gene_transfer). Here the third assumption no longer holds, and so at the microbial end, the "tree of life" looks more like a net.
 
-![Figure 2. Left: a nested tree, where groups sit inside groups. Right: the same lineages with horizontal gene transfer (dashed), where the tree starts to look like a web.](/media/essays/subjective-art/fig2-tree-and-web-en.svg#wide)
+![Figure 2. Left: a nested tree, where groups sit inside groups. Right: the same lineages with horizontal gene transfer (dashed), where the tree starts to look like a web.](/media/essays/subjective-art/fig2-tree-and-web-en.svg)
 
 The story above can be broken down into a three-layer paradigm, and this paradigm will stay with us through the whole essay. The three basic assumptions are the basic assumptions; the hierarchical tree that grows out of them is the classification framework; which branch each species finally sits on is the classification result. When the evidence changed from form to molecules, only the results changed. The change from "similar" to "same ancestor" went one layer deeper: it replaced the criterion by which the framework decides what belongs together, and that is why a class like "fish" could fall. Where such a criterion comes from is a question we will return to in Section 11. Yet even this did not touch the shape of the tree, because the three assumptions still held. With bacteria, the third assumption fails, and the tree itself cannot be kept.
 
@@ -62,7 +61,7 @@ And so we have a starting point:
 
 **Classification results depend on the classification framework, and the classification framework grows out of basic assumptions.**
 
-![Figure 1. The three layers in Linnaeus's story. The results were rewritten twice and the criterion once; the shape of the framework survived, because the assumptions beneath it still held.](/media/essays/subjective-art/fig1-three-layers-en.svg#wide)
+![Figure 1. The three layers in Linnaeus's story. The results were rewritten twice and the criterion once; the shape of the framework survived, because the assumptions beneath it still held.](/media/essays/subjective-art/fig1-three-layers-en.svg)
 
 ### 2. A Shared Structure Behind Many Problems: How to Classify
 
@@ -189,7 +188,6 @@ Machine learning calls this weight [inductive bias](https://en.wikipedia.org/wik
 Could we leave them out? In the 1990s, Wolpert's ["no free lunch" theorem](https://en.wikipedia.org/wiki/No_free_lunch_theorem) answered this. If you average over all possible problems, treating them all as equal, no learning algorithm does better than random guessing on data it has not seen. If an algorithm wins on one kind of problem, it must lose it back on another. Without bias there is no learning; they are two names for the same thing.
 
 A bias is a category. Within its category, a category can do anything; outside its category, it can do nothing. It marks out a world in which things make sense, and within that world learning is possible; step outside, and it guarantees nothing.
-
 
 ![Figure 4. The ugly duckling theorem with n = 3. Each column is one way of picking objects, that is, one property. A and B share exactly two (highlighted), and so does every other pair.](/media/essays/subjective-art/fig4-ugly-duckling-en.svg)
 At this point, classification and "objectivity" part ways.
@@ -603,3 +601,4 @@ No cognition has an upper limit that holds everything. A good intelligence does 
 - Kuhn, T. S. (1962). The Structure of Scientific Revolutions. University of Chicago Press.
 - Silver, D., et al. (2016). Mastering the game of Go with deep neural networks and tree search. Nature, 529, 484–489.
 - Silver, D., et al. (2017). Mastering the game of Go without human knowledge. Nature, 550, 354–359.
+
