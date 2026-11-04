@@ -185,13 +185,15 @@ R(D) = \min_{p\left( \widehat{x} \mid x \right):\ \mathbb{E}\left\lbrack d\left(
 
 我的回答是：我们记住的是每个位置上**填了什么**，而会设计的人懂的是每个位置**在做什么**。深度学习的这些部件，在前面那套认知的框架里，都早已有了位置：
 
-| 认知里的环节                         | 深度学习里的名字   | 它在决定什么                   |
-|--------------------------------------|--------------------|--------------------------------|
-| 通道：感受得到，才认识得到           | 数据               | 模型能看见世界的哪一部分       |
-| 设定：事先划定范围、给出分量         | 归纳偏置           | 看见之前，假定什么更重要       |
-| 载体：表示以什么结构被存放           | 架构               | 信息怎样被压缩、传递、组合     |
-| 成像：怎样从压缩的表示里重新呈现世界 | 模型结构           | 表示以什么方式生成看得见的结果 |
-| 尺子：选定的”像”的标准               | 损失函数与优化目标 | 什么算像，什么算好             |
+
+| 认知里的环节 | 深度学习里的名字 | 它在决定什么 |
+| ------------------ | --------- | --------------- |
+| 通道：感受得到，才认识得到 | 数据 | 模型能看见世界的哪一部分 |
+| 设定：事先划定范围、给出分量 | 归纳偏置 | 看见之前，假定什么更重要 |
+| 载体：表示以什么结构被存放 | 架构 | 信息怎样被压缩、传递、组合 |
+| 成像：怎样从压缩的表示里重新呈现世界 | 模型结构 | 表示以什么方式生成看得见的结果 |
+| 尺子：选定的”像”的标准 | 损失函数与优化目标 | 什么算像，什么算好 |
+
 
 回到开头那三个词。数据是通道，它划定了模型能看见世界的哪一部分；而选用哪些数据，本身就是看见之前的一次猜想，所以它和归纳偏置一起，构成**设定**。架构是表示的载体，也就是设定的具象设计，是**框架**。模型结构决定怎样从压缩的表示里把世界重新呈现出来，它连同评判结果的那把尺子，是**成像**。下面一个一个地看。
 
@@ -335,7 +337,6 @@ R(D) = \min_{p\left( \widehat{x} \mid x \right):\ \mathbb{E}\left\lbrack d\left(
 
 而这些选择共同在做的，是一件比机器学习古老得多的事：在有限的感知和有限的表示之下，尽可能地看见世界。
 
-
 ## 参考文献
 
 - Rahimi, A., & Recht, B. (2017). Reflections on random kitchen sinks. NeurIPS Test of Time Award talk.
@@ -371,3 +372,4 @@ R(D) = \min_{p\left( \widehat{x} \mid x \right):\ \mathbb{E}\left\lbrack d\left(
 - Ross, S., Gordon, G., & Bagnell, D. (2011). A reduction of imitation learning and structured prediction to no-regret online learning. AISTATS.
 - Bengio, S., Vinyals, O., Jaitly, N., & Shazeer, N. (2015). Scheduled sampling for sequence prediction with recurrent neural networks. NeurIPS.
 - Ranzato, M., Chopra, S., Auli, M., & Zaremba, W. (2016). Sequence level training with recurrent neural networks. ICLR.
+
