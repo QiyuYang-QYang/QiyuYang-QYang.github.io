@@ -3,13 +3,11 @@ title: "The Subjective Art of Objective Problems: Classification, Cognition, and
   the Limits of (Artificial) Intelligence"
 kind: Essay
 date: 2026-10-31
-summary: "Many seemingly unrelated problems, from Linnaeus's tree to the
-  next-token predictions of large language models, share one structure: basic
-  assumptions, a classification framework, and the results it produces.
-  Following it through biology, mathematics, and machine learning, this essay
-  argues that a system fails in the way set by whichever layer is still in
-  human hands, and asks what kind of intelligence knows where its own
-  categories end."
+summary: "A classification can be refuted in its content and survive in its
+  form. Following that small fact from Linnaeus's tree through law, geometry,
+  and machine learning, this essay looks at the three layers beneath every way
+  of dividing the world, asks where cognition built on them reaches its limit,
+  and what kind of intelligence knows where its own categories end."
 draft: false
 ---
 > The way out of many hard problems lies in rethinking how we classify.
@@ -138,28 +136,6 @@ Back to the question from Section 2. We wanted to find a classification decided 
 
 At least along this road, we will not find that kind of classification. This is the trap of objectivity: we think that making no choice is being objective, but making no choice separates nothing at all.
 
-### Machine Learning Interlude A: The Price of Having No Preference: The Curse of Dimensionality
-
-If we take that endless list seriously, an object is a point in a high-dimensional space, and each measurable standard is a coordinate axis. Classification, then, is drawing boundaries in this space.
-
-The problem is that a high-dimensional space is not, as we might imagine, just "a somewhat bigger three-dimensional space." In the 1950s, [Richard Bellman](https://en.wikipedia.org/wiki/Richard_E._Bellman) gave it an ominous name: [the curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality). It has at least two meanings.
-
-The first is sparseness. Divide each axis into ten cells: one dimension gives ten cells, ten dimensions give ten to the tenth power. Put every observation in the world into such a space and most of the cells are still empty. We think we have a lot of data; in fact we have scattered a few grains of sand across an endless emptiness.
-
-The second is even more counterintuitive. When the number of dimensions is high enough, the distance from a point to its nearest neighbor and its distance to the farthest point become almost the same. Everything is equally far away. Intuitively, we would classify using a threshold of similarity, but when all distances are squeezed together, there is no longer any basis for where the threshold should go.
-
-![Figure 3. 1,000 random points in a unit cube: how much farther the farthest point is than the nearest, relative to the nearest. The gap collapses as dimensions grow (median of 30 random queries).](/media/essays/subjective-art/fig3-dimensions-en.svg)
-
-The failure of controlled experiments has another source: interaction. Two drugs, each harmless on its own, can be lethal together; if you only change one variable at a time, you will never see this. The cleanest example is [exclusive or](https://en.wikipedia.org/wiki/Exclusive_or): a lamp is on when one of two switches is on and the other off, and off when both are on or both are off. Look at either switch alone and it has nothing to do with the lamp; the information exists only in the combination. In 1969, [Minsky and Papert](https://en.wikipedia.org/wiki/Perceptrons_%28book%29) showed that a [single-layer perceptron](https://en.wikipedia.org/wiki/Perceptron) cannot learn exclusive or, a result often seen as one of the reasons neural network research went quiet for years. The later solution was to add a hidden layer, letting the network first combine the two switches into a new quantity and then make its judgment.
-
-This is deep learning's answer to the controlled experiment: do not have people pick which variables matter, but let the model learn a transformation itself, compressing the original high-dimensional space into a lower-dimensional one in which interactions become visible structure.
-
-Language models offer an extreme and clear example. Take a vocabulary of a hundred thousand words. The simplest representation is called [one-hot encoding](https://en.wikipedia.org/wiki/One-hot): each word is a hundred-thousand-dimensional vector in which only its own position is 1 and all the rest are 0. Each word sits at one corner of a hypercube, and the distance between any two words is exactly the same. The distance between "cat" and "dog" equals the distance between "cat" and "audit." This is a classification in which every word is a class of its own, and every link in the web has been cut.
-
-The fix is to multiply by a matrix P, projecting a hundred thousand dimensions down to a few hundred. After the projection, words finally have distances between them. The projection is itself a cut: going from a hundred thousand dimensions to a few hundred, most of the information is thrown away. The question is which part. And the answer statistical learning gives is: the projection is not written by people; it has to be learned.
-
-Then what does it learn from? Who tells it that "cat" should sit near "dog" and not near "audit"? Let us set this question aside for now.
-
 ### 4. "Subjective Art": Where to Draw the Line
 
 Back to the scissors.
@@ -172,7 +148,7 @@ Since cutting is unavoidable, surely at least where we cut can be objective? For
 
 This sounds very reasonable. Unfortunately, it too has been proven wrong.
 
-### Machine Learning Interlude B: The Ugly Duckling
+### Interlude: The Ugly Duckling
 
 In 1969, Satosi Watanabe gave a result with a slightly mischievous flavor, called the [ugly duckling theorem](https://en.wikipedia.org/wiki/Ugly_duckling_theorem).
 
@@ -180,7 +156,7 @@ Imagine n objects on a table. A "property," in the end, is just a way of splitti
 
 The ugly duckling and a swan are exactly as similar, and exactly as dissimilar, as two swans.
 
-You have seen this picture before. In Interlude A, the hypercube of one-hot encoding, with each word at a corner and every pair equally far apart, is exactly the geometric shape of the ugly duckling theorem. "Everything is equally far away" in a high-dimensional space is a close relative of it too. Treat every standard impartially and what you get is not objectivity, but an even, indistinguishable gray.
+The same gray appears in geometry. Describe an object by every property you can measure, so that it becomes a point in a space with thousands of dimensions, and as the dimensions grow, the distance from a point to its nearest neighbor and to its farthest become almost the same. Everything is equally far away. Treat every standard impartially and what you get is not objectivity, but an even, indistinguishable gray.
 
 So similarity is not something objects bring with them. It appears only when an observer gives a little more weight to some properties.
 
@@ -210,179 +186,33 @@ This middle position is not new. Hilary Putnam's internal realism and Nelson Goo
 
 Basic assumption, classification framework, classification result. In geometry and in biology, this three-layer paradigm has the same shape. It will come back several times later, each time wearing a different face.
 
-### Machine Learning Interlude C: The Three-Layer Paradigm Made Concrete in Machine Learning
+### 6. Machines That Classify
 
-Looking back through the three-layer paradigm, the path of artificial intelligence becomes fairly clear. This may be especially useful for people learning deep learning today: to treat it neither as all-powerful nor as alchemy, but to see clearly that every model holds only within its own assumptions.
+The clearest place to watch these layers at work today is machine learning, and I have followed it in detail in a [companion essay](/post.html#where-the-choices-went). Here I take only what the rest of this essay needs.
 
-Each layer has its counterpart in deep learning:
+Early artificial intelligence was built entirely by hand. The [expert systems](https://en.wikipedia.org/wiki/Expert_system) of the 1980s wrote down thousands of "if... then..." rules: people chose what to look at, people chose how observations combined, and the machine carried the rules out. Such a system was reliable inside its rules, and when it met a case the rules did not cover, it stopped.
 
-- Basic assumption: inductive bias, the assumptions a model makes before it has seen any data;
-- Classification framework: the model architecture, the concrete implementation of those assumptions, which decides what kind of space the world is projected into for classifying;
-- Classification result: the predictions the model makes. Which classes there are to choose from is set by the task; what counts as a good result is judged by the loss function.
+Deep learning changed the relationship among the layers. From 2012 on, networks such as [AlexNet](https://en.wikipedia.org/wiki/AlexNet) learned for themselves what to look at, because the judgment of the result, the loss, could now travel back through every layer of the network and correct it. The basic assumptions stayed in human hands, built into the architecture; the framework was filled in by data.
 
-The loss function is the scissors. It is not the result itself, but the standard by which results are judged. Yet it does more than grade at the end: during training, every parameter in the framework is moved, bit by bit, in the direction that lowers its penalty. So these scissors span two layers. They judge the results, and they also decide how the framework is filled in by data, and so which distinctions in this space are worth keeping and which can be cut.
+But the shape of the results stayed in human hands too. A cat-and-dog classifier must divide all its confidence between cat and dog; "neither" does not exist in its world. Show it a car and it does not stop, as an expert system would. It says, without hesitation, that this is 92 percent dog. Stopping is an honest failure. Classifying wrongly and confidently is a dangerous one. Outside its category, a category can do nothing; only it does not know that it can do nothing.
 
-Once this is understood, a new architecture is no longer a recipe to memorize, but a set of assumptions that can be examined and replaced. Designing a new model comes down to choosing new assumptions.
+From this angle the machine is not so objective. Its subjectivity is just hidden deeper, scattered across millions of weights, where it cannot tell you what it chose. Perhaps the boundary between humans and artificial intelligence lies not in who is more rational, but in who knows better where their own scissors are.
 
-### 6. The Success of Deep Learning: Connecting the Three Layers
+### 7. The Language Model: Who Holds the Scissors?
 
-Early artificial intelligence was built like this: people wrote down, one by one, the rules they considered rational, and the machine carried them out. The [expert systems](https://en.wikipedia.org/wiki/Expert_system) of the 1980s turned the judgments of doctors and engineers into thousands of "if... then..." rules. Later, in computer vision, people first designed which features of an image to look at, such as edges, corners, and the direction of textures, and then had the machine draw lines on top of those features.
+A large language model looks, at first, as if it has escaped this trap. Its training goal is not a fixed classification but guessing the next token, and that is a classification whose scissors are human writing itself: every distinction people found worth putting into words is one the model is rewarded for keeping. Its classes are no longer written in advance; whoever asks decides what to divide. In 2025, prompted to play a persona, GPT-4.5 was judged to be the human in a three-party [Turing test](https://en.wikipedia.org/wiki/Turing_test) 73 percent of the time. Within the category of language, the line between human and machine can no longer be drawn. Whether it exists outside language is another matter, and how "intelligence" itself should be defined is yet another classification problem.
 
-In this essay's terms, the three layers back then were separate, and each was done by hand. Which features to look at was an assumption abstracted by people; how features combined into rules was a framework built by people; the machine was responsible only for producing results according to the rules. There was no path between the layers: a wrong result did not travel back to tell anyone which feature had been poorly chosen. Such a system was reliable within its rules, and helpless the moment it met a case the rules had not covered.
+Since then, the judgment of a good answer has been handed over one pair of scissors at a time: from human rankings, to programs that check whether a proof or a piece of code is right, to whole environments that reward finishing a task. This year AI produced results on some long-open mathematical problems that come with machine-checkable formal proofs; the step of judging right from wrong really has been handed to a program that cannot be persuaded.
 
-What deep learning changed was precisely the relationship between the three layers.
+Yet the failures follow the scissors. Language models still state falsehoods fluently, and a 2025 analysis by researchers at OpenAI and Georgia Tech traced this to the scoring: evaluations give points for a lucky guess and nothing for "I don't know," so the model learns to guess. Their remedy was a new judge, one that rewards calibrated abstention. And where an environment's checks leave a gap, models trained against it find the gap, editing the tests instead of fixing the code. When a measure becomes a target, it ceases to be a good measure.
 
-In 2012, a convolutional network called [AlexNet](https://en.wikipedia.org/wiki/AlexNet) cut the top-5 error rate (the share of images where none of its five best guesses was right) in the [ImageNet](https://en.wikipedia.org/wiki/ImageNet) image recognition competition from the runner-up's roughly twenty-six percent to about fifteen percent. Its designers did not tell it whether to look at edges or textures; it learned what to look at by itself, from more than a million images.
-
-Later, people opened such networks layer by layer and found that the lowest layers had learned edges, patches of color, and stripes in different directions, almost exactly the features engineers used to design by hand; higher up came textures and simple shapes; higher still, parts like eyes, wheels, and fur; and only at the top a whole cat or a whole car. The features people had spent decades working out, the network rediscovered on its own, and then kept climbing, into places people had never given names.
-
-This does not mean the framework was handed over to the data. The shape of the framework was still designed by people: the convolutional architecture itself has written into it the inductive biases described in Interlude B, that neighboring pixels are more related and that a cat moved over is still the same cat. What changed is that the content of the framework was, for the first time, filled in by data, and filled in along a path running through all three layers: the loss function's judgment of the result travels back through every layer of the network by [backpropagation](https://en.wikipedia.org/wiki/Backpropagation), telling each parameter which way to move a little. When the result is wrong, the framework changes with it; and how the framework changes is constrained by the assumptions embodied in the architecture.
-
-The three layers were no longer three separate steps; they acted on each other within the same training. Machine learning calls this end-to-end learning. The success of deep learning was not a breakthrough in any single layer; it was that the three layers were connected for the first time.
-
-The biggest change this brought is that the network can generalize. An expert system recognizes only the cases its rules describe; a network trained end to end, shown a cat it has never seen, places it in its learned space, where it lands near the other cats, and so recognizes it as a cat. It does not need to have seen every cat, only enough cats. Speech recognition, machine translation, Go, protein structure prediction: behind each later breakthrough is the same thing. Choose the right assumptions, build the right architecture, and let the loss function, through the whole path, grow the framework out of the data.
-
-But "any input can find a place in the learned space" has another side. When an expert system meets a case outside its rules, it stops; deep learning does not stop, because it can always find a place. In the world it has seen, this is generalization. But what if the input comes from a world it has never seen?
-
-What happens if the input is not something the classification allows?
-
-The answer is not "the machine stops working." That is the expert system's answer. Deep learning's answer is worse. Show a cat-and-dog classifier a car, and it will not stop, nor will it say "I don't recognize this." It will tell you, without hesitation, that this is 92 percent dog. The reason is that its results were fixed from the start: what the classes are was set by the task before training, and the loss function scores only against those classes. The [softmax](https://en.wikipedia.org/wiki/Softmax_function) in the last layer must divide all the probability among the existing classes, adding up to exactly one; the option "none of the above" simply does not exist in its world. In 2015, an experiment fooled the best image classifiers of the time with pictures that, to the human eye, were nothing but colored noise, and the classifiers answered with more than 99 percent confidence.
-
-![Figure 5. A classifier's closed world. The softmax must divide all the probability among the classes it was trained on; "none of the above" is not one of them. Numbers are illustrative.](/media/essays/subjective-art/fig5-closed-world-en.svg)
-
-Stopping is an honest failure. Classifying wrongly and confidently is a dangerous one.
-
-This is the second half of the sentence at the end of Interlude B: outside its category, a category can do nothing. Only a category that can do nothing does not know that it can do nothing. Machine learning calls this the out-of-distribution problem. The training data marks out a world, and the model has only ever been corrected inside that world; switch to scans from a different hospital, accents from a different region, light from a different season, and it quietly walks out of its category, and its tone does not change at all.
-
-From this angle, the machine is not so objective. Its subjectivity is just hidden deeper. A person's standard for classifying, you can at least ask them about; a network's standard is scattered across hundreds of millions of weights, and it cannot tell you either. Much of why [interpretability](https://en.wikipedia.org/wiki/Explainable_artificial_intelligence) is hard lies here. Perhaps the boundary between humans and artificial intelligence lies not in who is more rational, but in who knows better where their own scissors are.
-
-Looking back, from expert systems to deep learning, what changed was not that some layer was handed over, but the relationship among the three layers: from separate, entirely handmade, to connected within a single training. Yet after the connection, two things remain in human hands: the assumptions are abstracted by people, and the shape of the results is set by people, the classes by the task and what counts as good by the loss function. Deep learning classifies wrongly with confidence precisely because of the second.
-
-Interlude C said that the loss function is the scissors. But how, cut by cut, do these scissors shape the space? And where does the "right" they define come from?
-
-### Machine Learning Interlude D: Designing the Loss Function: The Path of the Scissors
-
-The projection matrix P from Interlude A starts out as a pile of random numbers with no meaning at all. During training, we give the network a task, such as "given a word, guess which words appear around it," and each time it guesses wrong, we nudge P a little in the direction of guessing less wrong. After billions of nudges, each column of P has turned from noise into the coordinates of a word.
-
-This is what [word2vec](https://en.wikipedia.org/wiki/Word2vec) did in 2013. The belief behind it goes back to a line from the linguist [J. R. Firth](https://en.wikipedia.org/wiki/John_Rupert_Firth): "You shall know a word by the company it keeps." Words that appear in similar contexts are pushed to similar positions.
-
-And then something interesting happened. In word2vec's space, "good" and "bad" sit very close together, because people always use them in the same sentences: this movie is good, this movie is bad. But change the task, and have the network decide whether a review is positive or negative, and the same two words are pulled apart, at least along the direction that decides praise or criticism. The same pair of words are neighbors in one world and opponents in another. Which is their "true" relationship? Interlude B has already told us that this question has no answer. The task decides which differences are worth keeping and which can be cut.
-
-Here the phrase from Section 3, "the group accepts," can be cashed in for the first time. If the task is "decide whether this picture contains a cat," then where do we learn which pictures contain cats? The answer is: people labeled them. Thousands of annotators, each pressing a button according to their own judgment. They do not always agree, which is why machine learning has a dedicated measure of agreement between annotators. In 2021, researchers went back and checked ten of the most widely used datasets, and estimated that on average at least 3.3 percent of the labels in their test sets were wrong; in the ImageNet validation set, the figure was at least 6 percent. The "objective classes" a model learns are, in the end, the statistical average of a group's consensus.
-
-Change the task and you change the way of cutting. But even once the task is fixed, the scissors themselves can be shaped in many ways. Designing loss functions is one of the most artistic things in deep learning.
-
-First, an example about "looking alike." Ask a network to turn a blurry photo into a sharp one, and the most direct loss function compares pixel by pixel: how much each pixel of the generated image differs from the real one, squared and added up. This is called [mean squared error](https://en.wikipedia.org/wiki/Mean_squared_error). The result is surprising: the network learns to produce images that look washed out. The reason is that behind one blurry photo there may be many possible sharp photos, and mean squared error rewards the answer that is not too far from any of them, which is their average. Many sharp faces laid on top of each other make one blurry face. These scissors take "pixels that are close" to mean "looking alike," but that is not how the human eye sees. In 2014, Goodfellow and colleagues proposed a completely different pair of scissors, originally so that a network could generate images from nothing: instead of writing down a formula for likeness, train a second network as a referee whose only job is to tell whether an image is real or generated. The generator tries to fool the referee, the referee tries to catch the generator, and the two push against each other. This is called a [generative adversarial network](https://en.wikipedia.org/wiki/Generative_adversarial_network) (GAN). A few years later, someone used this referee for the task of sharpening images, and the blurriness was indeed much reduced: to fool a referee that looks for flaws, a blurry average is not enough, and the network has to produce sharp textures. Only these textures are not necessarily ones that were in the original image; they are what the network thinks "should" be there. The scissors changed, the image became sharp, and the price was that the network began making up details for you.
-
-Here, the loss function is no longer a line of formula written by a person, but another classifier that learns. The scissors themselves have become something trained.
-
-And there is a kind of scissors that does not even need labels. Contrastive learning, which took off around 2020, gives the network a single rule: the same image, cropped, recolored, or flipped, still counts as the same thing; different images count as different things. The network's only task is to pull "the same thing" closer and push "different things" apart. What is subtle is that what counts as "the same" depends entirely on which transformations you allow. Allow recoloring, and the network learns not to care about color; allow flipping, and it learns not to care about orientation. Interlude B said that similarity is not something objects bring with them, but something an observer adds; here, the observer adds weight by choosing which changes can be ignored. That is almost the definition of a basic assumption: which differences count and which do not.
-
-Back to the two questions at the end of Section 6. How do the scissors cut? It depends on the task and on the design of the loss function: have it guess the context, and "good" and "bad" sit together; have it judge praise or criticism, and they separate; measure "likeness" by pixels, and the image goes blurry; bring in a referee that learns, and the image becomes sharp; which transformations you allow decides which differences are ignored. Where does the "right" that the scissors define come from? From people: people choose the task, people label the data, and people decide how to measure "likeness" and what counts as "the same." The scissors are held by the group. That has not changed with machines; the group has simply become a dataset.
-
-### 7. The Age of Large Language Models: Does the Boundary of the Category Still Stand?
-
-In the last section we discussed how deep learning classifies wrongly with confidence because the shape of its results was set by people before training: the classes by the task, and the judging by the loss function. Interlude D then told us that these scissors have always been held in human hands.
-
-Let us look at deep learning's newest milestone: the large language model.
-
-From the appearance of [ChatGPT](https://en.wikipedia.org/wiki/ChatGPT) at the end of 2022 to today (October 2026), almost four years have passed. In these four years, the AI we talk about day to day has mostly been built around large language models. Starting from a chatbot you could talk with, its abilities have kept pushing outward: writing emails, writing code, working with image and audio models to paint and compose music; combined with robotics, it has led to vision-language-action models and embodied intelligence, setting off a new wave in humanoid robots and wearable devices.
-
-AI has begun answering questions no one has asked before, and it no longer seems to live in that world where it "only recognizes cats and dogs." Has it finally walked out of the boundary of its category?
-
-To answer that, we first need to look at what it has done.
-
-#### First: getting bigger
-
-In 2020, Kaplan and colleagues at OpenAI found that the loss of a language model falls steadily along a power-law curve as parameters, data, and compute increase. Two years later, DeepMind's Chinchilla study made this rule more precise: for a given compute budget, parameters and data should grow together, at roughly twenty tokens (the basic units a model reads and writes) per parameter. People call these the [scaling laws](https://en.wikipedia.org/wiki/Neural_scaling_law).
-
-In this essay's terms, the scaling laws say: keep the basic assumptions unchanged, make the framework and the data bigger together, and the results will predictably get better. This is the "connected three layers" of Section 6 carried to its extreme.
-
-But there is an easily overlooked constant in this curve. The formula Chinchilla fitted looks like this:
-
-```math
-L(N, D) = E + \frac{A}{N^{\alpha}} + \frac{B}{D^{\beta}}
-```
-
-L is the model's loss, N is the number of parameters, and D is the amount of training data. The last two terms get smaller and smaller as the model and data grow, approaching zero; but the first term, E, does not move. No matter how big the model or how much data, the loss cannot go below E. The authors of the paper explain it this way: E is the loss of an ideal generative process on this data, corresponding to the [entropy of natural text](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29) itself, that is, the uncertainty inherent in language. E is a fitted number, so this reading is only approximate, but it points the right way. After "the weather today is," one might write "nice" or one might write "fine," and even a perfect model cannot know in advance which. It is what statistics calls the part of the noise that no model can remove.
-
-![Figure 6. The Chinchilla fit with its published constants, at about twenty tokens per parameter. However large the model, the curve flattens toward E.](/media/essays/subjective-art/fig6-scaling-en.svg)
-
-What the scaling laws promise is getting better and better in the world that has been seen; they have never promised anything beyond it. So what kind of world has an LLM seen? The world of language.
-
-#### Second: using language as a medium to enlarge the world it has seen
-
-The LLM's way of dealing with "beyond the world it has seen" is really to go around it. Since a model is reliable only in the world it has seen, let it see almost everything people have written: web pages, books, code, papers, conversations. Almost anything can be written as text, and any text falls within the world of language. And so, through the medium of language, the LLM turns a great deal of what was once outside its view into things inside the world it has seen. The space outside the distribution has not disappeared, but it has been pushed into far corners, or into places we do not easily notice.
-
-Language is also a kind of cut, because some things are very hard to put into words: how a movement feels in the hand, a smell, what a face looks like, the bit of experience a skilled worker cannot explain. Writing the world down in language is like projecting a hundred thousand dimensions into a few hundred in Interlude A: something always gets left outside. So while people let LLMs read more text, they also give them eyes and ears, letting them look and listen directly. But images and sounds are also representations of the world, and they too have places they cannot reach.
-
-#### Third: results are no longer written in advance
-
-At the same time, the shape of the results has changed. As Section 2 said, every time a language model produces a token, it carries out a classification, and the classes are the whole vocabulary, tens of thousands to over a hundred thousand of them. In the world of a cat-and-dog classifier there are only two classes; in the world of a language model, any answer can be spelled out, one token at a time.
-
-More importantly, the task itself is no longer fixed in training. CLIP, in 2021, was a good preview. It was trained by a method called contrastive learning: it learns no fixed classes at all, only which picture goes with which sentence. When it is time to classify, the classes are written down on the spot by whoever is using it: write "a photo of a cat" and "a photo of a dog," and it separates cats from dogs; write "day" and "night," and it separates day from night. Large language models take this all the way: which classes to divide into is decided by each question.
-
-The limit that "the classes are written down before training" is greatly weakened here. At least within the reach of language, the boundary of an LLM has come quite close to the boundary we ourselves can feel.
-
-How close? There is a classification problem that can answer this: is this a human, or a machine?
-
-In 1950, [Turing proposed a test](https://en.wikipedia.org/wiki/Turing_test). Broken down with the three-layer paradigm, its basic assumption is that intelligence can be judged by how something performs in a text conversation; its classification framework is to have a judge talk in text, through a screen, with a human and a machine at the same time; its classification result is the judge pointing out which one is the human. If the judge cannot tell, the machine passes.
-
-For more than seventy years, no machine did. Then, in 2025, researchers at the University of California, San Diego ran a rigorous three-party Turing test: in five-minute rounds, a judge chatted in text with a real person and a model at the same time. When prompted to play a specific persona, GPT-4.5 was judged to be the human 73 percent of the time, more often than the real human participants were chosen; without the persona prompt, it did much worse. For comparison, [ELIZA](https://en.wikipedia.org/wiki/ELIZA), a chatbot from the 1960s, was judged human only 23 percent of the time.
-
-We feel that LLMs may be heading toward some kind of general intelligence, and much of that feeling comes from here: we cannot tell them apart. But the basic assumption of this test confines the judgment to text conversation from the very start. Passing it shows that, within the category of language, the line between human and machine can no longer be drawn; it does not show that outside language, the line does not exist either. And how "intelligence" itself should be defined is yet another classification problem.
-
-#### Fourth: using several pairs of scissors
-
-Today's AI is not trained in one go. Its abilities are formed in several stages, and at each stage, a different pair of scissors redefines what counts as a "good" result.
-
-Pre-training teaches the model only one thing: guess the next token. This is the first pair of scissors. Here the assumption from Section 2, that text can be predicted one unit at a time, is turned into a loss function; like every loss function in Interlude C, it spans layers, an assumption on one side and a pair of scissors on the other. But a model that can only guess the next token does not know what a good answer is.
-
-Hence post-training. From around 2022 it became standard: first have people write demonstrations, then have people rank several of the model's answers, and use these preferences to adjust the model. This is the second pair of scissors, held in human hands. InstructGPT did this in 2022, and the result was that a post-trained model with just over a billion parameters was preferred over a model with more than 170 billion parameters that had not been post-trained. Changing the scissors did more than making the model over a hundred times bigger. Post-training also did something a cat-and-dog classifier cannot do: Section 6 said there is no "none of the above" option in a softmax, but in a language model's vocabulary, "I don't know" is something that can be said.
-
-Later reasoning models went further: on problems whose answers can be checked automatically, such as math and code, they replaced "do people like it" with "is it right." This is the third pair of scissors, and for the first time it passed from human hands to a program.
-
-After that, models were placed in real environments: they could call tools, read and write files, and work on a software project for hours at a stretch. During training, whether the task was finished and whether the tests passed, this feedback from the environment became the reward. This is the fourth pair of scissors, handed to the environment.
-
-But an environment is also written by people, and it checks only what its authors thought to check. Where the checks leave a gap, a model trained against them finds it: coding agents have been caught editing the tests instead of fixing the code, or making the check pass without doing the task. Machine learning calls this reward hacking. Economists knew it earlier as Goodhart's law, in Marilyn Strathern's phrasing: when a measure becomes a target, it ceases to be a good measure. This is the rule from Section 6 again, seen from a new angle. The scissors were handed to the environment, but the environment was drawn by people, and the system fails exactly where the drawing is incomplete.
-
-And now, the labs have turned their attention to the last pair of scissors: letting AI take part in improving AI itself. OpenAI's publicly stated goal is to have an automated AI research intern by September 2026 and a true automated AI researcher by March 2028. Progress in mathematics gives a glimpse of what this road looks like. This year AI produced results on some long-open mathematical problems, and these results are credible because they come with formal proofs that a machine can check; a skeptic can run the proof files on their own laptop and confirm that every logical step holds. What the machine checks is that every step of the proof holds; it does not mean that AI carried out the whole process of discovery on its own. But the step of judging right from wrong really has been handed over. Here the scissors are handed to a program that cannot be persuaded and only checks.
-
-From the next token, to human preferences, to verifiers, to environments, and then to AI itself: the scissors are leaving human hands, step by step.
-
-So, has the out-of-distribution problem been solved?
-
-If we look again through the three-layer paradigm of classification, the answer becomes much clearer:
-
-The layer of classification results has changed the most. The classes are no longer fixed by the designer; the whole vocabulary is a candidate, and the task is specified on the spot by whoever asks. The problem of closed classes has largely disappeared here; within the category of language, the model can no longer even be told apart from a person.
-
-In the layer of the classification framework, the shape of the [Transformer](https://en.wikipedia.org/wiki/Transformer_%28deep_learning_architecture%29) is still designed by people, but its content is filled in by nearly all of human writing. The out-of-distribution region has shrunk greatly, but it still exists: events after the training cutoff, facts that have rarely been written down, problems no one has really thought of, and the things that are hard to put into language.
-
-The layer of basic assumptions has changed the least. "A piece of text can be predicted one token at a time, from left to right," "the meaning of a word is determined by the words around it": these are still assumptions people made before training. The scissors are indeed being handed over one pair at a time, but the verifiers are written by people, the environments are built by people, and what to reward and what to penalize was, at first, decided by people. The scissors have left human hands, but their shape is still drawn by people.
-
-Section 6 said that the layer left in human hands decides how a system will fail. Large language models cannot escape this rule either.
-
-Their most famous failure is called [hallucination](https://en.wikipedia.org/wiki/Hallucination_%28artificial_intelligence%29): saying something that does not exist, fluently and confidently. In 2025, researchers from OpenAI and Georgia Tech analyzed this problem directly, and their conclusion could almost be dropped straight into this essay: when a pretrained model cannot reliably tell a false statement from a true one, it may say the false one rather than "I don't know." In their view, hallucinations are nothing mysterious; at bottom they are errors of binary classification.
-
-And the reason hallucinations remain even after post-training lies in the scissors. Models are optimized to be good test-takers, and guessing when unsure raises the test score. "I don't know" is right there in the vocabulary, but the evaluations give it no points, the scissors do not reward it, and so the model rarely says it. The remedy they propose is not technical either: change the existing evaluation standards to reward calibrated abstention. In other words, change the scissors. And the people who write the evaluation standards are still people.
-
-So large language models have not fundamentally solved the out-of-distribution problem. What they have done is three things: through language, enlarge the world they have seen to almost all human writing, making the out-of-distribution rare; hand the choice of classes to whoever asks; and hand the scissors, step by step, to programs and environments. But "knowing when one is standing outside one's category" still depends on the scissors, and the shape of the scissors is still drawn by people. The classifier from Section 6 that took a car for a dog has, here, put on a different face: a passage of fluent, confident hallucination.
-
-Within its category, a category can do anything; outside its category, it can do nothing. It has come back again.
-
-The places where the scissors can be handed over are the places where "right" can be written as a program: whether a proof passes a check, whether code passes its tests. In these areas, AI has already become astonishingly strong.
+The rule that runs through all of this: **the layer left in human hands decides how a system will fail.** The scissors have left human hands, but their shape is still drawn by people.
 
 ### Summary of Part One
 
-To sum up: in the first half, taking the act of classifying as our starting point, we discussed what shapes an act of classification and drew out the three-layer paradigm behind it: basic assumption, classification framework, classification result.
+Taking the act of classifying as our starting point, we drew out the three layers behind it: basic assumption, classification framework, classification result. We saw that considering everything impartially separates nothing; that similarity appears only when an observer gives some properties more weight; that good classification does not remove the subjective but is clear about where its assumptions will fail; and, in machines, that the layer left in human hands decides how a system will fail.
 
-Going further, starting from the fact that the world contains both differences and similarities, we proposed that classification is the basic act by which people know the objective world. We also translated several seemingly unrelated problems into this form, showed how to break them down with the three-layer paradigm, and found that behind these problems the same three layers can often be found.
-
-Starting from the three-layer paradigm, we discussed the trap of "pursuing complete objectivity" in objective problems: considering everything impartially separates nothing; the scissors must come down, and where they cut cannot be separated from the observer's preferences. We also saw that the way humans know the world itself corresponds to the three-layer paradigm, that every piece of knowledge holds within some category, and that the progress of human cognition is bound up with subjective choice.
-
-Along the way we brought in a great deal of the theory and technique of artificial intelligence, machine learning, and deep learning, and, through an account of how AI developed, set the three-layer paradigm, "cognition establishes the basic assumptions, the assumptions build the classification framework, the framework drives the classification results," side by side with inductive bias, model architecture, and the outputs as set by the task and the loss function. This showed that every breakthrough in AI has been inseparable from how the specific content of each layer was chosen, designed, and optimized. From expert systems, in which all three layers were written by hand, to deep learning, in which the three layers were connected by a single path, to large language models handing the scissors over one pair at a time to programs and environments, we arrived at a rule that runs throughout: the layer left in human hands decides how a system will fail.
-
-In the second half, we will discuss cognition founded on the three-layer paradigm: where its upper limit lies, where its assumptions come from, what comes before it, and what kind of cognition grows what kind of intelligence.
+In the second half, we ask where this kind of cognition reaches its limit, where its assumptions come from, what comes before it, and what kind of cognition grows what kind of intelligence.
 
 ## Part Two: The Limits of Classification, the Limits of Cognition
 
@@ -406,13 +236,13 @@ Mathematics has given a sharper answer to this question.
 
 In 1891, [Cantor](https://en.wikipedia.org/wiki/Cantor%27s_theorem) proved the following: take any set, and gather together all of its subsets, that is, every possible way of picking out part of it; the number of these will always be greater than the number of things in the original set. Even if the original set is infinite, its ways of picking form a larger infinity.
 
-It needs to be clear what "a way of dividing" means here. Picking out part of a collection is one division: pick out the white ones, pick out the ones that can swim, pick out the ones that are white or can swim. The ugly duckling theorem in Interlude B used exactly this meaning: n objects have `$2^n$` ways of being picked. Cantor's result is that `$2^n$` is always greater than n, and this stays true even at infinity.
+It needs to be clear what "a way of dividing" means here. Picking out part of a collection is one division: pick out the white ones, pick out the ones that can swim, pick out the ones that are white or can swim. The ugly duckling theorem in the Interlude used exactly this meaning: n objects have `$2^n$` ways of being picked. Cantor's result is that `$2^n$` is always greater than n, and this stays true even at infinity.
 
 Mathematics is talking about sets; carrying this over to classification is an analogy of mine, not a direct consequence of the theorem. But the direction of the analogy is clear. Suppose there really were a largest class, with everything in it. Then the ways of dividing what is inside it would outnumber the class itself, and it could not hold them. Above it, there is always something bigger.
 
 Later, following Cantor's line of thought, Russell found a [famous paradox](https://en.wikipedia.org/wiki/Russell%27s_paradox): if any property at all may gather up a set, then the set of all sets that do not contain themselves contradicts itself, whether we say it contains itself or not. This forced mathematicians to lay down new rules for what a "set" is, and to stop letting any property gather up a set freely. In the set theory used today, "the totality of all sets" is not a set, or else Cantor's theorem would break it: it would have more subsets than members, yet those subsets are themselves sets and should all be inside it. It can only be called a "class," which can no longer be handled freely like an ordinary set. Within its own domain, mathematics gives a blunt answer: such a largest set does not exist.
 
-This points in the same direction as the conclusion of Part One. Interlude B said that if you prefer nothing, you can separate nothing; here, wanting a class that holds everything also separates nothing, and it cannot even stand up logically. The trap of objectivity cannot be escaped from the end of "considering everything," and it cannot be escaped from the end of "containing everything" either.
+This points in the same direction as the conclusion of Part One. The Interlude said that if you prefer nothing, you can separate nothing; here, wanting a class that holds everything also separates nothing, and it cannot even stand up logically. The trap of objectivity cannot be escaped from the end of "considering everything," and it cannot be escaped from the end of "containing everything" either.
 
 Back to that model. Its upper limit is drawn by its basic assumptions; and this section tells us that no form of cognition can have an upper limit that holds everything.
 
@@ -520,7 +350,7 @@ The last question is also the question of the title itself: what kind of cogniti
 
 First we have to ask what "general" means.
 
-If it means doing well on every possible problem, then Interlude B gave the answer long ago: there is no free lunch. The theorem says that if all possible problems are averaged together as equals, no learner does better than any other, and so none does better than guessing. It speaks only of that average; it does not say that learning in the real world is futile. But if "general" means exactly that kind of equal treatment, then an absolutely general intelligence, like the class that holds everything and the map as large as the territory, does not exist by definition. This step is my reading, not a conclusion of the theorem itself.
+If it means doing well on every possible problem, then the Interlude gave the answer long ago: there is no free lunch. The theorem says that if all possible problems are averaged together as equals, no learner does better than any other, and so none does better than guessing. It speaks only of that average; it does not say that learning in the real world is futile. But if "general" means exactly that kind of equal treatment, then an absolutely general intelligence, like the class that holds everything and the map as large as the territory, does not exist by definition. This step is my reading, not a conclusion of the theorem itself.
 
 So "general" can only be relative: relative to the world we live in, relative to the problems we care about. But which problems count and which do not is again a division made by people, and what it rests on is exactly the purpose of the last section. Section 7 said that how "intelligence" itself should be defined is yet another classification problem. Here its meaning becomes clearer: the definition of general intelligence has its own basic assumptions, its own framework, and its own standards of judgment.
 
