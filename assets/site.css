@@ -71,9 +71,9 @@ section.block { max-width: 1240px; margin: 0 auto; padding-block: clamp(72px, 12
 .rows summary:hover, .rows .row a:hover { padding-left: 12px; }
 .rows summary:focus-visible, .rows .row a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .rows .yr { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
-.rows .tt { font-family: var(--font-display), "Noto Sans SC", "PingFang SC", sans-serif; font-weight: 500; letter-spacing: -0.01em; font-size: clamp(28px, 3.6vw, 46px); line-height: 1.2; }
-:lang(zh-CN), :lang(zh), :lang(zh-Hans) { font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; letter-spacing: 0; }
-.rows .tt:lang(zh-CN) { line-height: 1.3; font-weight: 500; }
+.rows .tt { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.01em; font-size: clamp(28px, 3.6vw, 46px); line-height: 1.2; }
+.rows .tt:lang(zh-CN), .rows .tg:lang(zh-CN), .prose:lang(zh-CN) { font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; letter-spacing: 0; }
+.rows .tt:lang(zh-CN) { font-size: clamp(26px, 3.3vw, 42px); line-height: 1.3; font-weight: 500; }
 .rows .tg:lang(zh-CN), .prose:lang(zh-CN) { line-height: 1.75; }
 .rows .tg { font-size: 13px; color: var(--muted); }
 .rows .pl { justify-self: end; font-size: 18px; transition: transform .3s ease; }
