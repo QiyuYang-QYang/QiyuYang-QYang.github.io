@@ -31,7 +31,7 @@ function renderSite(site) {
   $("#h1").textContent = name;
   $("#copyright").textContent = `© ${new Date().getFullYear()} ${name}`;
   $("#mail").textContent = site.email || "";
-  ["#ghTop", "#ghFoot"].forEach(id => { $(id).href = site.github || "#"; $(id).hidden = !site.github; });
+  ["#ghTop", "#ghFoot"].forEach(id => { const link = $(id); if (link) { link.href = site.github || "#"; link.hidden = !site.github; } });
   $("#copy").hidden = !site.email;
 }
 
