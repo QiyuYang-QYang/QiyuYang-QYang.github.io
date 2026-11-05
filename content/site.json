@@ -26,7 +26,8 @@
       "link": "#work",
       "ink": "dark",
       "ridge": 60,
-      "sink": 0
+      "sink": 0,
+      "fit": "contain"
     },
     {
       "image": "/media/photos/carmel.webp",
@@ -50,7 +51,8 @@
       "link": "#work",
       "ink": "dark",
       "ridge": 60,
-      "sink": 0
+      "sink": 0,
+      "fit": "contain"
     },
     {
       "image": "/media/photos/convict.webp",
