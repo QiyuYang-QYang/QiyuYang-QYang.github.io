@@ -10,49 +10,55 @@
       "date": "Oct 2026",
       "on_homepage": true,
       "front": "/media/photos/granite-front.webp",
+      "in_gallery": false,
+      "plain": false,
       "ink": "light",
       "ridge": 59,
       "sink": 29
     },
     {
       "image": "/media/work/sich-workflow-evaluation.svg",
-      "portrait": "/media/work/sich-workflow-evaluation.svg",
       "place": "Work · sICH prognosis workflow",
       "on_homepage": true,
+      "portrait": "/media/work/sich-workflow-evaluation.svg",
       "in_gallery": false,
+      "plain": true,
       "link": "#work",
       "ink": "dark",
       "ridge": 60,
-      "sink": 0,
-      "plain": true
+      "sink": 0
     },
     {
       "image": "/media/photos/carmel.webp",
       "place": "Carmel coast, CA",
       "date": "Oct 2026",
-      "on_homepage": true,
+      "on_homepage": false,
       "front": "/media/photos/carmel-front.webp",
+      "in_gallery": false,
+      "plain": false,
       "ink": "dark",
       "ridge": 77,
       "sink": 24
     },
     {
       "image": "/media/work/crab-vibration.svg",
-      "portrait": "/media/work/crab-vibration.svg",
       "place": "Work · Crab locomotion and PMI",
       "on_homepage": true,
+      "portrait": "/media/work/crab-vibration.svg",
       "in_gallery": false,
+      "plain": true,
       "link": "#work",
       "ink": "dark",
       "ridge": 60,
-      "sink": 0,
-      "plain": true
+      "sink": 0
     },
     {
       "image": "/media/photos/convict.webp",
       "place": "Convict Lake, CA",
       "date": "Oct 2026",
       "on_homepage": true,
+      "in_gallery": false,
+      "plain": false,
       "ink": "light",
       "ridge": 60,
       "sink": 0
@@ -61,7 +67,9 @@
       "image": "/media/photos/DSC04653.jpg",
       "place": "Mariposa, CA",
       "date": "Oct 2026",
-      "on_homepage": true,
+      "on_homepage": false,
+      "in_gallery": false,
+      "plain": false,
       "ink": "light",
       "ridge": 60,
       "sink": 0
