@@ -21,7 +21,7 @@ Promise.all([getJSON("content/site.json"), getJSON("content/cv.json"), getJSON("
     renderLibrary(library || []);
     renderGallery((site.photos || []).filter(p => p.in_gallery !== false));
     renderCV(cv || { sections: [] });
-    startHero((site.photos || []).filter(p => p.on_homepage !== false && p.image));
+    // The editorial homepage uses static, intentional typography and a restrained concept map.\n    // Original photo carousel code remains below for future optional use.
   });
 
 function renderSite(site) {
@@ -31,7 +31,7 @@ function renderSite(site) {
   $("#h1").textContent = name;
   $("#copyright").textContent = `© ${new Date().getFullYear()} ${name}`;
   $("#mail").textContent = site.email || "";
-  ["#ghTop", "#ghFoot"].forEach(id => { $(id).href = site.github || "#"; $(id).hidden = !site.github; });
+  ["#ghTop", "#ghFoot"].forEach(id => { const link = $(id); if (link) { link.href = site.github || "#"; link.hidden = !site.github; } });
   $("#copy").hidden = !site.email;
 }
 
