@@ -155,6 +155,7 @@ function startHero(list) {
   if (!PHOTOS.length) return;
   PHOTOS.forEach((p, i) => {
     p.b = Object.assign(new Image(), { src: heroSrc(p), alt: "" });
+    if (p.fit === "contain") p.b.classList.add("contain");
     back.appendChild(p.b);
     if (p.front) { p.f = Object.assign(new Image(), { src: url(p.front), alt: "" }); front.appendChild(p.f); }
     const th = document.createElement("button");
