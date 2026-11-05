@@ -4,6 +4,8 @@ const url = p => (p || "").replace(/^\//, "");
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const getJSON = p => fetch(p, { cache: "no-cache" }).then(r => (r.ok ? r.json() : null)).catch(() => null);
+const hasCJK = s => /[\u3400-\u9fff]/.test(String(s ?? ""));
+const langAttr = s => hasCJK(s) ? ' lang="zh-CN"' : "";
 
 const IW = 2000, IH = 1125, DWELL = 14000, CAP = 0.64, TYPE_SINK = 0.4;
 const hero = $("#hero"), back = $("#back"), front = $("#front"), svg = $("#nameSvg"), g = $("#nameG"), t = $("#nameT");
@@ -38,15 +40,15 @@ function renderSite(site) {
 function renderWorks(list) {
   $("#workN").textContent = `(${pad(list.length)})`;
   $("#workRows").innerHTML = list.length ? list.map(w => `
-    <details><summary><span class="yr">${esc(w.year)}</span><span class="tt">${esc(w.title)}</span><span class="tg">${esc(w.tags)}</span><span class="pl" aria-hidden="true">+</span></summary>
-    <div class="body"><div class="prose">${w.html || ""}</div>${w.where ? `<span class="label">${esc(w.where)}</span>` : ""}</div></details>`).join("")
+    <details><summary><span class="yr">${esc(w.year)}</span><span class="tt"${langAttr(w.title)}>${esc(w.title)}</span><span class="tg"${langAttr(w.tags)}>${esc(w.tags)}</span><span class="pl" aria-hidden="true">+</span></summary>
+    <div class="body"><div class="prose"${langAttr(w.html)}>${w.html || ""}</div>${w.where ? `<span class="label">${esc(w.where)}</span>` : ""}</div></details>`).join("")
     : `<p class="empty">Nothing here yet.</p>`;
 }
 
 function renderWriting(list) {
   $("#writeN").textContent = `(${pad(list.length)})`;
   $("#writeRows").innerHTML = list.length ? list.map(w => `
-    <div class="row"><a href="post.html#${encodeURIComponent(w.slug)}"><span class="yr">${esc(w.date || w.kind || "")}</span><span class="tt">${esc(w.title)}</span><span class="tg">${esc(w.summary || "")}</span><span class="pl" aria-hidden="true">→</span></a></div>`).join("")
+    <div class="row"><a href="post.html#${encodeURIComponent(w.slug)}"><span class="yr">${esc(w.date || w.kind || "")}</span><span class="tt"${langAttr(w.title)}>${esc(w.title)}</span><span class="tg"${langAttr(w.summary)}>${esc(w.summary || "")}</span><span class="pl" aria-hidden="true">→</span></a></div>`).join("")
     : `<p class="empty">First essays coming soon.</p>`;
 }
 
@@ -58,8 +60,8 @@ function renderLibrary(list) {
     const media = w.youtube
       ? `<button type="button" class="yt" data-id="${esc(w.youtube)}" aria-label="Play ${esc(w.title)}"><img src="https://i.ytimg.com/vi/${esc(w.youtube)}/hqdefault.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></button>`
       : "";
-    return `<details><summary><span class="yr">${esc(w.kind || "Link")}</span><span class="tt">${esc(w.title)}</span><span class="tg">${esc(w.by || w.host)}</span><span class="pl" aria-hidden="true">+</span></summary>
-    <div class="body">${media}<div class="prose">${w.html || ""}</div><span class="label lib-meta"><a href="${esc(w.url)}" target="_blank" rel="noopener">Open ${esc(w.host)} ↗</a>${w.added ? `<span>Added ${esc(w.added)}</span>` : ""}</span></div></details>`;
+    return `<details><summary><span class="yr">${esc(w.kind || "Link")}</span><span class="tt"${langAttr(w.title)}>${esc(w.title)}</span><span class="tg"${langAttr(w.by || w.host)}>${esc(w.by || w.host)}</span><span class="pl" aria-hidden="true">+</span></summary>
+    <div class="body">${media}<div class="prose"${langAttr(w.html)}>${w.html || ""}</div><span class="label lib-meta"><a href="${esc(w.url)}" target="_blank" rel="noopener">Open ${esc(w.host)} ↗</a>${w.added ? `<span>Added ${esc(w.added)}</span>` : ""}</span></div></details>`;
   }).join("");
 }
 
