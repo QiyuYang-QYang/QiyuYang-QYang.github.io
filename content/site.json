@@ -17,10 +17,10 @@
       "sink": 29
     },
     {
-      "image": "/media/work/sich-workflow-evaluation.svg",
-      "place": "Work · sICH prognosis workflow",
+      "image": "/media/work/sich-copilot.webp",
+      "place": "Work · SICH-Copilot",
       "on_homepage": true,
-      "portrait": "/media/work/sich-workflow-evaluation.svg",
+      "portrait": "/media/work/sich-copilot-portrait.webp",
       "in_gallery": false,
       "plain": true,
       "link": "#work",
@@ -41,10 +41,10 @@
       "sink": 24
     },
     {
-      "image": "/media/work/crab-vibration.svg",
-      "place": "Work · Crab locomotion and PMI",
+      "image": "/media/work/crab-vibration.webp",
+      "place": "Work · Ghost crab vibration platform",
       "on_homepage": true,
-      "portrait": "/media/work/crab-vibration.svg",
+      "portrait": "/media/work/crab-vibration-portrait.webp",
       "in_gallery": false,
       "plain": true,
       "link": "#work",
