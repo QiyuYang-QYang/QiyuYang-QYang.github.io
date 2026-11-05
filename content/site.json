@@ -15,6 +15,18 @@
       "sink": 29
     },
     {
+      "image": "/media/work/sich-copilot.webp",
+      "portrait": "/media/work/sich-copilot-portrait.webp",
+      "place": "Work · SICH-Copilot",
+      "on_homepage": true,
+      "in_gallery": false,
+      "link": "#work",
+      "ink": "dark",
+      "ridge": 60,
+      "sink": 0,
+      "plain": true
+    },
+    {
       "image": "/media/photos/carmel.webp",
       "place": "Carmel coast, CA",
       "date": "Oct 2026",
@@ -23,6 +35,18 @@
       "ink": "dark",
       "ridge": 77,
       "sink": 24
+    },
+    {
+      "image": "/media/work/crab-vibration.webp",
+      "portrait": "/media/work/crab-vibration-portrait.webp",
+      "place": "Work · Ghost crab vibration platform",
+      "on_homepage": true,
+      "in_gallery": false,
+      "link": "#work",
+      "ink": "dark",
+      "ridge": 60,
+      "sink": 0,
+      "plain": true
     },
     {
       "image": "/media/photos/convict.webp",

@@ -169,6 +169,22 @@ content:
             label: Foreground cutout
             type: image
             description: Optional transparent image of the foreground. With it, the name sits behind the mountains; without it, the name floats over the photo.
+          - name: portrait
+            label: Portrait version
+            type: image
+            description: Optional tall version shown instead on phones held upright, for slides with text such as project posters.
+          - name: in_gallery
+            label: Show in Photograph section
+            type: boolean
+            description: Switch off for slides that are not photographs, such as project posters.
+          - name: plain
+            label: Plain slide
+            type: boolean
+            description: Removes the dark shading at the top and bottom and uses the name colour for the caption. For white posters.
+          - name: link
+            label: Caption link
+            type: string
+            description: "Optional. Makes the caption under the slide a link, for example #work."
           - name: ink
             label: Name colour
             type: select

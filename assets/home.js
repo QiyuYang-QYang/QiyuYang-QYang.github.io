@@ -8,6 +8,8 @@ const getJSON = p => fetch(p, { cache: "no-cache" }).then(r => (r.ok ? r.json() 
 const IW = 2000, IH = 1125, DWELL = 14000, CAP = 0.64, TYPE_SINK = 0.4;
 const hero = $("#hero"), back = $("#back"), front = $("#front"), svg = $("#nameSvg"), g = $("#nameG"), t = $("#nameT");
 let PHOTOS = [];
+const tall = matchMedia("(max-aspect-ratio: 4/5)");
+const heroSrc = p => url(tall.matches && p.portrait ? p.portrait : p.image);
 const S = { cur: 0, base: 0, cap: 0, rise: 1, riseT: 1, op: 1, opT: 1, mx: 0, my: 0, tmx: 0, tmy: 0, started: performance.now(), busy: false };
 
 Promise.all([getJSON("content/site.json"), getJSON("content/cv.json"), getJSON("content/generated/works.json"), getJSON("content/generated/writing.json"), getJSON("content/generated/library.json")])
@@ -17,7 +19,7 @@ Promise.all([getJSON("content/site.json"), getJSON("content/cv.json"), getJSON("
     renderWorks(works || []);
     renderWriting(writing || []);
     renderLibrary(library || []);
-    renderGallery(site.photos || []);
+    renderGallery((site.photos || []).filter(p => p.in_gallery !== false));
     renderCV(cv || { sections: [] });
     startHero((site.photos || []).filter(p => p.on_homepage !== false && p.image));
   });
@@ -150,7 +152,7 @@ function startHero(list) {
   PHOTOS = list.map(p => ({ ...p, over: !p.front, ink: p.ink === "dark" ? "#1e2b3a" : "#ffffff", ridge: pct(p.ridge, 0.6), sink: pct(p.sink, 0) }));
   if (!PHOTOS.length) return;
   PHOTOS.forEach((p, i) => {
-    p.b = Object.assign(new Image(), { src: url(p.image), alt: "" });
+    p.b = Object.assign(new Image(), { src: heroSrc(p), alt: "" });
     back.appendChild(p.b);
     if (p.front) { p.f = Object.assign(new Image(), { src: url(p.front), alt: "" }); front.appendChild(p.f); }
     const th = document.createElement("button");
@@ -167,6 +169,7 @@ function startHero(list) {
     setTimeout(() => { S.riseT = 0; S.started = performance.now(); }, 350);
   });
   addEventListener("resize", layout);
+  tall.addEventListener("change", () => PHOTOS.forEach(p => { if (p.portrait) p.b.src = heroSrc(p); }));
   requestAnimationFrame(tick);
 }
 
@@ -192,7 +195,9 @@ function apply(i) {
   PHOTOS.forEach((q, j) => { q.b.classList.toggle("on", j === i); q.f && q.f.classList.toggle("on", j === i); q.th.classList.toggle("on", j === i); });
   hero.style.setProperty("--hero-ink", p.ink);
   hero.classList.toggle("over", p.over);
-  $("#caption").textContent = [p.place, p.date].filter(Boolean).join(" · ");
+  hero.classList.toggle("plain", !!p.plain);
+  const cap = [p.place, p.date].filter(Boolean).join(" · ");
+  $("#caption").innerHTML = p.link ? `<a href="${esc(p.link)}">${esc(cap)}</a>` : esc(cap);
   S.cur = i; layout();
 }
 
