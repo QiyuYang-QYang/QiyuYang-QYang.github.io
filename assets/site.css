@@ -141,3 +141,6 @@ footer button { font: inherit; background: none; border: 0; color: var(--ink); c
   .nav .right { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .foot .chev { animation: none; } }
+
+/* Research overview figures must remain fully visible in the slideshow. */
+.layer img.contain { object-fit: contain; background: #fff; }
