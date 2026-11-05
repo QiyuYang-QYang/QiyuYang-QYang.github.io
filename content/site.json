@@ -26,8 +26,7 @@
       "link": "#work",
       "ink": "dark",
       "ridge": 60,
-      "sink": 0,
-      "fit": "contain"
+      "sink": 0
     },
     {
       "image": "/media/photos/carmel.webp",
@@ -51,8 +50,7 @@
       "link": "#work",
       "ink": "dark",
       "ridge": 60,
-      "sink": 0,
-      "fit": "contain"
+      "sink": 0
     },
     {
       "image": "/media/photos/convict.webp",
@@ -70,7 +68,7 @@
       "place": "Mariposa, CA",
       "date": "Oct 2026",
       "on_homepage": false,
-      "in_gallery": false,
+      "in_gallery": true,
       "plain": false,
       "ink": "light",
       "ridge": 60,
