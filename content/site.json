@@ -73,6 +73,54 @@
       "ink": "light",
       "ridge": 60,
       "sink": 0
+    },
+    {
+      "image": "/media/photos/博斯普鲁斯海峡景色.jpg",
+      "place": "İstanbul Boğazı",
+      "date": "Aug 2026",
+      "on_homepage": true,
+      "in_gallery": false,
+      "plain": false
+    },
+    {
+      "image": "/media/photos/深圳湾.jpg",
+      "place": "Shenzhen Bay Park, Shenzhen",
+      "date": "Jul 2026",
+      "on_homepage": true,
+      "in_gallery": true,
+      "plain": false
+    },
+    {
+      "image": "/media/photos/大同-云冈石窟寺庙.jpg",
+      "place": "Yungang Grottoes, Datong",
+      "date": "Aug 2025",
+      "on_homepage": true,
+      "in_gallery": true,
+      "plain": false
+    },
+    {
+      "image": "/media/photos/东京文京区某寺庙.jpg",
+      "place": "Ana-hachimangu Shrine, Tokyo ",
+      "date": "May 2025",
+      "on_homepage": true,
+      "in_gallery": false,
+      "plain": false
+    },
+    {
+      "image": "/media/photos/重庆千厮门大桥.jpg",
+      "place": "Qiansimen Bridge, Chongqing",
+      "date": "Jun 2025",
+      "on_homepage": true,
+      "in_gallery": false,
+      "plain": false
+    },
+    {
+      "image": "/media/photos/valley of fire-特斯拉.jpg",
+      "place": "Valley of Fire State Park, NV",
+      "date": "Dec 2025",
+      "on_homepage": true,
+      "in_gallery": false,
+      "plain": false
     }
   ]
 }
