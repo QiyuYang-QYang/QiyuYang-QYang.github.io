@@ -41,6 +41,13 @@ article .cover { width: 100%; border-radius: 4px; margin: 0 0 2.2em; }
 article.zh .lede, article.zh .prose blockquote { font-style: normal; font-family: var(--font-body); font-size: 20px; line-height: 1.7; }
 article.zh h1 { letter-spacing: 0; font-weight: 400; }
 .prose:lang(zh), .prose.zh { font-size: 17.5px; line-height: 1.85; text-align: justify; }
+.lang-switch { display: inline-flex; align-items: center; gap: 2px; }
+.lang-switch button { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--muted); background: none; border: 0; padding: 6px 8px; cursor: pointer; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+.lang-switch button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); cursor: default; }
+.lang-switch button:not([aria-pressed="true"]):hover, .lang-switch button:focus-visible { color: var(--ink); outline: none; }
+.lang-switch .sep { color: var(--line); }
+.lang-float { position: fixed; z-index: 10; right: max(20px, env(safe-area-inset-right, 0px)); bottom: max(20px, calc(env(safe-area-inset-bottom, 0px) + 12px)); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; padding: 2px 6px; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb, var(--bg) 72%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .3s, transform .3s; }
+.lang-float.show { opacity: 1; transform: none; pointer-events: auto; }
 .pager { max-width: 760px; margin: 72px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px solid var(--line); padding-top: 22px; }
 .pager a { text-decoration: none; display: grid; gap: 4px; }
 .pager a:last-child { text-align: right; }
@@ -50,8 +57,9 @@ article.zh h1 { letter-spacing: 0; font-weight: 400; }
 </head>
 <body>
 <main>
-  <div class="post-top"><a href="index.html#writing">← <span id="who">Qiyu Yang</span></a><span class="label">Writing</span></div>
+  <div class="post-top"><a href="index.html#writing">← <span id="who">Qiyu Yang</span></a><span class="label" id="side">Writing</span></div>
   <div class="post" id="wrap"><nav class="toc" id="toc" aria-label="Contents"></nav><article id="post"><p class="label">Loading…</p></article></div>
+  <div class="lang-float lang-switch" id="langFloat" role="group" aria-label="Language" hidden></div>
   <nav class="pager" id="pager" aria-label="More writing"></nav>
   <footer><span id="copyright"></span><a href="index.html#writing">All writing</a></footer>
 </main>
@@ -65,7 +73,19 @@ Promise.all([
   const name = site.name || "Qiyu Yang";
   document.getElementById("who").textContent = name;
   document.getElementById("copyright").textContent = `© ${new Date().getFullYear()} ${name}`;
-  const render = () => {
+  const bySlug = s => list.find(w => w.slug === s);
+  const savePref = l => { try { localStorage.setItem("lang", l); } catch {} };
+  const prefLang = () => { try { const v = localStorage.getItem("lang"); if (v === "zh" || v === "en") return v; } catch {} return null; };
+  const groups = [];
+  for (const w of list) { const k = w.pair || w.slug; if (!groups.includes(k)) groups.push(k); }
+  const inGroup = (k, lang) => list.find(w => (w.pair || w.slug) === k && w.lang === lang) || list.find(w => (w.pair || w.slug) === k);
+  const switchTo = slug => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const ratio = max > 0 ? scrollY / max : 0;
+    history.replaceState(null, "", "#" + encodeURIComponent(slug));
+    render(ratio);
+  };
+  const render = (ratio = 0) => {
     const slug = decodeURIComponent(location.hash.slice(1));
     const i = list.findIndex(w => w.slug === slug);
     const el = document.getElementById("post"), pager = document.getElementById("pager");
@@ -74,10 +94,32 @@ Promise.all([
     document.title = `${w.title} · ${name}`;
     el.innerHTML = `<p class="label">${[w.date, w.kind, `${w.minutes} min read`].filter(Boolean).map(esc).join(" · ")}</p><h1${w.title.length + (w.title.match(/[\u3400-\u9fff]/g) || []).length > 40 ? ' class="long"' : ""}>${esc(w.title)}</h1>${w.summary ? `<p class="lede">${esc(w.summary)}</p>` : ""}${w.cover ? `<img class="cover" src="${esc(url(w.cover))}" alt="">` : ""}<div class="prose${/[\u3400-\u9fff]/.test(w.title) ? " zh" : ""}">${w.html}</div>`;
     el.classList.toggle("zh", /[\u3400-\u9fff]/.test(w.title));
+    document.documentElement.lang = w.lang === "zh" ? "zh-CN" : "en";
+    const side = document.getElementById("side"), float = document.getElementById("langFloat");
+    const alt = w.alt && bySlug(w.alt);
+    if (alt) {
+      const zh = w.lang === "zh" ? w : alt, en = w.lang === "zh" ? alt : w;
+      side.className = "lang-switch";
+      side.setAttribute("role", "group");
+      side.setAttribute("aria-label", "Language");
+      float.hidden = false;
+      side.innerHTML = float.innerHTML = `<button type="button" lang="en" data-slug="${esc(en.slug)}" aria-pressed="${w === en}">EN</button><span class="sep" aria-hidden="true">/</span><button type="button" lang="zh-CN" data-slug="${esc(zh.slug)}" aria-pressed="${w === zh}">中文</button>`;
+      document.querySelectorAll(".lang-switch button").forEach(b => b.addEventListener("click", () => {
+        if (b.getAttribute("aria-pressed") === "true") return;
+        savePref(bySlug(b.dataset.slug).lang);
+        switchTo(b.dataset.slug);
+      }));
+    } else {
+      float.hidden = true;
+      side.className = "label"; side.removeAttribute("role"); side.removeAttribute("aria-label"); side.textContent = "Writing";
+    }
     buildToc(el);
-    const newer = list[i - 1], older = list[i + 1];
+    const g = groups.indexOf(w.pair || w.slug), lang = prefLang() || w.lang;
+    const newer = g > 0 && inGroup(groups[g - 1], lang), older = g < groups.length - 1 && inGroup(groups[g + 1], lang);
     pager.innerHTML = (newer ? `<a href="#${encodeURIComponent(newer.slug)}"><span class="label">Newer</span><span class="tt">${esc(newer.title)}</span></a>` : "<span></span>") + (older ? `<a href="#${encodeURIComponent(older.slug)}"><span class="label">Older</span><span class="tt">${esc(older.title)}</span></a>` : "");
-    scrollTo(0, 0);
+    if (ratio) requestAnimationFrame(() => scrollTo({ top: ratio * (document.documentElement.scrollHeight - innerHeight), behavior: "instant" }));
+    else scrollTo(0, 0);
+    onScroll();
   };
   function buildToc(el) {
     const toc = document.getElementById("toc"), wrap = document.getElementById("wrap");
@@ -90,7 +132,10 @@ Promise.all([
     const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) links.forEach(a => a.classList.toggle("on", a.dataset.id === x.target.id)); }), { rootMargin: "0px 0px -70% 0px" });
     hs.forEach(h => io.observe(h));
   }
-  addEventListener("hashchange", render);
+  const float = document.getElementById("langFloat");
+  const onScroll = () => float.classList.toggle("show", scrollY > 320);
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("hashchange", () => render());
   render();
 });
 </script>
