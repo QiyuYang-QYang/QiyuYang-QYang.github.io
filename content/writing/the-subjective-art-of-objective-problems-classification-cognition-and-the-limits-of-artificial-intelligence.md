@@ -2,6 +2,7 @@
 title: "The Subjective Art of Objective Problems: Classification, Cognition, and
   the Limits of (Artificial) Intelligence"
 kind: Essay
+pair: subjective-art
 date: 2026-10-31
 summary: "Many seemingly unrelated problems, from Linnaeus's tree to the
   next-token predictions of large language models, share one structure: basic

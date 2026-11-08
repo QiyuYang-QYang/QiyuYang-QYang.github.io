@@ -20,6 +20,10 @@ content:
         label: Kind
         type: string
         description: For example Essay or Note.
+      - name: pair
+        label: Language pair
+        type: string
+        description: "To join a Chinese and an English version of one essay, give both the same short key, for example subjective-art. The homepage then lists the essay once, and readers switch with the EN / 中文 toggle."
       - name: date
         label: Date
         type: date

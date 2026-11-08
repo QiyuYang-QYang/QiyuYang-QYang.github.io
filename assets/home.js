@@ -45,10 +45,28 @@ function renderWorks(list) {
     : `<p class="empty">Nothing here yet.</p>`;
 }
 
-function renderWriting(list) {
+function prefLang() {
+  try { const v = localStorage.getItem("lang"); if (v === "zh" || v === "en") return v; } catch {}
+  return /^zh/i.test(navigator.language || "") ? "zh" : "en";
+}
+
+function pickVersions(list, lang) {
+  const seen = new Set(), out = [];
+  for (const w of list) {
+    const key = w.pair || w.slug;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const alt = w.alt && list.find(o => o.slug === w.alt);
+    out.push(alt && w.lang !== lang && alt.lang === lang ? alt : w);
+  }
+  return out;
+}
+
+function renderWriting(all) {
+  const list = pickVersions(all, prefLang());
   $("#writeN").textContent = `(${pad(list.length)})`;
   $("#writeRows").innerHTML = list.length ? list.map(w => `
-    <div class="row"><a href="post.html#${encodeURIComponent(w.slug)}"><span class="yr">${esc(w.date || w.kind || "")}</span><span class="tt"${langAttr(w.title)}>${esc(w.title)}</span><span class="tg"${langAttr(w.summary)}>${esc(w.summary || "")}</span><span class="pl" aria-hidden="true">→</span></a></div>`).join("")
+    <div class="row"><a href="post.html#${encodeURIComponent(w.slug)}"><span class="yr">${esc(w.date || w.kind || "")}${w.alt ? `<span class="langs">EN · 中文</span>` : ""}</span><span class="tt"${langAttr(w.title)}>${esc(w.title)}</span><span class="tg"${langAttr(w.summary)}>${esc(w.summary || "")}</span><span class="pl" aria-hidden="true">→</span></a></div>`).join("")
     : `<p class="empty">First essays coming soon.</p>`;
 }
 

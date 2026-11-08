@@ -63,6 +63,15 @@ const writing = (await readCollection("writing"))
   .map(w => ({ ...w, date: asDate(w.date) }))
   .sort((a, b) => (!a.date) - (!b.date) || b.date.localeCompare(a.date));
 
+for (const w of writing) {
+  w.lang = /[\u3400-\u9fff]/.test(w.title) ? "zh" : "en";
+  w.pair = String(w.pair ?? "").trim() || w.slug;
+}
+for (const w of writing) {
+  const other = writing.find(o => o !== w && o.pair === w.pair && o.lang !== w.lang);
+  if (other) { w.alt = other.slug; w.altLang = other.lang; }
+}
+
 const ytId = u => {
   const m = String(u || "").match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/)|youtu\.be\/)([\w-]{11})/);
   return m ? m[1] : "";

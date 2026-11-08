@@ -1,6 +1,7 @@
 ---
 title: "Where the Choices Went: Machine Learning as the Art of Connection"
 kind: Essay
+pair: choices
 date: 2026-11-04
 summary: No system learns without choices made before it sees any data. This
   essay reads the history of machine learning, from expert systems to coding
