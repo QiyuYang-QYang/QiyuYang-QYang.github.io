@@ -7,7 +7,7 @@ order: 1
 ---
 ## Summary
 
-An LLM agent that predicts how well a patient will recover from a spontaneous brain hemorrhage, measured by the Glasgow Outcome Scale (GOS) at discharge, from the CT scan and clinical record taken at admission. The agent calls a set of tools to examine each case in depth and from several angles: machine-learning prediction, statistical analysis, and retrieval of similar past patients. The LLM then integrates this evidence into an outcome prediction, a severity assessment, and a report of its uncertainty. The manuscript is under review.
+An LLM agent that predicts how well a patient will recover from a spontaneous brain hemorrhage, measured by the Glasgow Outcome Scale (GOS) at discharge, from the CT scan and clinical record taken at admission. The agent calls a set of tools to examine each case in depth and from several angles: machine-learning prediction, statistical analysis, and retrieval of similar past patients. The LLM then integrates this evidence into an outcome prediction, a severity assessment, and a report of its uncertainty. The manuscript is under review  (npj Digital Medicine).
 
 
 
