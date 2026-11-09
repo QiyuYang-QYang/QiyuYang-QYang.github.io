@@ -43,7 +43,7 @@
     {
       "image": "/media/work/crab-vibration.webp",
       "place": "Work · Ghost crab vibration platform",
-      "on_homepage": true,
+      "on_homepage": false,
       "portrait": "/media/work/crab-vibration-portrait.webp",
       "in_gallery": false,
       "plain": true,
