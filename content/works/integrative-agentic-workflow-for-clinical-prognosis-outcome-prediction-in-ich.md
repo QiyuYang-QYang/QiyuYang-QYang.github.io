@@ -9,6 +9,10 @@ order: 1
 
 An LLM agent that predicts how well a patient will recover from a spontaneous brain hemorrhage, measured by the Glasgow Outcome Scale (GOS) at discharge, from the CT scan and clinical record taken at admission. The agent calls a set of tools to examine each case in depth and from several angles: machine-learning prediction, statistical analysis, and retrieval of similar past patients. The LLM then integrates this evidence into an outcome prediction, a severity assessment, and a report of its uncertainty. The manuscript is under review.
 
+
+
+![](/media/work/sich-copilot.webp)
+
 ## My contribution
 
 I designed a uniform interface for the agent: a harness that assembles the prompt dynamically from each tool's call schema, the system prompt, and the user prompt. The same schemas are embedded in the prompt and used to validate each tool's output, so malformed calls are prevented upfront rather than caught after the fact. New tools can be plugged in without rewriting the agent, and the framework can be carried over to other clinical problems.
