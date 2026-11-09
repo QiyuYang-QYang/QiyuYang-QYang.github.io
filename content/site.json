@@ -10,7 +10,7 @@
       "date": "Oct 2026",
       "on_homepage": true,
       "front": "/media/photos/granite-front.webp",
-      "in_gallery": false,
+      "in_gallery": true,
       "plain": false,
       "ink": "light",
       "ridge": 59,
@@ -56,8 +56,8 @@
       "image": "/media/photos/convict.webp",
       "place": "Convict Lake, CA",
       "date": "Oct 2026",
-      "on_homepage": true,
-      "in_gallery": false,
+      "on_homepage": false,
+      "in_gallery": true,
       "plain": false,
       "ink": "light",
       "ridge": 60,
@@ -87,7 +87,7 @@
     },
     {
       "image": "/media/photos/shenzhen-bay.webp",
-      "place": "Shenzhen Bay",
+      "place": "Shenzhen Bay, Shenzhen",
       "date": "Jul 2026",
       "on_homepage": false,
       "in_gallery": true,
@@ -98,7 +98,7 @@
     },
     {
       "image": "/media/photos/victoria-harbour.webp",
-      "place": "Victoria Harbour, Hong Kong",
+      "place": "Victoria Harbour, Hong Kong SAR",
       "date": "May 2026",
       "on_homepage": false,
       "in_gallery": true,
@@ -120,7 +120,7 @@
     },
     {
       "image": "/media/photos/arches-looking-up.webp",
-      "place": "Coit Tower, San Francisco",
+      "place": "Coit Tower, San Francisco, CA",
       "date": "May 2026",
       "on_homepage": false,
       "in_gallery": true,
@@ -142,7 +142,7 @@
     },
     {
       "image": "/media/photos/badwater-basin.webp",
-      "place": "Badwater Basin, Death Valley",
+      "place": "Badwater Basin, CA",
       "date": "Dec 2025",
       "on_homepage": false,
       "in_gallery": true,
@@ -164,7 +164,7 @@
     },
     {
       "image": "/media/photos/heinz-chapel.webp",
-      "place": "Heinz Chapel, Pittsburgh",
+      "place": "Heinz Chapel, Pittsburgh, PA",
       "date": "Dec 2025",
       "on_homepage": false,
       "in_gallery": true,
@@ -197,7 +197,7 @@
     },
     {
       "image": "/media/photos/yungang-eaves-rain.webp",
-      "place": "Yungang Grottoes, Datong",
+      "place": "Yungang Grottoes, Datong, Shanxi",
       "date": "Jul 2025",
       "on_homepage": false,
       "in_gallery": true,
@@ -230,7 +230,7 @@
     },
     {
       "image": "/media/photos/tokyo-night.webp",
-      "place": "Tokyo",
+      "place": "Minato City, Tokyo",
       "date": "May 2025",
       "on_homepage": false,
       "in_gallery": true,
@@ -241,7 +241,7 @@
     },
     {
       "image": "/media/photos/tokyo-lantern.webp",
-      "place": "Tokyo",
+      "place": "Minato City, Tokyo",
       "date": "May 2025",
       "on_homepage": false,
       "in_gallery": true,
