@@ -11,7 +11,7 @@ An LLM agent that predicts how well a patient will recover from a spontaneous br
 
 ## My contribution
 
-I designed a uniform interface for the agent: a harness that assembles the prompt dynamically from each tool's call schema, the system prompt, and the user prompt. New tools can be plugged in without rewriting the agent, and the framework can be carried over to other clinical problems.
+I designed a uniform interface for the agent: a harness that assembles the prompt dynamically from each tool's call schema, the system prompt, and the user prompt. The same schemas are embedded in the prompt and used to validate each tool's output, so malformed calls are prevented upfront rather than caught after the fact. New tools can be plugged in without rewriting the agent, and the framework can be carried over to other clinical problems.
 
 I also reframed patient retrieval. Instead of matching patients by text similarity, I used contrastive learning to build an embedding space in which patients are arranged by outcome, so that neighbors tend to recover in similar ways. This made the retrieved cases more stable, and the evidence the LLM received more consistent.
 
