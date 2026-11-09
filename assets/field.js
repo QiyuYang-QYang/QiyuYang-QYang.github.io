@@ -24,7 +24,7 @@ window.startField = function (host) {
     const hh = Math.round(h / 4) * 4, key = `${hh}|${s}|${l}`; if (SPR[key]) return SPR[key];
     const c = document.createElement("canvas"), n = 40; c.width = c.height = n;
     const x = c.getContext("2d"), gr = x.createRadialGradient(n / 2, n / 2, 0, n / 2, n / 2, n / 2);
-    gr.addColorStop(0, `hsla(${hh},${s}%,94%,1)`); gr.addColorStop(0.22, `hsla(${hh},${s}%,${l}%,0.75)`); gr.addColorStop(0.6, `hsla(${hh},${s}%,${l - 8}%,0.12)`); gr.addColorStop(1, `hsla(${hh},${s}%,50%,0)`);
+    gr.addColorStop(0, `hsla(${hh},${s}%,${Math.min(88, l + 18)}%,1)`); gr.addColorStop(0.26, `hsla(${hh},${s}%,${l}%,1)`); gr.addColorStop(0.36, `hsla(${hh},${s}%,${l - 6}%,0.16)`); gr.addColorStop(0.7, `hsla(${hh},${s}%,${l - 12}%,0.03)`); gr.addColorStop(1, `hsla(${hh},${s}%,50%,0)`);
     x.fillStyle = gr; x.fillRect(0, 0, n, n); return (SPR[key] = c);
   }
   function cam(x, y, z, yaw, pitch, sc, cx, cy) {
@@ -89,17 +89,17 @@ window.startField = function (host) {
         const z = v[2] * 0.6 + v[5] * 0.3, k = 4 / (4 + z);
         S[i * 3] = cx + (v[0] + v[3] * 0.15) * sc * k; S[i * 3 + 1] = cy + (v[1] + v[4] * 0.15) * sc * k; S[i * 3 + 2] = k;
       }
-      const eps = this.eps, B = 5; g.globalCompositeOperation = "lighter";
+      const eps = this.eps, B = 5; g.globalCompositeOperation = "source-over";
       const tp = Array.from({ length: B }, () => new Path2D());
       for (const [a, b, c, m] of T) { if (m > eps * 0.92) continue; const k = Math.min(B - 1, Math.floor((1 - m / (eps * 0.92)) * B)), p = tp[k]; p.moveTo(S[a * 3], S[a * 3 + 1]); p.lineTo(S[b * 3], S[b * 3 + 1]); p.lineTo(S[c * 3], S[c * 3 + 1]); p.closePath(); }
-      tp.forEach((p, k) => { g.fillStyle = `hsla(${238 + k * 10},100%,62%,${0.02 + k * 0.018})`; g.fill(p); });
+      tp.forEach((p, k) => { g.fillStyle = `hsla(${238 + k * 10},80%,58%,${0.012 + k * 0.01})`; g.fill(p); });
       for (let i = 0; i < N; i++) parent[i] = i;
       const find = x => { while (parent[x] !== x) { parent[x] = parent[parent[x]]; x = parent[x]; } return x; };
       let comps = N, edges = 0; const ep = Array.from({ length: B }, () => new Path2D());
       for (const [a, b, d] of E) { if (d > eps) continue; edges++; const ra = find(a), rb = find(b); if (ra !== rb) { parent[ra] = rb; comps--; } const k = Math.min(B - 1, Math.floor((1 - d / eps) * B)); ep[k].moveTo(S[a * 3], S[a * 3 + 1]); ep[k].lineTo(S[b * 3], S[b * 3 + 1]); }
-      g.lineWidth = 0.8; ep.forEach((p, k) => { g.strokeStyle = `hsla(${190 + k * 8},100%,72%,${0.1 + k * 0.09})`; g.stroke(p); });
+      g.lineWidth = 0.7; ep.forEach((p, k) => { g.strokeStyle = `hsla(${190 + k * 8},85%,68%,${0.14 + k * 0.08})`; g.stroke(p); });
       const hue = x => { x = ((x % 1) + 1) % 1; const a = [188, 236, 300, 252, 188], p = x * 4, i = Math.floor(p); return a[i] + (a[i + 1] - a[i]) * (p - i); };
-      for (let i = 0; i < N; i++) { const k = S[i * 3 + 2], r = 1.2 + k * 1.5; g.globalAlpha = 0.55 + 0.45 * Math.min(1, k); g.drawImage(sprite(hue(P[i].c)), S[i * 3] - r * 2.4, S[i * 3 + 1] - r * 2.4, r * 4.8, r * 4.8); }
+      for (let i = 0; i < N; i++) { const k = S[i * 3 + 2], r = 0.9 + k * 1.1; g.globalAlpha = 0.7 + 0.3 * Math.min(1, k); g.drawImage(sprite(hue(P[i].c)), S[i * 3] - r * 2.4, S[i * 3 + 1] - r * 2.4, r * 4.8, r * 4.8); }
       g.globalAlpha = 1; this.edges = edges; this.comps = comps;
     },
     readout() { return `ε <b>${this.eps.toFixed(3)}</b> · edges <b>${(this.edges || 0).toLocaleString()}</b><br>components β₀ <b>${this.comps || 0}</b> · dim <b>6 → 2</b>`; },
@@ -140,16 +140,16 @@ window.startField = function (host) {
     },
     draw(t) {
       const [cx, cy, sc] = center(), yaw = t * 0.12, pitch = 0.38, s = sc * 0.62;
-      g.globalCompositeOperation = "lighter"; g.lineCap = "round"; g.strokeStyle = "rgba(82,242,255,0.07)"; g.lineWidth = 1;
+      g.globalCompositeOperation = "source-over"; g.lineCap = "round"; g.strokeStyle = "rgba(82,242,255,0.09)"; g.lineWidth = 1;
       const cube = [[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]], ed = [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
       const cp = cube.map(z => cam(z[0], z[1], z[2], yaw, pitch, s, cx, cy));
       g.beginPath(); for (const [a, b] of ed) { g.moveTo(cp[a][0], cp[a][1]); g.lineTo(cp[b][0], cp[b][1]); } g.stroke();
       for (let i = 0; i < this.N; i++) {
         const x = this.p[i * 3], y = this.p[i * 3 + 1], z = this.p[i * 3 + 2], vx = this.v[i * 3], vy = this.v[i * 3 + 1], vz = this.v[i * 3 + 2];
         const A = cam(x, y, z, yaw, pitch, s, cx, cy), B = cam(x - vx * 0.07, y - vy * 0.07, z - vz * 0.07, yaw, pitch, s, cx, cy), hue = 180 + (Math.atan2(vz, vx) / Math.PI + 1) * 40;
-        g.strokeStyle = `hsla(${hue},100%,${62 + A[2] * 10}%,${0.35 + 0.5 * A[2]})`; g.lineWidth = 0.6 + A[2] * 1.4;
+        g.strokeStyle = `hsla(${hue},90%,${58 + A[2] * 8}%,${0.3 + 0.4 * A[2]})`; g.lineWidth = 0.5 + A[2] * 1.1;
         g.beginPath(); g.moveTo(B[0], B[1]); g.lineTo(A[0], A[1]); g.stroke();
-        const r = 1.2 + A[2] * 1.6; g.drawImage(sprite(hue), A[0] - r * 2, A[1] - r * 2, r * 4, r * 4);
+        const r = 0.9 + A[2] * 1.2; g.drawImage(sprite(hue), A[0] - r * 2.4, A[1] - r * 2.4, r * 4.8, r * 4.8);
       }
     },
     readout() { return `noise η <b>${this.eta.toFixed(2)}</b> · polarization φ <b>${this.phi.toFixed(3)}</b>`; },
@@ -176,11 +176,11 @@ window.startField = function (host) {
     draw(t) {
       const [cx, cy, sc] = center(), yaw = t * 0.1 + 0.6, pitch = 0.55, { N, x, y, o, nb } = this, hueO = v => (330 + v * 80) % 360, P = new Array(N);
       for (let i = 0; i < N; i++) P[i] = cam(x[i] * 1.05, (0.5 - o[i]) * 1.1, y[i] * 1.05, yaw, pitch, sc * 0.78, cx, cy);
-      g.globalCompositeOperation = "lighter"; g.lineWidth = 0.7;
+      g.globalCompositeOperation = "source-over"; g.lineWidth = 0.7;
       const bk = Array.from({ length: 6 }, () => new Path2D());
       for (let i = 0; i < N; i++) for (const j of nb[i]) if (j > i && Math.abs(o[i] - o[j]) < this.eps) { const b = Math.min(5, Math.floor((o[i] + o[j]) / 2 * 6)); bk[b].moveTo(P[i][0], P[i][1]); bk[b].lineTo(P[j][0], P[j][1]); }
-      bk.forEach((p, b) => { g.strokeStyle = `hsla(${hueO((b + 0.5) / 6)},95%,62%,0.28)`; g.stroke(p); });
-      for (let i = 0; i < N; i++) { const r = 1.6 + P[i][2] * 2.2; g.drawImage(sprite(hueO(o[i]), 95, 62), P[i][0] - r * 2, P[i][1] - r * 2, r * 4, r * 4); }
+      bk.forEach((p, b) => { g.strokeStyle = `hsla(${hueO((b + 0.5) / 6)},85%,60%,0.32)`; g.stroke(p); });
+      for (let i = 0; i < N; i++) { const r = 1.2 + P[i][2] * 1.6; g.drawImage(sprite(hueO(o[i]), 90, 60), P[i][0] - r * 2.4, P[i][1] - r * 2.4, r * 4.8, r * 4.8); }
     },
     readout() { return `confidence ε <b>${this.eps.toFixed(3)}</b> · opinion clusters <b>${this.k}</b>`; },
   };
@@ -246,11 +246,16 @@ window.startField = function (host) {
     },
     draw(t) {
       const [cx, cy, sc] = center(), yaw = t * 0.15, pitch = 0.35 + Math.sin(t * 0.1) * 0.15, { N, p, th } = this;
-      g.globalCompositeOperation = "lighter";
+      g.globalCompositeOperation = "source-over";
+      const Q = this.Q || (this.Q = new Float32Array(N * 3)), nb = this.nb;
+      for (let i = 0; i < N; i++) { const A = cam(p[i * 3] * 0.8, p[i * 3 + 1] * 0.8, p[i * 3 + 2] * 0.8, yaw, pitch, sc, cx, cy); Q[i * 3] = A[0]; Q[i * 3 + 1] = A[1]; Q[i * 3 + 2] = A[2]; }
+      const lk = [new Path2D(), new Path2D()];
+      for (let i = 0; i < N; i++) for (const j of nb[i]) if (j > i && Math.cos(th[i] - th[j]) > 0.96) { const z = Math.min(Q[i * 3 + 2], Q[j * 3 + 2]); if (z < 0.86) continue; const L = lk[z > 0.98 ? 1 : 0]; L.moveTo(Q[i * 3], Q[i * 3 + 1]); L.lineTo(Q[j * 3], Q[j * 3 + 1]); }
+      g.lineWidth = 0.7; g.strokeStyle = "hsla(262,70%,70%,0.12)"; g.stroke(lk[0]); g.strokeStyle = "hsla(262,75%,74%,0.3)"; g.stroke(lk[1]);
       for (let i = 0; i < N; i++) {
         const A = cam(p[i * 3] * 0.8, p[i * 3 + 1] * 0.8, p[i * 3 + 2] * 0.8, yaw, pitch, sc, cx, cy), ph = ((th[i] % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI), m = 0.5 + 0.5 * Math.cos(ph);
-        const front = clamp((A[2] - 0.82) * 4, 0.15, 1), r = (1 + m * 2.4) * (0.7 + A[2] * 0.6);
-        g.globalAlpha = front * (0.35 + 0.65 * m); g.drawImage(sprite(250 + 70 * Math.sin(ph), 100, 64), A[0] - r * 2, A[1] - r * 2, r * 4, r * 4);
+        const front = clamp((A[2] - 0.82) * 4, 0.12, 1), r = (0.8 + m * 1.6) * (0.7 + A[2] * 0.5);
+        g.globalAlpha = front * (0.35 + 0.65 * m); g.drawImage(sprite(250 + 70 * Math.sin(ph), 90, 62), A[0] - r * 2.4, A[1] - r * 2.4, r * 4.8, r * 4.8);
       }
       g.globalAlpha = 1;
     },
