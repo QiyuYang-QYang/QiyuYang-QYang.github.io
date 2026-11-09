@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Inter:wght@400;500;600;700&display=swap");
+html, body { margin: 0; background: #fff; }
+svg { display: block; font-family: Inter, sans-serif; }
+.title { font-family: "Cormorant Garamond"; font-weight: 500; font-size: 52px; fill: #1f2937; letter-spacing: -0.5px; }
+.sub { font-size: 14.5px; fill: #4b5563; }
+.sub b { fill: #1f2937; font-weight: 600; }
+.ph { font-size: 12.5px; font-weight: 500; }
+.pn { font-size: 11px; fill: #6b7280; }
+.t { font-size: 11px; font-weight: 600; fill: #1f2937; }
+.s { font-size: 8.6px; fill: #6b7280; }
+.xs { font-size: 7.6px; fill: #6b7280; }
+.badge { font-size: 7px; font-weight: 700; fill: #fff; letter-spacing: 0.4px; }
+</style></head>
+<body>
+<svg id="fig" width="600" height="1300" viewBox="0 0 600 1300" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 z" fill="#6b7280"/></marker>
+  <marker id="arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 z" fill="#3b5ba9"/></marker>
+  <marker id="arG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 z" fill="#2e7d4f"/></marker>
+  <marker id="arL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 z" fill="#b6bcc6"/></marker>
+  <g id="ct">
+    <rect x="0" y="0" width="100" height="100" rx="9" fill="#17191d"/>
+    <ellipse cx="50" cy="50" rx="37" ry="42" fill="#f2f2f2"/>
+    <ellipse cx="50" cy="50" rx="33" ry="38" fill="#6b6f76"/>
+    <line x1="50" y1="13" x2="50" y2="87" stroke="#3f4248" stroke-width="1"/>
+    <path d="M44 34 C38 42 37 52 40 60 C42 52 45 46 47 40 Z" fill="#1d1f23"/>
+    <path d="M52 34 C55 40 56 46 55 52 C53 46 52 41 50 37 Z" fill="#1d1f23"/>
+    <ellipse cx="66" cy="47" rx="9" ry="12" fill="#f4f4f2"/>
+  </g>
+  <g id="schemaTag"><rect x="0" y="0" width="17" height="11" rx="2.5" fill="#eef2fb" stroke="#3b5ba9" stroke-width="0.7"/><text x="8.5" y="8.2" text-anchor="middle" font-size="7.4" font-weight="700" fill="#3b5ba9" font-family="Menlo, monospace">{ }</text></g>
+</defs>
+<text class="title" x="40" y="208" style="font-size:46px">SICH-Copilot</text>
+<g class="sub" style="font-size:13.6px">
+<text x="40" y="240">An LLM agent that predicts how well a patient will recover after a</text>
+<text x="40" y="258">brain bleed (spontaneous intracerebral hemorrhage). A <tspan font-weight="600" fill="#1f2937">schema-driven</tspan></text>
+<text x="40" y="276"><tspan font-weight="600" fill="#1f2937">harness</tspan> writes each tool's contract into the prompt and checks every</text>
+<text x="40" y="294">result against it; the LLM weighs the evidence and reports <tspan font-weight="600" fill="#1f2937">how</tspan></text>
+<text x="40" y="312"><tspan font-weight="600" fill="#1f2937">uncertain</tspan> the outcome is.</text>
+</g>
+
+<!-- a -->
+<rect x="40" y="350" width="520" height="118" rx="10" fill="#f4f5f7" stroke="#6b7280" stroke-width="1.1"/>
+<circle cx="54" cy="365" r="7" fill="#6b7280"/><text x="54" y="368" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">a</text>
+<text class="ph" x="66" y="369.5" fill="#4b5563">At admission</text>
+<use href="#ct" transform="translate(58,382) scale(0.74)"/>
+<text class="t" x="144" y="404">Head CT</text>
+<text class="xs" x="144" y="416">non-contrast, at admission</text>
+<text class="xs" x="144" y="440">everything the model sees</text>
+<text class="xs" x="144" y="450">is captured here</text>
+<rect x="290" y="378" width="254" height="78" rx="6" fill="#fff" stroke="#d6d9de"/>
+<text x="300" y="394" font-size="9.5" font-weight="600" fill="#1f2937">Clinical record</text>
+<g class="s">
+<text x="300" y="413">Age, sex</text><text x="300" y="429">GCS score</text><text x="300" y="445">Blood pressure</text>
+<text x="422" y="413">Lab tests</text><text x="422" y="429">History</text><text x="422" y="445">Onset to CT</text>
+</g>
+<g fill="#d8dbe0">
+<rect x="370" y="408" width="34" height="5" rx="2.5"/><rect x="370" y="424" width="28" height="5" rx="2.5"/><rect x="370" y="440" width="36" height="5" rx="2.5"/>
+<rect x="490" y="408" width="38" height="5" rx="2.5"/><rect x="490" y="424" width="32" height="5" rx="2.5"/><rect x="490" y="440" width="26" height="5" rx="2.5"/>
+</g>
+<line x1="300" y1="469" x2="300" y2="488" stroke="#6b7280" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<!-- b + c -->
+<g transform="translate(-239.225,316.056) scale(0.91549)">
+<!-- ============ b: harness ============ -->
+<rect x="305" y="190" width="568" height="212" rx="10" fill="#eef2fb" stroke="#3b5ba9" stroke-width="1.1"/>
+<circle cx="319" cy="205" r="7" fill="#3b5ba9"/><text x="319" y="208" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">b</text>
+<text class="ph" x="331" y="209.5" fill="#2f4f9e">Schema-driven harness</text>
+<text class="pn" x="480" y="209.5">· one contract per tool, used on the way in and on the way out</text>
+
+<!-- inputs -->
+<rect x="325" y="246" width="150" height="30" rx="6" fill="#fff" stroke="#c3cbd8"/>
+<text class="t" x="336" y="264.5" font-weight="500">System prompt</text>
+<rect x="325" y="287" width="150" height="30" rx="6" fill="#fff" stroke="#c3cbd8"/>
+<text class="t" x="336" y="300" font-weight="500">Patient case</text><text class="xs" x="336" y="311">user prompt, built from (a)</text>
+<rect x="325" y="334" width="150" height="46" rx="6" fill="#fff" stroke="#3b5ba9" stroke-width="1.6"/>
+<use href="#schemaTag" transform="translate(336,342)"/>
+<text class="t" x="358" y="351" fill="#2f4f9e">Tool schemas</text>
+<text class="xs" x="336" y="366">how to call each tool, and</text>
+<text class="xs" x="336" y="375">what a valid result looks like</text>
+
+<!-- harness box -->
+<rect x="520" y="253" width="160" height="62" rx="7" fill="#fff" stroke="#3b5ba9" stroke-width="1.6"/>
+<rect x="584" y="247" width="32" height="12" rx="6" fill="#3b5ba9"/><text class="badge" x="600" y="255.6" text-anchor="middle">CODE</text>
+<text x="600" y="276" text-anchor="middle" font-size="12.5" font-weight="600" fill="#2f4f9e">Harness</text>
+<text class="s" x="600" y="289" text-anchor="middle">assembles the context from</text>
+<text class="s" x="600" y="300" text-anchor="middle">prompts + every tool's schema</text>
+
+<!-- schema check box -->
+<rect x="520" y="338" width="160" height="40" rx="7" fill="#fff" stroke="#3b5ba9" stroke-width="1.1"/>
+<rect x="584" y="332" width="32" height="12" rx="6" fill="#3b5ba9"/><text class="badge" x="600" y="340.6" text-anchor="middle">CODE</text>
+<text x="600" y="357" text-anchor="middle" font-size="11" font-weight="600" fill="#2f4f9e">Schema check</text>
+<text class="s" x="600" y="369" text-anchor="middle">tool output vs. the same schema</text>
+
+<!-- LLM box -->
+<rect x="725" y="253" width="130" height="62" rx="7" fill="#f3effc" stroke="#7b5cc4" stroke-width="1.4"/>
+<rect x="776" y="247" width="28" height="12" rx="6" fill="#7b5cc4"/><text class="badge" x="790" y="255.6" text-anchor="middle">LLM</text>
+<text x="790" y="276" text-anchor="middle" font-size="12.5" font-weight="600" fill="#5b3fa8">LLM</text>
+<text class="s" x="790" y="289" text-anchor="middle">calls tools, weighs the</text>
+<text class="s" x="790" y="300" text-anchor="middle">evidence, states uncertainty</text>
+
+<!-- input arrows -->
+<path d="M475 261 C497 261, 498 273, 518 273" fill="none" stroke="#8a94a6" stroke-width="1.1" marker-end="url(#ar)"/>
+<path d="M475 302 C497 302, 498 290, 518 290" fill="none" stroke="#8a94a6" stroke-width="1.1" marker-end="url(#ar)"/>
+<path d="M475 348 C499 348, 497 305, 518 305" fill="none" stroke="#3b5ba9" stroke-width="1.4" marker-end="url(#arB)"/>
+<line x1="475" y1="364" x2="518" y2="364" stroke="#3b5ba9" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arB)"/>
+<text x="497" y="389" text-anchor="middle" font-size="7.6" font-style="italic" fill="#3b5ba9">same contract</text>
+
+<!-- harness -> LLM -->
+<line x1="680" y1="284" x2="723" y2="284" stroke="#6b7280" stroke-width="1.2" marker-end="url(#ar)"/>
+<text class="xs" x="701.5" y="278" text-anchor="middle">context</text>
+
+<!-- schema check -> LLM -->
+<path d="M680 358 H760 V317" fill="none" stroke="#2e7d4f" stroke-width="1.3" marker-end="url(#arG)"/>
+<text x="716" y="352" text-anchor="middle" font-size="7.6" fill="#2e7d4f">validated evidence</text>
+
+<!-- retry (faint safeguard) -->
+<path d="M680 372 C730 386, 800 386, 818 378" fill="none" stroke="#b6bcc6" stroke-width="1" stroke-dasharray="2.5 2.5" marker-end="url(#arL)"/>
+<text x="742" y="397.5" text-anchor="middle" font-size="7.2" fill="#9aa1ad">retry · safeguard, rarely fires</text>
+
+
+
+<!-- b <-> c -->
+<line x1="820" y1="316" x2="820" y2="437" stroke="#2e7d4f" stroke-width="1.3" marker-end="url(#arG)"/>
+<text x="826" y="424" font-size="8.6" fill="#2e7d4f">tool call</text>
+<line x1="600" y1="440" x2="600" y2="380" stroke="#2e7d4f" stroke-width="1.3" marker-end="url(#arG)"/>
+<text x="606" y="424" font-size="8.6" fill="#2e7d4f">raw output</text>
+
+<!-- ============ c: tools ============ -->
+<rect x="305" y="440" width="568" height="105" rx="10" fill="#eef6f1" stroke="#3f8a5f" stroke-width="1.1"/>
+<circle cx="319" cy="455" r="7" fill="#2e7d4f"/><text x="319" y="458" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">c</text>
+<text class="ph" x="331" y="459.5" fill="#2e7d4f">Evidence tools</text>
+<text class="pn" x="424" y="459.5">· each ships with its own schema, so new tools plug in without rewriting the agent</text>
+
+<!-- card 1 imaging -->
+<rect x="321" y="469" width="110" height="66" rx="6" fill="#fff" stroke="#9cc6ad"/>
+<use href="#schemaTag" transform="translate(408,474)"/>
+<text x="329" y="483" font-size="10" font-weight="600" fill="#2e7d4f">Imaging model</text>
+<g transform="translate(329,490) scale(0.36)"><use href="#ct"/><ellipse cx="66" cy="47" rx="10" ry="13" fill="#e9905c" opacity="0.9"/></g>
+<text class="xs" x="369" y="502">nnU-Net:</text><text class="xs" x="369" y="512">hematoma,</text><text class="xs" x="369" y="522">IVH, expansion</text>
+
+<!-- card 2 ML -->
+<rect x="441" y="469" width="110" height="66" rx="6" fill="#fff" stroke="#9cc6ad"/>
+<use href="#schemaTag" transform="translate(528,474)"/>
+<text x="449" y="483" font-size="10" font-weight="600" fill="#2e7d4f">ML prior</text>
+<g fill="#c9cdd3"><rect x="450" y="516" width="5" height="9"/><rect x="457" y="511" width="5" height="14"/><rect x="464" y="503" width="5" height="22"/><rect x="478" y="512" width="5" height="13"/></g>
+<rect x="471" y="498" width="5" height="27" fill="#3f8a5f"/>
+<line x1="448" y1="525.5" x2="485" y2="525.5" stroke="#9aa1ad" stroke-width="0.7"/>
+<text class="xs" x="491" y="499">AutoGluon on</text><text class="xs" x="491" y="508.5">clinical +</text><text class="xs" x="491" y="518">radiomics</text><text class="xs" x="491" y="527.5">→ P(GOS)</text>
+
+<!-- card 3 similar cases (wide) -->
+<rect x="561" y="469" width="170" height="66" rx="6" fill="#fff" stroke="#3f8a5f" stroke-width="1.3"/>
+<use href="#schemaTag" transform="translate(708,474)"/>
+<text x="569" y="483" font-size="10" font-weight="600" fill="#2e7d4f">Similar cases</text>
+<text class="xs" x="641" y="483">contrastive</text>
+<!-- by text: mixed -->
+<rect x="569" y="489" width="58" height="34" rx="3" fill="#f6f7f9"/>
+<g id="mixed">
+  <circle cx="577" cy="497" r="2.2" fill="#c8622a"/><circle cx="586" cy="510" r="2.2" fill="#3f8a5f"/><circle cx="595" cy="499" r="2.2" fill="#7b5cc4"/>
+  <circle cx="604" cy="514" r="2.2" fill="#c8622a"/><circle cx="613" cy="503" r="2.2" fill="#3f8a5f"/><circle cx="620" cy="516" r="2.2" fill="#7b5cc4"/>
+  <circle cx="579" cy="517" r="2.2" fill="#7b5cc4"/><circle cx="601" cy="505" r="3.2" fill="none" stroke="#1f2937" stroke-width="1"/>
+  <circle cx="618" cy="495" r="2.2" fill="#c8622a"/><circle cx="590" cy="503" r="2.2" fill="#c8622a"/>
+</g>
+<text class="xs" x="598" y="531" text-anchor="middle">by text</text>
+<text x="637" y="509" font-size="10" fill="#9aa1ad">→</text>
+<!-- by outcome: clustered -->
+<rect x="650" y="489" width="58" height="34" rx="3" fill="#f6f7f9"/>
+<g>
+  <circle cx="657" cy="495" r="2.2" fill="#3f8a5f"/><circle cx="663" cy="501" r="2.2" fill="#3f8a5f"/><circle cx="657" cy="504" r="2.2" fill="#3f8a5f"/>
+  <circle cx="679" cy="504" r="2.2" fill="#c8622a"/><circle cx="685" cy="510" r="2.2" fill="#c8622a"/><circle cx="676" cy="512" r="2.2" fill="#c8622a"/>
+  <circle cx="699" cy="499" r="2.2" fill="#7b5cc4"/><circle cx="703" cy="507" r="2.2" fill="#7b5cc4"/><circle cx="696" cy="514" r="2.2" fill="#7b5cc4"/>
+  <circle cx="681" cy="507" r="6.5" fill="none" stroke="#1f2937" stroke-width="0.6" stroke-dasharray="1.5 1.5"/>
+  <circle cx="681" cy="507" r="3.2" fill="none" stroke="#1f2937" stroke-width="1"/>
+</g>
+<text class="xs" x="679" y="531" text-anchor="middle">by outcome</text>
+
+<!-- card 4 KG -->
+<rect x="741" y="469" width="116" height="66" rx="6" fill="#fff" stroke="#9cc6ad"/>
+<use href="#schemaTag" transform="translate(834,474)"/>
+<text x="749" y="483" font-size="9" font-weight="600" fill="#2e7d4f">Knowledge graph</text>
+<g stroke="#3f8a5f" stroke-width="0.9" fill="#fff" transform="translate(-6,0)">
+  <line x1="772" y1="495" x2="783" y2="512"/><line x1="790" y1="494" x2="783" y2="512"/><line x1="770" y1="519" x2="783" y2="512"/><line x1="783" y1="512" x2="798" y2="516"/>
+  <circle cx="772" cy="495" r="2.6"/><circle cx="790" cy="494" r="2.6"/><circle cx="770" cy="519" r="2.6"/><circle cx="798" cy="516" r="2.6"/>
+  <circle cx="783" cy="512" r="4" fill="#3f8a5f"/>
+</g>
+<text class="xs" x="801" y="502">risk strata</text><text class="xs" x="801" y="512">→ shift in</text><text class="xs" x="801" y="522">outcome</text>
+
+
+</g>
+<path d="M543 576 H574 V848 H563" fill="none" stroke="#6b7280" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<!-- d -->
+<rect x="40" y="835" width="520" height="150" rx="10" fill="#fdf3ec" stroke="#d0703a" stroke-width="1.1"/>
+<circle cx="54" cy="850" r="7" fill="#c8622a"/><text x="54" y="853" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">d</text>
+<text class="ph" x="66" y="854.5" fill="#c8622a">Prediction</text>
+<text x="58" y="878" font-size="9.5" font-weight="600" fill="#1f2937">Discharge GOS</text>
+<text class="xs" x="58" y="889">a distribution, not a single grade</text>
+<g font-size="8" fill="#6b7280" text-anchor="middle">
+<rect x="58" y="896" width="13" height="13" rx="3" fill="#fff" stroke="#d6d9de"/><text x="64.5" y="905.3">5</text>
+<rect x="58" y="912" width="13" height="13" rx="3" fill="#fff" stroke="#d6d9de"/><text x="64.5" y="921.3">4</text>
+<rect x="58" y="928" width="13" height="13" rx="3" fill="#fff" stroke="#d6d9de"/><text x="64.5" y="937.3">3</text>
+<rect x="58" y="944" width="13" height="13" rx="3" fill="#fff" stroke="#d6d9de"/><text x="64.5" y="953.3">2</text>
+<rect x="58" y="960" width="13" height="13" rx="3" fill="#fff" stroke="#d6d9de"/><text x="64.5" y="969.3">1</text>
+</g>
+<rect x="77" y="898.5" width="14" height="8" rx="2" fill="#c8622a" opacity="0.25"/>
+<rect x="77" y="914.5" width="104" height="8" rx="2" fill="#c8622a"/>
+<rect x="77" y="930.5" width="76" height="8" rx="2" fill="#c8622a" opacity="0.7"/>
+<rect x="77" y="946.5" width="20" height="8" rx="2" fill="#c8622a" opacity="0.3"/>
+<rect x="77" y="962.5" width="13" height="8" rx="2" fill="#c8622a" opacity="0.25"/>
+<path d="M190 912 h5 v29 h-5" fill="none" stroke="#c8622a" stroke-width="1"/>
+<text x="200" y="924" font-size="7.6" fill="#c8622a">likely</text><text x="200" y="933" font-size="7.6" fill="#c8622a">range</text>
+<text class="xs" x="200" y="969">1 death … 5 good recovery</text>
+<rect x="300" y="860" width="246" height="112" rx="6" fill="#fff" stroke="#ecd3c2"/>
+<text x="310" y="876" font-size="9.5" font-weight="600" fill="#1f2937">Explanation report</text>
+<g font-size="8" fill="#4b5563">
+<circle cx="313" cy="892" r="2.6" fill="#2e7d4f"/><text x="320" y="895">outcome</text>
+<circle cx="313" cy="914" r="2.6" fill="#2e7d4f"/><text x="320" y="917">severity</text>
+<circle cx="313" cy="936" r="2.6" fill="#c8622a"/><text x="320" y="939" fill="#c8622a" font-weight="600">uncertainty</text>
+</g>
+<g fill="#e3e5e9"><rect x="380" y="890" width="150" height="4" rx="2"/><rect x="380" y="912" width="128" height="4" rx="2"/><rect x="380" y="934" width="156" height="4" rx="2"/><rect x="380" y="941" width="110" height="4" rx="2"/></g>
+<text class="xs" x="423" y="962" text-anchor="middle">each claim cites a tool output · GOS 1–5 at discharge</text>
+
+<!-- timeline -->
+<line x1="62" y1="1022" x2="538" y2="1022" stroke="#c3c8d0" stroke-width="1.2" stroke-dasharray="4 4"/>
+<circle cx="62" cy="1022" r="4.5" fill="#6b7280"/><circle cx="538" cy="1022" r="4.5" fill="#c8622a"/>
+<rect x="232" y="1014" width="136" height="16" fill="#fff"/>
+<text x="300" y="1025.5" text-anchor="middle" font-size="9" font-weight="600" fill="#4b5563">unobserved in between</text>
+<text x="40" y="1044" font-size="9.5" font-weight="600" fill="#1f2937">Admission<tspan font-weight="400" fill="#6b7280" font-size="8.6"> · all inputs observed</tspan></text>
+<text x="560" y="1044" text-anchor="end" font-size="9.5" font-weight="600" fill="#c8622a">Discharge<tspan font-weight="400" fill="#6b7280" font-size="8.6"> · GOS label assigned</tspan></text>
+<text x="300" y="1066" text-anchor="middle" font-size="9" fill="#6b7280">hematoma expansion · treatment response · complications</text>
+<text x="300" y="1082" text-anchor="middle" font-size="8.4" font-style="italic" fill="#9aa1ad">a ceiling no admission-only model can lift</text>
+</svg>
+</body></html>
