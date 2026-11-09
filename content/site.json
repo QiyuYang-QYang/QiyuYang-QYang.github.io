@@ -8,7 +8,7 @@
       "image": "/media/photos/granite.webp",
       "place": "Tioga Road, CA",
       "date": "Oct 2026",
-      "on_homepage": true,
+      "on_homepage": false,
       "front": "/media/photos/granite-front.webp",
       "in_gallery": true,
       "plain": false,
