@@ -6,7 +6,7 @@ window.startField = function (host) {
     <div class="fld-card fld-out"><div class="fld-f"></div><div class="fld-t"></div><div class="fld-r"></div><div class="fld-u"></div><div class="fld-v"></div></div>
     <div class="fld-txt">
       <div class="fld-name">Qiyu Yang</div>
-      <div class="fld-line">Looking for the hidden structure of living and thinking systems.</div>
+      <div class="fld-line">Searching for the hidden structure of biological and cognitive systems.</div>
       <div class="fld-keys">Complex systems <span>·</span> Topology <span>·</span> Perception &amp; cognition <span>·</span> Biology × AI</div>
     </div>
     <div class="fld-ctl"><button type="button" class="fld-next">Next model</button><button type="button" class="fld-play">Pause</button></div>`);
