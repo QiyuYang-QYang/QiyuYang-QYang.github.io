@@ -15,7 +15,7 @@ draft: false
 
 我想做到这样一件事：让机器学习在一个本来就存在的框架里，被重新认出来。这样做的目的是为了让更多人能够体会到机器学习和深度学习的本质性和艺术性，而不至于觉得它枯燥而望而却步，或者是在术语的海洋里迷失方向。
 
-（在此感谢CMU 02-620 Machine Learning for Scientists的Dr. Martin Zhang 的深厚统计学习功底和深入浅出的授课、CMU 11-685 Intro to Deep Learning的Prof. Bhiksha Raj 对深度学习贯通历史全局的发展史和理论以及技术细节的倾囊相授、以及 10-623 GenAI 的 Dr. Matt Gormley 和 Dr. Aran Neyeb 对如今不断迭代的生成式人工智能和众多模型背后的理论和技术的拆解与传授）
+（在此感谢CMU 02-620 Machine Learning for Scientists的Dr. Martin Zhang 的深厚统计学习功底和深入浅出的授课、CMU 11-685 Intro to Deep Learning的Prof. Bhiksha Raj 对深度学习贯通历史全局的发展史和理论以及技术细节的倾囊相授、以及 10-623 GenAI 的 Dr. Matt Gormley 和 Dr. Aran Neyebi 对如今不断迭代的生成式人工智能和众多模型背后的理论和技术的拆解与传授）
 
 ## 一、前言：会用，却串不起来
 
