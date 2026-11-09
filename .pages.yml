@@ -150,6 +150,11 @@ content:
       - name: github
         label: GitHub link
         type: string
+      - name: hero
+        label: Homepage top
+        type: select
+        options:
+          values: [field, photos]
       - name: photos
         label: Photos
         type: object
