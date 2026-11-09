@@ -73,6 +73,182 @@
       "ink": "light",
       "ridge": 60,
       "sink": 0
+    },
+    {
+      "image": "/media/photos/tsinghua-xinqinghua.webp",
+      "place": "Tsinghua University, Beijing",
+      "date": "Aug 2026",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/shenzhen-bay.webp",
+      "place": "Shenzhen Bay",
+      "date": "Jul 2026",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/victoria-harbour.webp",
+      "place": "Victoria Harbour, Hong Kong",
+      "date": "May 2026",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/sf-hostel-window.webp",
+      "place": "San Francisco, CA",
+      "date": "May 2026",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/arches-looking-up.webp",
+      "place": "Coit Tower, San Francisco",
+      "date": "May 2026",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/san-juan-bay.webp",
+      "place": "San Juan, Puerto Rico",
+      "date": "Mar 2026",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/badwater-basin.webp",
+      "place": "Badwater Basin, Death Valley",
+      "date": "Dec 2025",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/valley-of-fire-cybertruck.webp",
+      "place": "Valley of Fire, NV",
+      "date": "Dec 2025",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/heinz-chapel.webp",
+      "place": "Heinz Chapel, Pittsburgh",
+      "date": "Dec 2025",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/cumberland-tracks.webp",
+      "place": "Cumberland, MD",
+      "date": "Oct 2025",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/datong-temple-arch.webp",
+      "place": "Datong, Shanxi",
+      "date": "Jul 2025",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/yungang-eaves-rain.webp",
+      "place": "Yungang Grottoes, Datong",
+      "date": "Jul 2025",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/qiansimen-bridge-night.webp",
+      "place": "Qiansimen Bridge, Chongqing",
+      "date": "Jun 2025",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/qiansimen-bridge-cables.webp",
+      "place": "Qiansimen Bridge, Chongqing",
+      "date": "Jun 2025",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/tokyo-night.webp",
+      "place": "Tokyo",
+      "date": "May 2025",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
+    },
+    {
+      "image": "/media/photos/tokyo-lantern.webp",
+      "place": "Tokyo",
+      "date": "May 2025",
+      "on_homepage": false,
+      "in_gallery": true,
+      "plain": false,
+      "ink": "light",
+      "ridge": 60,
+      "sink": 0
     }
   ]
 }
