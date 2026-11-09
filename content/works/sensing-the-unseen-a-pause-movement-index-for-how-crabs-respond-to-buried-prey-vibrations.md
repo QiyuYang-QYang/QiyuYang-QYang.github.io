@@ -6,7 +6,7 @@ tags: Sensory Ecology · Animal Behavior · Behavioral Metrics
 where: LeDuc Lab, Carnegie Mellon University
 order: 2
 ---
-This is relevant to a study of whether ghost crabs sense the vibrations of prey buried in sand. The team built an arena with four buried actuators that reproduce prey-like pulses, filmed crabs before, during and after vibration, and compared them with control trials. The manuscript is under review (Scientific Reports).
+This is relevant to a study of whether ghost crabs sense the vibrations of prey buried in sand. The team built an arena with four buried actuators that reproduce prey-like pulses, filmed crabs before, during and after vibration, and compared them with control trials. The manuscript is under review (*Scientific Reports*).
 
 ![](/media/crab-pmi.svg)
 
