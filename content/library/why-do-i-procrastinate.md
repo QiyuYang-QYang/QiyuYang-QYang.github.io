@@ -6,27 +6,37 @@ by: https://www.youtube.com/@Queen3369
 added: 2026-10-19
 draft: false
 ---
-为什么拖延？我们总是在察觉到自己拖延之后，带着负罪感问自己怎样才能摆脱这种状态，于是不禁问出这个问题。"意志力不足"”时间管理能力差"”没有人生目标"”做事没有优先级"”时间观念薄弱"……这些会不会是你给曾经或正在拖延、并为此懊悔的自己，贴上的标签，下达的审判？
+Why do we procrastinate? Once we become aware that we're procrastinating, we tend to ask ourselves, often with a sense of guilt, how we can break out of it. And so the question inevitably arises.
 
-也许这些标签曾痛斥你、鞭策你，但最后你对它们麻木了。周而复始，直到鞭策和羞耻心都再也无法让你行动。
+"Lack of willpower." "Poor time management." "No clear goals in life." "Failure to prioritize." "A weak sense of time."
 
-我请你暂时放下对自己的苛责，搁置此刻"正在浪费时间"的恐慌和不甘，停下手里正在社交媒体上搜索"拖延到底是为什么、该怎么办"的动作，找一个安静的地方，深呼吸。
+Could these be the labels you've placed on yourself, the judgments you've passed on the person you were—or still are—when you procrastinate and regret doing so?
 
-然后，按顺序向一个你觉得能理解你的人（也可以是你自己）问出下面这些问题。不需要马上有答案，甚至不需要为了回答而去找答案。
+Perhaps these labels once served to reprimand you, to push you forward. But eventually, you grew numb to them. The cycle repeated itself, over and over, until neither self-discipline nor shame could make you act anymore.
 
-1. 什么是时间？
-2. 你觉得时间宝贵吗？
-3. 如果一个人的时间宝贵，那他的时间就不应该被浪费吗？
-4. 什么是浪费？
-5. 如果一个人不想去做"不是浪费时间"的事，你觉得他在浪费时间吗？
-6. 什么事不是浪费时间？
-7. 如果一个人的时间里出现了一点不是"不是浪费时间"的事，他是不是就在浪费时间？这段时间需要被优化吗？
-8. 一个人浪费时间，可耻吗？
-9. 如果一个人把 100% 的时间都用来做"不浪费时间"的事，却没有看到成效，他在浪费时间吗？
-10. 如果一个人把 100% 的时间都用来做"不浪费时间"的事，却什么也没得到；他知道自己"不该浪费时间，不要给生命留遗憾"，付出了极大的心力，感到疲惫不堪。你觉得他该怎么办？
-11. 第 10 题里的这个人，现在什么都不想做。你觉得他在浪费时间吗？
-12. 第 10 题里的这个人，现在需要时间恢复。你觉得他在浪费时间吗？
-13. 从挫折中恢复，算不算"不浪费时间"的事？
-14. 人和工作的关系，等同于机器和工作的关系吗？人是计划的主人，还是计划的奴隶？
+I'd like to ask you to set aside your self-reproach for a moment. Put aside the anxiety and frustration of feeling that you're "wasting time" right now. Stop scrolling through social media, searching for answers to questions like "Why do I procrastinate?" and "How do I stop?"
 
-我没有答案。但也许你可以带着自己的思考，来看看我找到的这个作品。我愿意称它为一种心理诗学：它关照我们在效率社会里那种并非出于懒惰的拖延，也为我们逃避"浪费时间"这一自我审判的方式，重新指了一个方向。
+Instead, find somewhere quiet. Take a deep breath.
+
+Then, one by one, ask the following questions to someone you believe might understand you. It could even be yourself.
+
+You don't need to have the answers right away. In fact, you don't even need to go looking for them.
+
+1. What is time?
+2. Do you think time is precious?
+3. If someone's time is precious, does that mean it should never be wasted?
+4. What does it mean to waste something?
+5. If someone doesn't want to do something that is considered "not a waste of time," would you say they're wasting their time?
+6. What kinds of things are not a waste of time?
+7. If even a small part of someone's time is spent doing something that isn't considered "not a waste of time," does that mean they're wasting it? Does that time need to be optimized?
+8. Is wasting time something to be ashamed of?
+9. If someone spends 100% of their time doing things that are supposedly "not a waste of time," but sees no results, are they wasting their time?
+10. If someone spends 100% of their time doing things that are supposedly "not a waste of time," yet gains nothing in return; if they know they "shouldn't waste time" and "mustn't leave this life with regrets," and have poured an enormous amount of effort into it, to the point of complete exhaustion, what do you think they should do?
+11. The person in Question 10 doesn't want to do anything right now. Do you think they're wasting their time?
+12. The person in Question 10 needs time to recover. Do you think they're wasting their time?
+13. Does recovering from setbacks count as something that is "not a waste of time"?
+14. Is the relationship between a person and their work equivalent to that between a machine and its work? Are we the masters of our plans, or their slaves?
+
+I don't have the answers. But perhaps you can take these questions and your own reflections with you as you look at a piece of work I've come across.
+
+I'd like to call it a form of psychological poetics. It speaks to a kind of procrastination that isn't born out of laziness, but rather emerges from the pressures of living in an efficiency-driven society. And it offers us a different way forward: a way to step outside the self-condemnation that comes with the fear of "wasting time."
